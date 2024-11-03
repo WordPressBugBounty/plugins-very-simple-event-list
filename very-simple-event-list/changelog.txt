@@ -1,11 +1,14 @@
 == Changelog VS Event List ==
 
+= Version 18.0 =
+* Fix: template support file
+
 = Version 17.9 =
 * New: activate revisions for events
 * Changed CSS class of the event info container
 * Class "vsel-info-block" becomes "vsel-info"
 * Class "vsel-info" becomes "vsel-text"
-* Using "block" in a class name gives the impression a block is used
+* Using "block" in a class name gives the false impression a block is used
 * Changed CSS class of the featured image
 * Class "vsel-image-figure" becomes "vsel-image"
 * Class "vsel-image" becomes "vsel-image-img"

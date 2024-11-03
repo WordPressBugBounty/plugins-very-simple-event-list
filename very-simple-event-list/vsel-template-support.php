@@ -152,10 +152,10 @@ function vsel_single_content( $content ) {
 				}
 			// end event details
 			$output .= $single_meta_end;
-			// start event info block
-			$output .= $single_info_block_start;
-				// event info
-				$output .= '<div class="vsel-info">';
+			// start event info
+			$output .= $single_info_start;
+				// event text
+				$output .= '<div class="vsel-text">';
 				$output .= $content;
 				$output .= '</div>';
 				// include acf fields
@@ -175,8 +175,8 @@ function vsel_single_content( $content ) {
 						}
 					}
 				}
-			// end event info block
-			$output .= $single_info_block_end;
+			// end event info
+			$output .= $single_info_end;
 		// end event container
 		$output .= '</div>';
 	// return default content if template is not activated
@@ -339,11 +339,11 @@ function vsel_archive_content( $content ) {
 				}
 			// end event details
 			$output .= $page_meta_end;
-			// start event info block
-			$output .= $page_info_block_start;
-				// event info
+			// start event info
+			$output .= $page_info_start;
+				// event text
 				if ( $page_info_hide != 'yes' ) {
-					$output .= '<div class="vsel-info">';
+					$output .= '<div class="vsel-text">';
 					$output .= $vsel_event_content;
 					$output .= '</div>';
 				}
@@ -364,8 +364,8 @@ function vsel_archive_content( $content ) {
 						}
 					}
 				}
-			// end event info block
-			$output .= $page_info_block_end;
+			// end event info
+			$output .= $page_info_end;
 		// end event container
 		$output .= '</div>';
 	// return default content if template is not activated
@@ -533,11 +533,11 @@ function vsel_archive_excerpt( $excerpt ) {
 				}
 			// end event details
 			$output .= $page_meta_end;
-			// start event info block
-			$output .= $page_info_block_start;
-				// event info
+			// start event info
+			$output .= $page_info_start;
+				// event text
 				if ( $page_info_hide != 'yes' ) {
-					$output .= '<div class="vsel-info">';
+					$output .= '<div class="vsel-text">';
 					$output .= $vsel_event_summary;
 					$output .= '</div>';
 				}
@@ -558,8 +558,8 @@ function vsel_archive_excerpt( $excerpt ) {
 						}
 					}
 				}
-			// end event info block
-			$output .= $page_info_block_end;
+			// end event info
+			$output .= $page_info_end;
 		// end event container
 		$output .= '</div>';
 	// return default excerpt if template is not activated

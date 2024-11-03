@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 17.9
+Version: 18.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.1
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 17.9
+Stable tag: 18.0
 Tags: simple, event, events, event list, event manager
 
 
@@ -243,12 +243,15 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.0 =
+* Fix: template support file
+
 = Version 17.9 =
 * New: activate revisions for events
 * Changed CSS class of the event info container
 * Class "vsel-info-block" becomes "vsel-info"
 * Class "vsel-info" becomes "vsel-text"
-* Using "block" in a class name gives the impression a block is used
+* Using "block" in a class name gives the false impression a block is used
 * Changed CSS class of the featured image
 * Class "vsel-image-figure" becomes "vsel-image"
 * Class "vsel-image" becomes "vsel-image-img"
@@ -281,11 +284,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 = Version 17.1 =
 * Fix: iCal feed
-
-= Version 17.0 =
-* Replaced date() with gmdate()
-* Updated block code
-* Minor changes in code
 
 For all versions please check file changelog.
 
