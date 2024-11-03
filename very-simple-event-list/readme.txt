@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 17.8
+Version: 17.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.1
 Requires at least: 5.3
-Tested up to: 6.6
-Stable tag: 17.8
+Tested up to: 6.7
+Stable tag: 17.9
 Tags: simple, event, events, event list, event manager
 
 
@@ -19,12 +19,14 @@ With this lightweight plugin you can create an event list.
 
 To display your event list you can use a block, a shortcode or a widget.
 
-You can customize your event list via the settings page or by adding attributes to the block, the shortcode or the widget.
+You can customize your event list via the settings page or with attributes.
 
 = How to use =
 After installation go to menu item "Events". You can add your events here.
 
 Add the VS Event List block or the shortcode to a page to display your event list.
+
+Available shortcodes:
 
 * `[vsel]` to display upcoming events (today included)
 * `[vsel-future-events]` to display future events (today not included)
@@ -32,7 +34,9 @@ Add the VS Event List block or the shortcode to a page to display your event lis
 * `[vsel-past-events]` to display past events (before today)
 * `[vsel-all-events]` to display all events
 
-You can also go to Appearance > Widgets and use the VS Event List widget.
+Or go to Appearance > Widgets and use the VS Event List widget.
+
+You can customize your event list via the settings page or with attributes.
 
 = Settings page =
 You can customize your event list via the settings page. This page is located at Settings > VS Event List.
@@ -239,6 +243,17 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 17.9 =
+* New: activate revisions for events
+* Changed CSS class of the event info container
+* Class "vsel-info-block" becomes "vsel-info"
+* Class "vsel-info" becomes "vsel-text"
+* Using "block" in a class name gives the impression a block is used
+* Changed CSS class of the featured image
+* Class "vsel-image-figure" becomes "vsel-image"
+* Class "vsel-image" becomes "vsel-image-img"
+* Updated stylesheet
+
 = Version 17.8 =
 * Minor changes in code
 
@@ -272,17 +287,14 @@ Please open a topic in the WordPress.org support forum for this plugin.
 * Updated block code
 * Minor changes in code
 
-= Version 16.9 =
-* Minor changes in code
-
 For all versions please check file changelog.
 
 
 == Screenshots ==
-1. Event list (GeneratePress theme)
-2. Event list (GeneratePress theme)
-3. Event list widget (GeneratePress theme)
-4. Single event (GeneratePress theme)
+1. Event list
+2. Event list
+3. Event list widget
+4. Single event
 5. Events page (dashboard)
 6. Single event (dashboard)
 7. Widget (dashboard)

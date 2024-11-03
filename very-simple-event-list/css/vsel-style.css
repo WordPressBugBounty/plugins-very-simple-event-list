@@ -2,15 +2,15 @@
 
 /* VS Event List stylesheet */
 
-/* Container when using shortcode or widget */
+/* Container for event list */
 #vsel {clear:both;}
 #vsel:after {content:''; display:block; height:0; clear:both;}
 
 /* Container for single event */
-.vsel-content {}
+.vsel-content {clear:both;}
 .vsel-content:after {content:''; display:block; height:0; clear:both;}
 
-/* Container for single event when using shortcode or widget */
+/* Container for single event in event list */
 #vsel .vsel-content {margin:0 0 20px; padding:0 0 20px; border-bottom:1px solid #ccc;}
 
 /* Misc */
@@ -57,13 +57,13 @@
 .vsel-meta-combine .vsel-meta-title {clear:none;}
 
 /* Event info container */
-.vsel-info-block {}
-.vsel-image-figure {}
+.vsel-info {}
+.vsel-image {}
 .vsel-content figure.vsel-alignleft {margin:5px 10px 5px 0;}
 .vsel-content figure.vsel-alignright {margin:5px 0 5px 10px;}
-.vsel-content img.vsel-image {max-width:100%; height:auto; margin:0; padding:0; border:0;}
+.vsel-content img.vsel-image-img {max-width:100%; height:auto; margin:0; padding:0; border:0;}
 .vsel-caption {display:block;}
-.vsel-info {}
+.vsel-text {}
 .vsel-read-more {display:block;}
 .vsel-info-acf-fields {padding:20px 0 0;}
 .vsel-info-acf-fields > div {margin:0 0 5px;}
@@ -91,7 +91,7 @@
 .vsel-widget .vsel-meta {clear:both; margin:0 0 20px;}
 
 /* Widget - event info container */
-.vsel-widget .vsel-info-block {clear:both;}
+.vsel-widget .vsel-info {clear:both;}
 
 /* Widget - link to all events */
 .vsel-widget .vsel-widget-link {}
@@ -102,5 +102,5 @@
 	.vsel-meta {width:100% !important; clear:both; float:left; margin:0 0 20px; box-sizing:border-box;}
 
 	/* Event info container */
-	.vsel-info-block {width:100% !important; clear:both; float:left; box-sizing:border-box;}
+	.vsel-info {width:100% !important; clear:both; float:left; box-sizing:border-box;}
 }

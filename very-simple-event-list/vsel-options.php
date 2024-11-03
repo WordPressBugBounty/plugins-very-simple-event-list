@@ -60,6 +60,9 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-47', esc_attr__( 'Event category base', 'very-simple-event-list' ), 'vsel_field_callback_47', 'vsel-general', 'vsel-general-section' );
 	register_setting( 'vsel-general-options', 'vsel-setting-47', array('sanitize_callback' => 'sanitize_text_field') );
 
+	add_settings_field( 'vsel-field-105', esc_attr__( 'Revisions', 'very-simple-event-list' ), 'vsel_field_callback_105', 'vsel-general', 'vsel-general-section' );
+	register_setting( 'vsel-general-options', 'vsel-setting-105', array('sanitize_callback' => 'sanitize_key') );	
+
 	// page section
 	add_settings_section( 'vsel-page-section', esc_attr__( 'Page', 'very-simple-event-list' ), 'vsel_page_section_callback', 'vsel-page' );
 
@@ -106,7 +109,7 @@ function vsel_admin_init() {
 	register_setting( 'vsel-page-options', 'vsel-setting-101', array('sanitize_callback' => 'sanitize_key') );
 
 	if ( class_exists('acf') ) {
-		add_settings_field( 'vsel-field-51', esc_attr__( 'ACF fields', 'very-simple-event-list' ), 'vsel_field_callback_51', 'vsel-page', 'vsel-page-section' );
+		add_settings_field( 'vsel-field-51', esc_attr__( 'Custom fields', 'very-simple-event-list' ), 'vsel_field_callback_51', 'vsel-page', 'vsel-page-section' );
 		register_setting( 'vsel-page-options', 'vsel-setting-51', array('sanitize_callback' => 'sanitize_key') );
 	}
 
@@ -201,7 +204,7 @@ function vsel_admin_init() {
 	register_setting( 'vsel-widget-options', 'vsel-setting-103', array('sanitize_callback' => 'sanitize_key') );
 
 	if ( class_exists('acf') ) {
-		add_settings_field( 'vsel-field-52', esc_attr__( 'ACF fields', 'very-simple-event-list' ), 'vsel_field_callback_52', 'vsel-widget', 'vsel-widget-section' );
+		add_settings_field( 'vsel-field-52', esc_attr__( 'Custom fields', 'very-simple-event-list' ), 'vsel_field_callback_52', 'vsel-widget', 'vsel-widget-section' );
 		register_setting( 'vsel-widget-options', 'vsel-setting-52', array('sanitize_callback' => 'sanitize_key') );
 	}
 
@@ -272,7 +275,7 @@ function vsel_admin_init() {
 	register_setting( 'vsel-single-options', 'vsel-setting-75', array('sanitize_callback' => 'sanitize_key') );
 
 	if ( class_exists('acf') ) {
-		add_settings_field( 'vsel-field-80', esc_attr__( 'ACF fields', 'very-simple-event-list' ), 'vsel_field_callback_80', 'vsel-single', 'vsel-single-section' );
+		add_settings_field( 'vsel-field-80', esc_attr__( 'Custom fields', 'very-simple-event-list' ), 'vsel_field_callback_80', 'vsel-single', 'vsel-single-section' );
 		register_setting( 'vsel-single-options', 'vsel-setting-80', array('sanitize_callback' => 'sanitize_key') );
 	}
 
@@ -513,6 +516,14 @@ function vsel_field_callback_47() {
 	<?php
 }
 
+function vsel_field_callback_105() {
+	$value = get_option( 'vsel-setting-105' );
+	?>
+	<input type='hidden' name='vsel-setting-105' value='no'>
+	<label><input type='checkbox' name='vsel-setting-105' <?php checked( esc_attr($value), 'yes' ); ?> value='yes'> <?php esc_attr_e( 'Activate revisions for events.', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
 // page section - field callbacks
 function vsel_field_callback_66() {
 	$value = get_option( 'vsel-setting-66' );
@@ -692,7 +703,7 @@ function vsel_field_callback_51() {
 	<?php
 	printf( esc_attr__( 'Default value is %s.', 'very-simple-event-list' ), __( 'Event details', 'very-simple-event-list' ) );
 	?>
-	<p><?php esc_attr_e( 'Where to display the ACF fields.', 'very-simple-event-list' ); ?></p>
+	<p><?php esc_attr_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
@@ -989,7 +1000,7 @@ function vsel_field_callback_52() {
 	<?php
 	printf( esc_attr__( 'Default value is %s.', 'very-simple-event-list' ), __( 'Event details', 'very-simple-event-list' ) );
 	?>
-	<p><?php esc_attr_e( 'Where to display the ACF fields.', 'very-simple-event-list' ); ?></p>
+	<p><?php esc_attr_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
@@ -1192,7 +1203,7 @@ function vsel_field_callback_80() {
 	<?php
 	printf( esc_attr__( 'Default value is %s.', 'very-simple-event-list' ), __( 'Event details', 'very-simple-event-list' ) );
 	?>
-	<p><?php esc_attr_e( 'Where to display the ACF fields.', 'very-simple-event-list' ); ?></p>
+	<p><?php esc_attr_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 17.8
+ * Version: 17.9
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -23,7 +23,7 @@ function vsel_css_script() {
 }
 add_action( 'wp_enqueue_scripts', 'vsel_css_script' );
 
-// the sidebar widget
+// register widget
 function vsel_register_widget() {
 	register_widget( 'vsel_widget' );
 }
@@ -109,30 +109,6 @@ add_action( 'admin_enqueue_scripts', 'vsel_enqueue_datepicker' );
 
 // create event post type
 function vsel_custom_post_type() {
-	$disable_public = get_option('vsel-setting-60');
-	if ( $disable_public == 'yes' ) {
-		$public_event = false;
-	} else {
-		$public_event = true;
-	}
-	$disable_archive = get_option('vsel-setting-48');
-	if ( $disable_archive == 'yes' ) {
-		$has_archive = false;
-	} else {
-		$has_archive = true;
-	}
-	$disable_menu = get_option('vsel-setting-50');
-	if ( $disable_menu == 'yes' ) {
-		$show_in_menu = false;
-	} else {
-		$show_in_menu = true;
-	}
-	$custom_slug = get_option('vsel-setting-46');
-	if ( !empty($custom_slug) ) {
-		$event_slug = $custom_slug;
-	} else {
-		$event_slug = 'event';
-	}
 	$vsel_labels = array(
 		'name' => __( 'Events', 'very-simple-event-list' ),
 		'singular_name' => __( 'Event', 'very-simple-event-list' ),
@@ -146,6 +122,36 @@ function vsel_custom_post_type() {
 		'not_found' => __( 'No events found', 'very-simple-event-list' ),
 		'not_found_in_trash' => __( 'No events found in trash', 'very-simple-event-list' )
 	);
+	$disable_public = get_option('vsel-setting-60');
+	if ( $disable_public == 'yes' ) {
+		$public_event = false;
+	} else {
+		$public_event = true;
+	}
+	$disable_menu = get_option('vsel-setting-50');
+	if ( $disable_menu == 'yes' ) {
+		$show_in_menu = false;
+	} else {
+		$show_in_menu = true;
+	}
+	$disable_archive = get_option('vsel-setting-48');
+	if ( $disable_archive == 'yes' ) {
+		$has_archive = false;
+	} else {
+		$has_archive = true;
+	}
+	$custom_slug = get_option('vsel-setting-46');
+	if ( !empty($custom_slug) ) {
+		$event_slug = $custom_slug;
+	} else {
+		$event_slug = 'event';
+	}
+	$activate_revisions = get_option('vsel-setting-105');
+	if ( $activate_revisions == 'yes' ) {
+		$revisions = 'revisions';
+	} else {
+		$revisions = '';
+	}
 	$vsel_args = array(
 		'labels' => $vsel_labels,
 		'menu_icon' => 'dashicons-calendar-alt',
@@ -158,7 +164,7 @@ function vsel_custom_post_type() {
 		'capability_type' => 'post',
 		'taxonomies' => array( 'event_cat' ),
 		'rewrite' => array( 'slug' => sanitize_key($event_slug) ),
- 		'supports' => array( 'title', 'thumbnail', 'page-attributes', 'custom-fields', 'editor', 'author' )
+ 		'supports' => array( 'title', 'thumbnail', 'page-attributes', 'custom-fields', 'editor', 'author', $revisions )
 	);
 	register_post_type( 'event', $vsel_args );
 }
@@ -172,17 +178,17 @@ function vsel_taxonomy() {
 	} else {
 		$show_in_menu = true;
 	}
-	$custom_slug = get_option('vsel-setting-47');
-	if ( !empty($custom_slug) ) {
-		$cat_slug = $custom_slug;
-	} else {
-		$cat_slug = 'event_cat';
-	}
 	$disable_cats_column = get_option('vsel-setting-55');
 	if ( $disable_cats_column == 'yes' ) {
 		$cats_column = false;
 	} else {
 		$cats_column = true;
+	}
+	$custom_slug = get_option('vsel-setting-47');
+	if ( !empty($custom_slug) ) {
+		$cat_slug = $custom_slug;
+	} else {
+		$cat_slug = 'event_cat';
 	}
 	$vsel_cat_args = array(
 		'label' => __( 'Event categories', 'very-simple-event-list' ),

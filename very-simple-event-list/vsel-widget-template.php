@@ -158,11 +158,11 @@ $output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.vsel_event_cat
 		}
 	// end event details
 	$output .= '</div>';
-	// start event info block
+	// start event info
 	if ( ($widget_image_hide == 'yes') && ($widget_info_hide == 'yes') ) {
 		$output .= '';
 	} else {
-		$output .= '<div class="vsel-info-block vsel-alignleft" style="width:100%; box-sizing:border-box;">';
+		$output .= '<div class="vsel-info vsel-alignleft" style="width:100%; box-sizing:border-box;">';
 			// featured image
 			if ($vsel_widget_atts['featured_image'] != 'false') {
 				if ( $widget_image_hide != 'yes' ) {
@@ -181,22 +181,22 @@ $output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.vsel_event_cat
 							$image_caption = '';
 						}
 						if ($vsel_widget_atts['featured_image_link'] == 'false') {
-							$output .= '<figure class="vsel-image-figure '.$widget_img_class.'" style="'.$widget_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image', 'alt' => $image_alt ) ).$image_caption.'</figure>';
+							$output .= '<figure class="vsel-image-figure '.$widget_img_class.'" style="'.$widget_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
 						} else {
 							if ( ($redirect_image_to_more_info == 'yes') && !empty($more_info_link) ) {
-								$output .=  '<figure class="vsel-image-figure '.$widget_img_class.'" style="'.$widget_image_max_width.'"><a href="'.esc_url($more_info_link).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+								$output .=  '<figure class="vsel-image '.$widget_img_class.'" style="'.$widget_image_max_width.'"><a href="'.esc_url($more_info_link).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
 							} elseif ($widget_link_image == 'yes') {
-								$output .=  '<figure class="vsel-image-figure '.$widget_img_class.'" style="'.$widget_image_max_width.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+								$output .=  '<figure class="vsel-image '.$widget_img_class.'" style="'.$widget_image_max_width.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
 							} else {
-								$output .= '<figure class="vsel-image-figure '.$widget_img_class.'" style="'.$widget_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image', 'alt' => $image_alt ) ).$image_caption.'</figure>';
+								$output .= '<figure class="vsel-image '.$widget_img_class.'" style="'.$widget_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $widget_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
 							}
 						}
 					}
 				}
 			}
-			// event info
+			// event text
 			if ( $widget_info_hide != 'yes' ) {
-				$output .= '<div class="vsel-info">';
+				$output .= '<div class="vsel-text">';
 					if ( $vsel_widget_atts['event_info'] == 'summary' ) {
 						if ( !empty($summary) ) {
 							$output .= apply_filters( 'the_excerpt', $summary );
@@ -240,7 +240,7 @@ $output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.vsel_event_cat
 					}
 				}
 			}
-		// end event info block
+		// end event info
 		$output .= '</div>';
 	}
 // end event container

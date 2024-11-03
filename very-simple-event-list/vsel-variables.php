@@ -257,41 +257,41 @@ if ($page_image_location == 'left') {
 	$page_img_class = 'vsel-alignright';
 }
 
-// set width for event details and event info block
+// set width for event details and event info
 if ( ($page_image_hide == 'yes') && ($page_info_hide == 'yes') ) {
 	$page_meta_width = 'width:100%; box-sizing:border-box;';
-	$page_info_block_width = '';
+	$page_info_width = '';
 } else {
 	if (!empty($page_meta_width) && is_numeric($page_meta_width) && ($page_meta_width > 19) && ($page_meta_width < 61) ) {
 		$page_content_width_default = 96;
 		$page_content_width = $page_content_width_default - $page_meta_width;
 		$page_meta_width = 'width:'.$page_meta_width.'%;';
-		$page_info_block_width = 'width:'.$page_content_width.'%;';
+		$page_info_width = 'width:'.$page_content_width.'%;';
 	} else {
 		$page_meta_width = 'width:36%;';
-		$page_info_block_width = 'width:60%;';
+		$page_info_width = 'width:60%;';
 	}
 }
 
-// set css class for event details and event info block
+// set css class for event details and event info
 if ( ($page_image_hide == 'yes') && ($page_info_hide == 'yes') ) {
 	$page_meta_class = 'vsel-meta';
-	$page_info_block_class = '';
+	$page_info_class = '';
 } else {
 	if ($page_meta_location == 'right') {
 		$page_meta_class = 'vsel-meta vsel-alignright';
-		$page_info_block_class = 'vsel-info-block vsel-alignleft';
+		$page_info_class = 'vsel-info vsel-alignleft';
 	} else {
 		$page_meta_class = 'vsel-meta vsel-alignleft';
-		$page_info_block_class = 'vsel-info-block vsel-alignright';
+		$page_info_class = 'vsel-info vsel-alignright';
 	}
 }
 
-// combine width and css class for event details and event info block
+// combine width and css class for event details and event info
 $page_meta_start = '<div class="'.$page_meta_class.'" style="'.$page_meta_width.'">';
 $page_meta_end = '</div>';
-$page_info_block_start = '<div class="'.$page_info_block_class.'" style="'.$page_info_block_width.'">';
-$page_info_block_end = '</div>';
+$page_info_start = '<div class="'.$page_info_class.'" style="'.$page_info_width.'">';
+$page_info_end = '</div>';
 
 // show date label or icon
 $page_start_default = sprintf(esc_attr($page_start_label), '<span>'.wp_date( esc_attr($page_date_format), esc_attr($start_date_timestamp), $utc_timezone ).'</span>' );
@@ -481,11 +481,11 @@ $single_meta_combine = get_option('vsel-setting-97');
 // get setting to combine dates on the same line
 $single_date_combine = get_option('vsel-setting-75');
 
-// get setting to link category to category page
-$single_link_cat = get_option('vsel-setting-73');
-
 // get setting for acf fields
 $single_acf_fields = get_option('vsel-setting-80');
+
+// get setting to link category to category page
+$single_link_cat = get_option('vsel-setting-73');
 
 // get settings for event layout
 $single_meta_location = get_option('vsel-setting-72');
@@ -518,31 +518,31 @@ if (empty($single_location_label)) {
 	$single_location_label = __( 'Location: %s', 'very-simple-event-list' );
 }
 
-// set width for event details and event info block
+// set width for event details and event info
 if (!empty($single_meta_width) && is_numeric($single_meta_width) && ($single_meta_width > 19) && ($single_meta_width < 61) ) {
 	$single_content_width_default = 96;
 	$single_content_width = $single_content_width_default - $single_meta_width;
 	$single_meta_width = 'width:'.$single_meta_width.'%;';
-	$single_info_block_width = 'width:'.$single_content_width.'%;';
+	$single_info_width = 'width:'.$single_content_width.'%;';
 } else {
 	$single_meta_width = 'width:36%;';
-	$single_info_block_width = 'width:60%;';
+	$single_info_width = 'width:60%;';
 }
 
-// set css class for event details and event info block
+// set css class for event details and event info
 if ($single_meta_location == 'right') {
 	$single_meta_class = 'vsel-meta vsel-alignright';
-	$single_info_block_class = 'vsel-info-block vsel-alignleft';
+	$single_info_class = 'vsel-info vsel-alignleft';
 } else {
 	$single_meta_class = 'vsel-meta vsel-alignleft';
-	$single_info_block_class = 'vsel-info-block vsel-alignright';
+	$single_info_class = 'vsel-info vsel-alignright';
 }
 
-// combine width and css class for event details and event info block
+// combine width and css class for event details and event info
 $single_meta_start = '<div class="'.$single_meta_class.'" style="'.$single_meta_width.'">';
 $single_meta_end = '</div>';
-$single_info_block_start = '<div class="'.$single_info_block_class.'" style="'.$single_info_block_width.'">';
-$single_info_block_end = '</div>';
+$single_info_start = '<div class="'.$single_info_class.'" style="'.$single_info_width.'">';
+$single_info_end = '</div>';
 
 // show date label or icon
 $single_start_default = sprintf(esc_attr($single_start_label), '<span>'.wp_date( esc_attr($template_date_format), esc_attr($start_date_timestamp), $utc_timezone ).'</span>' );
