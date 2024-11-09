@@ -26,12 +26,20 @@ function vsel_widget_upcoming_events_shortcode( $vsel_widget_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_widget_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_widget_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_widget_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-upcoming-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-upcoming-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		$today = vsel_timestamp_today();
 		$vsel_meta_query = array(
@@ -103,12 +111,20 @@ function vsel_widget_future_events_shortcode( $vsel_widget_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_widget_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_widget_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_widget_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-future-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-future-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		$tomorrow = vsel_timestamp_tomorrow();
 		$vsel_meta_query = array(
@@ -179,12 +195,20 @@ function vsel_widget_current_events_shortcode( $vsel_widget_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_widget_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_widget_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_widget_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-current-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-current-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		$today = vsel_timestamp_today();
 		$tomorrow = vsel_timestamp_tomorrow();
@@ -262,12 +286,20 @@ function vsel_widget_past_events_shortcode( $vsel_widget_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_widget_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_widget_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_widget_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-past-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-past-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		$today = vsel_timestamp_today();
 		$vsel_meta_query = array(
@@ -338,12 +370,20 @@ function vsel_widget_all_events_shortcode( $vsel_widget_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_widget_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_widget_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_widget_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-all-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-all-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		$vsel_query_args = array(
 			'post_type' => 'event',

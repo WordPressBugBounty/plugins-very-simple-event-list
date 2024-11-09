@@ -27,12 +27,20 @@ function vsel_upcoming_events_shortcode( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-upcoming-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-upcoming-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		global $paged;
 		if ( get_query_var( 'paged' ) ) {
@@ -134,12 +142,20 @@ function vsel_future_events_shortcode( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-future-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-future-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		global $paged;
 		if ( get_query_var( 'paged' ) ) {
@@ -241,12 +257,20 @@ function vsel_current_events_shortcode( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-current-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-current-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		global $paged;
 		if ( get_query_var( 'paged' ) ) {
@@ -355,12 +379,20 @@ function vsel_past_events_shortcode( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-past-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-past-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		global $paged;
 		if ( get_query_var( 'paged' ) ) {
@@ -462,12 +494,20 @@ function vsel_all_events_shortcode( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// main container
+	// custom class
 	if ( empty($vsel_atts['class']) ) {
 		$custom_class = '';
 	} else {
-		$custom_class = ' '.$vsel_atts['class'];
+		$custom_class = ' '.sanitize_key($vsel_atts['class']);
 	}
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-all-events'.esc_attr($custom_class).'">';
+	// disable event list in block editor
+	$disabled = vsel_disable_event_list();
+	if ( $disabled === true ) {
+		$disable = ' style="pointer-events:none"';
+	} else {
+		$disable = '';
+	}
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-all-events'.esc_attr($custom_class).'"'.$disable.'>';
 		// query
 		global $paged;
 		if ( get_query_var( 'paged' ) ) {

@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 18.1 =
+* Block editor: non-clickable links in event list
+
 = Version 18.0 =
 * Fix: template support file
 

@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.0
+Version: 18.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.1
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 18.0
+Stable tag: 18.1
 Tags: simple, event, events, event list, event manager
 
 
@@ -147,33 +147,6 @@ If your date format is not supported, it will be converted into 1 of the 2 forma
 = Which timezone does the plugin use? =
 Events are saved in the database and displayed throughout your website without a timezone offset.
 
-= Can I change the colors of the date icon? =
-You can use page Additional CSS of the Customizer for your custom styling.
-
-Examples:
-
-Change background and text color of whole icon: `.vsel-start-icon, .vsel-end-icon {background:#eee; color:#f26535;}`
-
-Change background and text color of top part: `.vsel-day-top, .vsel-month-top {background:#f26535; color:#eee;}`
-
-= Can I override plugin template files via my (child) theme? =
-You can only override the single event page via your (child) theme.
-
-In most cases, the PHP file "single" is being used for the single event page. This file is located in your theme folder.
-
-Create a duplicate of the file "single" and rename it "single-event". Then add this file to your (child) theme folder and customize it to your needs.
-
-= How does plugin hook into theme template files? =
-The plugin hooks into the `the_content()` and `the_excerpt()` functions. These are used by most themes.
-
-= Why is there no pagination in the widget? =
-Pagination is not working properly in a widget.
-
-But you can add a link to the page that displays more events.
-
-= Why is there no pagination when using the offset attribute? =
-Offset breaks pagination. That's why pagination is disabled when using the offset attribute.
-
 = Why does the event list look different between themes? =
 The plugin uses minimal styling and therefore also depends on the styling of your theme.
 
@@ -188,6 +161,36 @@ When using the classic editor, edit the page and check the shortcode after switc
 
 The shortcode might be accidentally wrapped in HTML tags, such as code tags. Remove these tags and resave the page.
 
+= Can I have multiple event lists on the same page? =
+This is possible, but to avoid a conflict you should disable pagination. This can be done via the settings page or by using an attribute.
+
+= How does the plugin hook into theme template files? =
+The plugin hooks into the `the_content()` and `the_excerpt()` functions. These are used by most themes.
+
+= Can I override the plugin template files via my (child) theme? =
+You can only override the single event page via your (child) theme.
+
+In most cases, the PHP file "single" is being used for the single event page. This file is located in your theme folder.
+
+Create a duplicate of the file "single" and rename it "single-event". Then add this file to your (child) theme folder and customize it to your needs.
+
+= Can I change the colors of the date icon? =
+You can use page Additional CSS of the Customizer for your custom styling.
+
+Examples:
+
+Change background and text color of whole icon: `.vsel-start-icon, .vsel-end-icon {background:#eee; color:#f26535;}`
+
+Change background and text color of top part: `.vsel-day-top, .vsel-month-top {background:#f26535; color:#eee;}`
+
+= Why is there no pagination in the widget? =
+Pagination is not working properly in a widget.
+
+But you can add a link to the page that displays more events.
+
+= Why is there no pagination when using the offset attribute? =
+Offset breaks pagination. That's why pagination is disabled when using the offset attribute.
+
 = Can I have "Event" as page title? =
 Having "Event" as page (or post) title will not cause any problems, but having "event" as slug (end of URL) will cause a conflict with the (event) post type archive page.
 
@@ -198,9 +201,6 @@ This is mostly caused by the permalink settings. Please resave the permalink via
 
 = Why a 404 (nothing found) when I click the event category link? =
 This is mostly caused by the permalink settings. Please resave the permalink via Settings > Permalinks.
-
-= Can I have multiple blocks or shortcodes on the same page? =
-This is possible, but to avoid a conflict you should disable pagination. This can be done via the settings page or by using an attribute.
 
 = Why no event details or event categories box in the editor? =
 When using the block editor, click the options icon and select "Preferences".
@@ -243,6 +243,9 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.1 =
+* Block editor: non-clickable links in event list
+
 = Version 18.0 =
 * Fix: template support file
 
@@ -281,9 +284,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 = Version 17.2 =
 * Updated block code
 * Minor changes in code
-
-= Version 17.1 =
-* Fix: iCal feed
 
 For all versions please check file changelog.
 

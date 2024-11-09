@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 18.0
+ * Version: 18.1
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -677,6 +677,16 @@ function vsel_action_links( $links ) {
 	return array_merge( $links, $settingslink );
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'vsel_action_links' );
+
+// disable event list in block editor
+function vsel_disable_event_list() {
+	if ( defined('REST_REQUEST') && REST_REQUEST && ('edit' === $_GET['context']) ) {
+		$disable = true;
+	} else {
+		$disable = false;
+	}
+	return $disable;
+}
 
 // include files
 include 'vsel-options.php';
