@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.1
+Version: 18.2
+Stable tag: 18.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Requires PHP: 7.1
-Requires at least: 5.3
-Tested up to: 6.7
-Stable tag: 18.1
+Requires PHP: 7.4
+Requires at least: 6.0
+Tested up to: 6.8
 Tags: simple, event, events, event list, event manager
 
 
@@ -24,15 +24,17 @@ You can customize your event list via the settings page or with attributes.
 = How to use =
 After installation go to menu item "Events". You can add your events here.
 
-Add the VS Event List block or the shortcode to a page to display your event list.
+Add the VS Event List block or the shortcode `[vsel]` to a page to display your event list.
 
-Available shortcodes:
+When using the shortcode add the `list` attribute to display the events you want.
 
-* `[vsel]` to display upcoming events (today included)
-* `[vsel-future-events]` to display future events (today not included)
-* `[vsel-current-events]` to display current events
-* `[vsel-past-events]` to display past events (before today)
-* `[vsel-all-events]` to display all events
+* `[vsel list="upcoming"]` to display upcoming events (today included)
+* `[vsel list="future"]` to display future events (today not included)
+* `[vsel list="current"]` to display current events
+* `[vsel list="past"]` to display past events (before today)
+* `[vsel list="all"]` to display all events
+
+Without this attribute the default event list is displayed (upcoming events).
 
 Or go to Appearance > Widgets and use the VS Event List widget.
 
@@ -89,11 +91,11 @@ The plugin creates a custom post type "event".
 
 This automatically supports the single event page, the event category page, the (event) post type archive page and the search results page. It hooks into the theme template file that is being used by these pages.
 
-Support for the single event page is needed. Support for the other pages is added to make VS Event List compatible with page builder plugins. Events on default WP pages are not ordered by event date.
+Support for the single event page is needed. Support for the other pages is added to make the plugin compatible with page builder plugins. Events on default WP pages are not ordered by event date.
 
 Plugin activates the post attributes box in the editor. In the post attributes box you can set a custom order for events that have the same date. Custom order can be handy when automatic ordering by time is disabled.
 
-Plugin supports the menu page. Support is added to make VS Event List compatible with page builder plugins.
+Plugin supports the menu page. Support is added to make the plugin compatible with page builder plugins.
 
 = Advanced Custom Fields (ACF) =
 You can add extra content to the event details or the event info by using the [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields) plugin. The most commonly used fields are supported.
@@ -134,9 +136,7 @@ If translations are not available in the selected language, English will be used
 = How do I set the date and time format? =
 By default, the plugin uses the date and time format from Settings > General.
 
-The datepicker and date input field only support 2 numeric date formats: "day-month-year" (30-01-2016) and "year-month-day" (2016-01-30).
-
-If your date format is not supported, it will be converted into 1 of the 2 formats above.
+The date picker in the editor is using the date format from your browser.
 
 You can change the date and time format for the frontend of your website via the settings page. You can also change the date format by using an attribute.
 
@@ -232,6 +232,9 @@ If you're using the default RSS widget you can force a refresh via Settings > Re
 
 But this may not work in case there's other caching as well.
 
+= Can I use the plugin on a ClassicPress website? =
+Yes you can! Obviously you cannot use the block, so use the shortcode instead.
+
 = Why is there no semantic versioning? =
 The version number won't give you info about the type of update (major, minor, patch). You should check the changelog to see whether or not the update is a major or minor one.
 
@@ -243,6 +246,23 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.2 =
+* Code improvements
+* Check your event list after this update
+* It may have fall back to its default list (upcoming events)
+* Merged all shortcodes into 1
+* Add the "list" attribute to display the events you want
+* Upcoming events: list="upcoming"
+* Future events: list="future"
+* Current events: list="current"
+* Past events: list="past"
+* All events: list="all"
+* Without this attribute the default event list is displayed (upcoming events)
+* Removed the jQuery based date picker from the editor
+* The editor will now use the date picker (and date format) from your browser
+* Bumped the "requires PHP" version to 7.4
+* Bumped the "Requires at least" version to 6.0
+
 = Version 18.1 =
 * Block editor: non-clickable links in event list
 
@@ -281,11 +301,12 @@ Please open a topic in the WordPress.org support forum for this plugin.
 = Version 17.3 =
 * Updated block code
 
-= Version 17.2 =
-* Updated block code
-* Minor changes in code
-
 For all versions please check file changelog.
+
+
+== Upgrade Notice ==
+= 18.2 =
+* Check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
 
 
 == Screenshots ==

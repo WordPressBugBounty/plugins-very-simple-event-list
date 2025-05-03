@@ -1,5 +1,22 @@
 == Changelog VS Event List ==
 
+= Version 18.2 =
+* Code improvements
+* Check your event list after this update
+* It may have fall back to its default list (upcoming events)
+* Merged all shortcodes into 1
+* Add the "list" attribute to display the events you want
+* Upcoming events: list="upcoming"
+* Future events: list="future"
+* Current events: list="current"
+* Past events: list="past"
+* All events: list="all"
+* Without this attribute the default event list is displayed (upcoming events)
+* Removed the jQuery based date picker from the editor
+* The editor will now use the date picker (and date format) from your browser
+* Bumped the "requires PHP" version to 7.4
+* Bumped the "Requires at least" version to 6.0
+
 = Version 18.1 =
 * Block editor: non-clickable links in event list
 

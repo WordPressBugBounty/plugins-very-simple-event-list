@@ -41,13 +41,13 @@ add_action( 'init', 'vsel_register_block' );
 function vsel_enqueue_block_editor_assets() {
 	wp_enqueue_style(
 		'vsel-style',
-		plugins_url('/css/vsel-style.min.css',__FILE__ )
+		plugins_url( '/css/vsel-style.min.css',__FILE__ )
 	);
 	wp_enqueue_script(
 		'vsel-block-script',
 		plugins_url( '/js/vsel-block.js' , __FILE__ ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-		false,
+		null,
 		true
 	);
 	$dataL10n = array(
@@ -56,23 +56,23 @@ function vsel_enqueue_block_editor_assets() {
 		'listTypeLabel' => esc_html__( 'Display', 'very-simple-event-list' ),
 		'listTypes' => array(
 			array(
-				'id' => 'vsel',
+				'id' => 'upcoming',
 				'label' => esc_html__( 'Upcoming events (today included)', 'very-simple-event-list' )
 			),
 			array(
-				'id' => 'vsel-future-events',
+				'id' => 'future',
 				'label' => esc_html__( 'Future events (today not included)', 'very-simple-event-list' )
 			),
 			array(
-				'id' => 'vsel-current-events',
+				'id' => 'current',
 				'label' => esc_html__( 'Current events', 'very-simple-event-list' )
 			),
 			array(
-				'id' => 'vsel-past-events',
+				'id' => 'past',
 				'label' => esc_html__( 'Past events (before today)', 'very-simple-event-list' )
 			),
 			array(
-				'id' => 'vsel-all-events',
+				'id' => 'all',
 				'label' => esc_html__( 'All events', 'very-simple-event-list' )
 			)
 		),
@@ -97,9 +97,9 @@ add_action( 'enqueue_block_editor_assets', 'vsel_enqueue_block_editor_assets' );
  */
 function vsel_get_event_list( $attr ) {
 	$return = '';
-	$list_type = isset( $attr['listType'] ) ? sanitize_text_field( wp_unslash( $attr['listType'] ) ) : 'vsel';
+	$list_type = isset( $attr['listType'] ) ? sanitize_text_field( wp_unslash( $attr['listType'] ) ) : 'upcoming';
 	$shortcode_settings = isset( $attr['shortcodeSettings'] ) ? $attr['shortcodeSettings'] : '';
 	$shortcode_settings = str_replace( array( '[', ']' ), '', $shortcode_settings );
-	$return .= do_shortcode( '[' . $list_type . ' ' . $shortcode_settings . ']' );
+	$return .= do_shortcode( '[vsel' . ' ' . $shortcode_settings . ' ' . 'list="' . $list_type . '"' . ']' );
 	return $return;
 }
