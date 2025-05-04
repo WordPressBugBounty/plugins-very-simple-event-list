@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 18.2
+ * Version: 18.3
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3

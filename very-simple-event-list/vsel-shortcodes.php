@@ -65,7 +65,7 @@ function vsel_shortcode_page( $vsel_atts ) {
 		$today = vsel_timestamp_today();
 		$tomorrow = vsel_timestamp_tomorrow();
 		// include query args
-		include 'vsel-shortcodes-args.php';
+		include 'vsel-query-args.php';
 		$vsel_page_query = new WP_Query( $vsel_query_args );
 
 		if ( $vsel_page_query->have_posts() ) :
@@ -170,7 +170,7 @@ function vsel_shortcode_widget( $vsel_atts ) {
 		$today = vsel_timestamp_today();
 		$tomorrow = vsel_timestamp_tomorrow();
 		// include query args
-		include 'vsel-shortcodes-args.php';
+		include 'vsel-query-args.php';
 		$vsel_widget_query = new WP_Query( $vsel_query_args );
 		if ( $vsel_widget_query->have_posts() ) :
 			while( $vsel_widget_query->have_posts() ): $vsel_widget_query->the_post();

@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.2
-Stable tag: 18.2
+Version: 18.3
+Stable tag: 18.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -246,6 +246,9 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.3 =
+* Minor changes in code
+
 = Version 18.2 =
 * Code improvements
 * Check your event list after this update
@@ -298,13 +301,13 @@ Please open a topic in the WordPress.org support forum for this plugin.
 * Updated block code
 * Minor changes in code
 
-= Version 17.3 =
-* Updated block code
-
 For all versions please check file changelog.
 
 
 == Upgrade Notice ==
+= 18.3 =
+* If you update from version 18.1 or below, check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
+
 = 18.2 =
 * Check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
 

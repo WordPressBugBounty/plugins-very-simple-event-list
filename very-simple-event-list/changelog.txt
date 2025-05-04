@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 18.3 =
+* Minor changes in code
+
 = Version 18.2 =
 * Code improvements
 * Check your event list after this update
