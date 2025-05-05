@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 18.4 =
+* Fix: template
+
 = Version 18.3 =
 * Minor changes in code
 

@@ -174,46 +174,45 @@ if ( $list_id == 'page' ) {
 	if ( ( $vsel_date_hide != 'yes' ) && ( $vsel_date_type == 'icon' ) && ( $vsel_meta_combine == 'yes' ) ) {
 		$output .= '</div>';
 	}
-	// end event details
-	$output .= $vsel_meta_end;
-	// start event info
+// end event details
+$output .= $vsel_meta_end;
+// start event info
+if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hide == 'yes' ) && ( $vsel_info_hide == 'yes' ) ) {
+	$output .= '';
+} else {
+	$output .= $vsel_info_start;
+	// featured image
 	if ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) {
-		if ( ( $vsel_image_hide != 'yes' ) && ( $vsel_info_hide != 'yes' ) ) {
-			$output .= $vsel_info_start;
-				// featured image
-				if ( $vsel_atts['featured_image'] != 'false' ) {
-					if ( $vsel_image_hide != 'yes' ) {
-						if ( has_post_thumbnail() ) {
-							$image_alt = get_post_meta( get_post_thumbnail_id( get_the_ID() ), '_wp_attachment_image_alt', true );
-							$image_title = get_the_title( get_post_thumbnail_id( get_the_ID() ) );
-							if ( ! empty( $image_alt ) ) {
-								$image_alt = $image_alt;
-							} else {
-								$image_alt = $image_title;
-							}
-							$caption = get_the_post_thumbnail_caption( get_the_ID() );
-							if ( ! empty( $caption ) && ( $vsel_atts['featured_image_caption'] != 'false' ) ) {
-								$image_caption = '<figcaption class="vsel-caption">'.$caption.'</figcaption>';
-							} else {
-								$image_caption = '';
-							}
-							if ( $vsel_atts['featured_image_link'] == 'false' ) {
-								$output .= '<figure class="vsel-image-figure '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
-							} else {
-								if ( ( $redirect_image_to_more_info == 'yes' ) && ! empty( $more_info_link ) ) {
-									$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.esc_url( $more_info_link ).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
-								} elseif ( $vsel_link_image == 'yes' ) {
-									$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
-								} else {
-									$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
-								}
-							}
+		if ( $vsel_atts['featured_image'] != 'false' ) {
+			if ( $vsel_image_hide != 'yes' ) {
+				if ( has_post_thumbnail() ) {
+					$image_alt = get_post_meta( get_post_thumbnail_id( get_the_ID() ), '_wp_attachment_image_alt', true );
+					$image_title = get_the_title( get_post_thumbnail_id( get_the_ID() ) );
+					if ( ! empty( $image_alt ) ) {
+						$image_alt = $image_alt;
+					} else {
+						$image_alt = $image_title;
+					}
+					$caption = get_the_post_thumbnail_caption( get_the_ID() );
+					if ( ! empty( $caption ) && ( $vsel_atts['featured_image_caption'] != 'false' ) ) {
+						$image_caption = '<figcaption class="vsel-caption">'.$caption.'</figcaption>';
+					} else {
+						$image_caption = '';
+					}
+					if ( $vsel_atts['featured_image_link'] == 'false' ) {
+						$output .= '<figure class="vsel-image-figure '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
+					} else {
+						if ( ( $redirect_image_to_more_info == 'yes' ) && ! empty( $more_info_link ) ) {
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.esc_url( $more_info_link ).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+						} elseif ( $vsel_link_image == 'yes' ) {
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+						} else {
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
 						}
 					}
 				}
+			}
 		}
-	} else {
-		$output .= $vsel_info_start;
 	}
 	// event text
 	if ( $list_id == 'template_support_single' ) {
@@ -274,10 +273,5 @@ if ( $list_id == 'page' ) {
 		}
 	}
 	// end event info
-	if ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) {
-		if ( ( $vsel_image_hide != 'yes' ) && ( $vsel_info_hide != 'yes' ) ) {
-			$output .= $vsel_info_end;
-		}
-	} else {
-		$output .= $vsel_info_end;
-	}
+	$output .= $vsel_info_end;
+}
