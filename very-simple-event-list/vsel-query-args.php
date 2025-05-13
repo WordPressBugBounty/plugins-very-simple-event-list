@@ -6,6 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // query args for future events list
 if ( $vsel_atts['list'] == 'future' ) {
+	if ( ! empty( $vsel_atts['order'] ) ) {
+		$order = $vsel_atts['order'];
+	} else {
+		$order = 'ASC';
+	}
 	$vsel_meta_query = array(
 		'relation' => 'AND',
 		array(
@@ -22,7 +27,7 @@ if ( $vsel_atts['list'] == 'future' ) {
 		'ignore_sticky_posts' => true,
 		'meta_key' => 'event-start-date',
 		'orderby' => 'meta_value_num menu_order',
-		'order' => $vsel_atts['order'],
+		'order' => $order,
 		'posts_per_page' => $vsel_atts['posts_per_page'],
 		'offset' => $vsel_atts['offset'],
 		'paged' => $paged,
@@ -30,6 +35,11 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for current events list
 } elseif ( $vsel_atts['list'] == 'current' ) {
+	if ( ! empty( $vsel_atts['order'] ) ) {
+		$order = $vsel_atts['order'];
+	} else {
+		$order = 'ASC';
+	}
 	$vsel_meta_query = array(
 		'relation' => 'AND',
 			array(
@@ -52,7 +62,7 @@ if ( $vsel_atts['list'] == 'future' ) {
 		'ignore_sticky_posts' => true,
 		'meta_key' => 'event-start-date',
 		'orderby' => 'meta_value_num menu_order',
-		'order' => $vsel_atts['order'],
+		'order' => $order,
 		'posts_per_page' => $vsel_atts['posts_per_page'],
 		'offset' => $vsel_atts['offset'],
 		'paged' => $paged,
@@ -60,6 +70,11 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for past events list
 } elseif ( $vsel_atts['list'] == 'past' ) {
+	if ( ! empty( $vsel_atts['order'] ) ) {
+		$order = $vsel_atts['order'];
+	} else {
+		$order = 'DESC';
+	}
 	$vsel_meta_query = array(
 		'relation' => 'AND',
 		array(
@@ -76,7 +91,7 @@ if ( $vsel_atts['list'] == 'future' ) {
 		'ignore_sticky_posts' => true,
 		'meta_key' => 'event-start-date',
 		'orderby' => 'meta_value_num menu_order',
-		'order' => $vsel_atts['order'],
+		'order' => $order,
 		'posts_per_page' => $vsel_atts['posts_per_page'],
 		'offset' => $vsel_atts['offset'],
 		'paged' => $paged,
@@ -84,6 +99,11 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for all events list
 } elseif ( $vsel_atts['list'] == 'all' ) {
+	if ( ! empty( $vsel_atts['order'] ) ) {
+		$order = $vsel_atts['order'];
+	} else {
+		$order = 'DESC';
+	}
 	$vsel_query_args = array(
 		'post_type' => 'event',
 		'event_cat' => $vsel_atts['event_cat'],
@@ -91,13 +111,18 @@ if ( $vsel_atts['list'] == 'future' ) {
 		'ignore_sticky_posts' => true,
 		'meta_key' => 'event-start-date',
 		'orderby' => 'meta_value_num menu_order',
-		'order' => $vsel_atts['order'],
+		'order' => $order,
 		'posts_per_page' => $vsel_atts['posts_per_page'],
 		'offset' => $vsel_atts['offset'],
 		'paged' => $paged
 	);
 // query args for upcoming events list
 } else {
+	if ( ! empty( $vsel_atts['order'] ) ) {
+		$order = $vsel_atts['order'];
+	} else {
+		$order = 'ASC';
+	}
 	$vsel_meta_query = array(
 		'relation' => 'AND',
 		array(
@@ -114,7 +139,7 @@ if ( $vsel_atts['list'] == 'future' ) {
 		'ignore_sticky_posts' => true,
 		'meta_key' => 'event-start-date',
 		'orderby' => 'meta_value_num menu_order',
-		'order' => $vsel_atts['order'],
+		'order' => $order,
 		'posts_per_page' => $vsel_atts['posts_per_page'],
 		'offset' => $vsel_atts['offset'],
 		'paged' => $paged,
