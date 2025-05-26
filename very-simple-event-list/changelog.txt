@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 18.6 =
+* Minor changes in code
+
 = Version 18.5 =
 * Fix: order of events
 

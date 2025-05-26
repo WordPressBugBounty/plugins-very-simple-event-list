@@ -10,7 +10,7 @@ function vsel_shortcode_page( $vsel_atts ) {
 	$output = '';
 	// shortcode attributes
 	$vsel_atts = shortcode_atts( array(
-		'list' => 'upcoming',
+		'list' => '',
 		'class' => '',
 		'date_format' => '',
 		'event_cat' => '',
@@ -122,7 +122,7 @@ function vsel_shortcode_widget( $vsel_atts ) {
 	$output = '';
 	// shortcode attributes
 	$vsel_atts = shortcode_atts( array(
-		'list' => 'upcoming',
+		'list' => '',
 		'class' => '',
 		'date_format' => '',
 		'event_cat' => '',

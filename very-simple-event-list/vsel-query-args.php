@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // query args for future events list
 if ( $vsel_atts['list'] == 'future' ) {
-	if ( ! empty( $vsel_atts['order'] ) ) {
-		$order = $vsel_atts['order'];
+	if ( $vsel_atts['order'] == 'DESC' ) {
+		$order = 'DESC';
 	} else {
 		$order = 'ASC';
 	}
@@ -35,8 +35,8 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for current events list
 } elseif ( $vsel_atts['list'] == 'current' ) {
-	if ( ! empty( $vsel_atts['order'] ) ) {
-		$order = $vsel_atts['order'];
+	if ( $vsel_atts['order'] == 'DESC' ) {
+		$order = 'DESC';
 	} else {
 		$order = 'ASC';
 	}
@@ -70,8 +70,8 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for past events list
 } elseif ( $vsel_atts['list'] == 'past' ) {
-	if ( ! empty( $vsel_atts['order'] ) ) {
-		$order = $vsel_atts['order'];
+	if ( $vsel_atts['order'] == 'ASC' ) {
+		$order = 'ASC';
 	} else {
 		$order = 'DESC';
 	}
@@ -99,8 +99,8 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for all events list
 } elseif ( $vsel_atts['list'] == 'all' ) {
-	if ( ! empty( $vsel_atts['order'] ) ) {
-		$order = $vsel_atts['order'];
+	if ( $vsel_atts['order'] == 'ASC' ) {
+		$order = 'ASC';
 	} else {
 		$order = 'DESC';
 	}
@@ -118,8 +118,8 @@ if ( $vsel_atts['list'] == 'future' ) {
 	);
 // query args for upcoming events list
 } else {
-	if ( ! empty( $vsel_atts['order'] ) ) {
-		$order = $vsel_atts['order'];
+	if ( $vsel_atts['order'] == 'DESC' ) {
+		$order = 'DESC';
 	} else {
 		$order = 'ASC';
 	}

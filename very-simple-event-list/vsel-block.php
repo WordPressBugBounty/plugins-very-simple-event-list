@@ -27,7 +27,7 @@ function vsel_register_block() {
 		'vsel/vsel-block',
 		array(
 			'attributes' => $attributes,
-			'render_callback' => 'vsel_get_event_list'
+			'render_callback' => 'vsel_block_content'
 		)
 	);
 }
@@ -95,11 +95,24 @@ add_action( 'enqueue_block_editor_assets', 'vsel_enqueue_block_editor_assets' );
  *
  * @since 16.7
  */
-function vsel_get_event_list( $attr ) {
+function vsel_block_content( $attr ) {
 	$return = '';
-	$list_type = isset( $attr['listType'] ) ? sanitize_text_field( wp_unslash( $attr['listType'] ) ) : 'upcoming';
+	$list_type = 'upcoming';
+	if ( isset( $attr['listType'] ) ) {
+		if ( $attr['listType'] == 'upcoming' ) {
+			$list_type = 'upcoming';
+		} else if ( $attr['listType'] == 'future' ) {
+			$list_type = 'future';
+		} else if ( $attr['listType'] == 'current' ) {
+			$list_type = 'current';
+		} else if ( $attr['listType'] == 'past' ) {
+			$list_type = 'past';
+		} else if ( $attr['listType'] == 'all' ) {
+			$list_type = 'all';
+		}
+	}
 	$shortcode_settings = isset( $attr['shortcodeSettings'] ) ? $attr['shortcodeSettings'] : '';
 	$shortcode_settings = str_replace( array( '[', ']' ), '', $shortcode_settings );
-	$return .= do_shortcode( '[vsel' . ' ' . $shortcode_settings . ' ' . 'list="' . $list_type . '"' . ']' );
+	$return .= do_shortcode( '[vsel' . ' ' . wp_strip_all_tags( $shortcode_settings, true ) . ' ' . 'list="' . esc_attr( $list_type ) . '"' . ']' );
 	return $return;
 }
