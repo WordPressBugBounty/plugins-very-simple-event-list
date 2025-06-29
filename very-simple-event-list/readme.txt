@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.6
-Stable tag: 18.6
+Version: 18.7
+Stable tag: 18.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -246,6 +246,9 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.7 =
+* Removed wrong header from main plugin file
+
 = Version 18.6 =
 * Minor changes in code
 
@@ -295,15 +298,11 @@ Please open a topic in the WordPress.org support forum for this plugin.
 = Version 17.8 =
 * Minor changes in code
 
-= Version 17.7 =
-* New: display ACF fields underneath event details or event info
-* In previous versions they were displayed underneath event details
-
 For all versions please check file changelog.
 
 
 == Upgrade Notice ==
-= 18.6 =
+= 18.7 =
 * If you update from version 18.1 or below, check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
 
 

@@ -2,14 +2,13 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 18.6
+ * Version: 18.7
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Requires PHP: 7.4
  * Requires at least: 6.0
- * Requires CP: 2.0
  * Text Domain: very-simple-event-list
  */
 
