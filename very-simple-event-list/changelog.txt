@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 18.8 =
+* Fix: custom label error if wrong placeholder is added
+
 = Version 18.7 =
 * Removed wrong header from main plugin file
 

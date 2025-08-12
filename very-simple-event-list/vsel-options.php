@@ -809,36 +809,56 @@ function vsel_field_callback_42() {
 function vsel_field_callback_16() {
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-16' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-16" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_17() {
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-17' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-17" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_18() {
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-18' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-18" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_19() {
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-19' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-19" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -853,9 +873,14 @@ function vsel_field_callback_89() {
 function vsel_field_callback_20() {
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-20' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-20" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1081,36 +1106,56 @@ function vsel_field_callback_7() {
 function vsel_field_callback_22() {
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-22' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-22" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_23() {
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-23' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-23" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_24() {
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-24' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-24" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_25() {
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-25' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-25" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1125,9 +1170,14 @@ function vsel_field_callback_90() {
 function vsel_field_callback_26() {
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-26' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-26" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1260,36 +1310,56 @@ function vsel_field_callback_79() {
 function vsel_field_callback_81() {
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-81' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-81" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_82() {
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-82' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-82" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_83() {
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-83' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-83" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_84() {
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-84' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-84" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1304,9 +1374,14 @@ function vsel_field_callback_91() {
 function vsel_field_callback_85() {
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-85' );
+	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
+		$color = 'red';
+	} else {
+		$color = 'inherit';
+	}
 	?>
 	<input type="text" size="40" name="vsel-setting-85" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 

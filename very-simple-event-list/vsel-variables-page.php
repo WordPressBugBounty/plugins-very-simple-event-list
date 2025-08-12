@@ -79,22 +79,22 @@ $vsel_cats_hide = get_option( 'vsel-setting-33' );
 $vsel_pagination_hide = get_option( 'vsel-setting-42' );
 
 // show default label if no custom label is set
-if ( empty( $vsel_date_label ) ) {
+if ( empty( $vsel_date_label ) || ( strpos( $vsel_date_label, '%s' ) === false ) || ( substr_count( $vsel_date_label, '%' ) > 1 ) ) {
 	$vsel_date_label = __( 'Date: %s', 'very-simple-event-list' );
 }
-if ( empty( $vsel_start_label ) ) {
+if ( empty( $vsel_start_label ) || ( strpos( $vsel_start_label, '%s' ) === false ) || ( substr_count( $vsel_start_label, '%' ) > 1 ) ) {
 	$vsel_start_label = __( 'Start date: %s', 'very-simple-event-list' );
 }
-if ( empty( $vsel_end_label ) ) {
+if ( empty( $vsel_end_label ) || ( strpos( $vsel_end_label, '%s' ) === false ) || ( substr_count( $vsel_end_label, '%' ) > 1 ) ) {
 	$vsel_end_label = __( 'End date: %s', 'very-simple-event-list' );
 }
-if ( empty( $vsel_time_label ) ) {
+if ( empty( $vsel_time_label ) || ( strpos( $vsel_time_label, '%s' ) === false ) || ( substr_count( $vsel_time_label, '%' ) > 1 ) ) {
 	$vsel_time_label = __( 'Time: %s', 'very-simple-event-list' );
 }
 if ( empty( $vsel_all_day_label ) ) {
 	$vsel_all_day_label = __( 'All-day event', 'very-simple-event-list' );
 }
-if ( empty( $vsel_location_label ) ) {
+if ( empty( $vsel_location_label ) || ( strpos( $vsel_location_label, '%s' ) === false ) || ( substr_count( $vsel_location_label, '%' ) > 1 ) ) {
 	$vsel_location_label = __( 'Location: %s', 'very-simple-event-list' );
 }
 if ( empty( $vsel_read_more_label ) ) {
