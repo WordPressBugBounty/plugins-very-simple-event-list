@@ -43,8 +43,8 @@ $vsel_acf_fields = get_option( 'vsel-setting-51' );
 // get setting to show read more link
 $vsel_read_more = get_option( 'vsel-setting-101' );
 
-// get setting for title location
-$vsel_title_location = get_option( 'vsel-setting-59' );
+// get setting to display title on top
+$vsel_title_on_top = get_option( 'vsel-setting-59' );
 
 // get settings to link title and featured image to event page
 $vsel_link_title = get_option( 'vsel-setting-9' );

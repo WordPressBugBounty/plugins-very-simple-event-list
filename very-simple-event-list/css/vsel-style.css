@@ -88,7 +88,8 @@
 .vsel-widget-text p:last-of-type {margin-bottom:0;}
 
 /* Widget - event details */
-.vsel-widget .vsel-meta {clear:both; margin:0 0 20px;}
+.vsel-widget .vsel-meta {margin:0 0 20px;}
+.vsel-widget .vsel-content > div:last-of-type {margin-bottom:0;}
 
 /* Widget - event info container */
 .vsel-widget .vsel-info {clear:both;}

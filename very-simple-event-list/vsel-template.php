@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // start event details
 if ( $list_id == 'page' ) {
 	// if event details starts after title
-	if ( $vsel_title_location == 'yes' ) {
+	if ( $vsel_title_on_top == 'yes' ) {
 		$output .= $vsel_event_title;
 		$output .= $vsel_meta_start;
 	// if not
@@ -23,7 +23,7 @@ if ( $list_id == 'page' ) {
 	// if not
 	// display title
 	} elseif ( $list_id == 'page' ) {
-		if ( $vsel_title_location != 'yes' ) {
+		if ( $vsel_title_on_top != 'yes' ) {
 			$output .= $vsel_event_title;
 		}
 	} elseif ( $list_id == 'widget' ) {
@@ -90,7 +90,7 @@ if ( $list_id == 'page' ) {
 	if ( ( $vsel_date_hide != 'yes' ) && ( $vsel_date_type == 'icon' ) && ( $vsel_meta_combine == 'yes' ) ) {
 		// display title next to date icons
 		if ( $list_id == 'page' ) {
-			if ( $vsel_title_location != 'yes' ) {
+			if ( $vsel_title_on_top != 'yes' ) {
 				$output .= $vsel_event_title;
 			}
 		} elseif ( $list_id == 'widget' ) {

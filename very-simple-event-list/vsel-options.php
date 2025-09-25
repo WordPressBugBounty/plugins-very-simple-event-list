@@ -318,26 +318,26 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-85', esc_html__( 'Location', 'very-simple-event-list' ), 'vsel_field_callback_85', 'vsel-single', 'vsel-single-section' );
 	register_setting( 'vsel-single-options', 'vsel-setting-85', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
-	// default support section
-	add_settings_section( 'vsel-support-section', esc_html__( 'Default support', 'very-simple-event-list' ), 'vsel_support_section_callback', 'vsel-support' );
+	// default wp pages section
+	add_settings_section( 'vsel-wp-pages-section', esc_html__( 'Default WP pages', 'very-simple-event-list' ), 'vsel_support_section_callback', 'vsel-wp-pages' );
 
-	add_settings_field( 'vsel-field-60', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_60', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-60', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-60', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_60', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-60', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-39', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_39', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-39', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-39', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_39', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-39', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-48', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_48', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-48', array( 'sanitize_callback' => 'sanitize_key' ) );	
+	add_settings_field( 'vsel-field-48', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_48', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-48', array( 'sanitize_callback' => 'sanitize_key' ) );	
 
-	add_settings_field( 'vsel-field-43', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_43', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-43', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-43', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_43', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-43', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-40', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_40', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-40', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-40', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_40', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-40', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-41', esc_html__( 'Search results', 'very-simple-event-list' ), 'vsel_field_callback_41', 'vsel-support', 'vsel-support-section' );
-	register_setting( 'vsel-support-options', 'vsel-setting-41', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-41', esc_html__( 'Search results', 'very-simple-event-list' ), 'vsel_field_callback_41', 'vsel-wp-pages', 'vsel-wp-pages-section' );
+	register_setting( 'vsel-wp-pages-options', 'vsel-setting-41', array( 'sanitize_callback' => 'sanitize_key' ) );
 
 	// feed section
 	add_settings_section( 'vsel-feed-section', esc_html__( 'Feed', 'very-simple-event-list' ), '', 'vsel-feed' );
@@ -1488,7 +1488,7 @@ function vsel_options_page() {
 		<a href="?page=vsel&tab=page_options" class="nav-tab <?php echo $active_tab == 'page_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Page', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=widget_options" class="nav-tab <?php echo $active_tab == 'widget_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Widget', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=single_options" class="nav-tab <?php echo $active_tab == 'single_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Single event', 'very-simple-event-list' ); ?></a>
-		<a href="?page=vsel&tab=support_options" class="nav-tab <?php echo $active_tab == 'support_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Default support', 'very-simple-event-list' ); ?></a>
+		<a href="?page=vsel&tab=wp_pages_options" class="nav-tab <?php echo $active_tab == 'wp_pages_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Default WP pages', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=feed_options" class="nav-tab <?php echo $active_tab == 'feed_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Feed', 'very-simple-event-list' ); ?></a>
 	</h2>
 	<form action="options.php" method="POST">
@@ -1504,9 +1504,9 @@ function vsel_options_page() {
 		} elseif ( $active_tab == 'single_options' ) {
 			settings_fields( 'vsel-single-options' );
 			do_settings_sections( 'vsel-single' );
-		} elseif ( $active_tab == 'support_options' ) {
-			settings_fields( 'vsel-support-options' );
-			do_settings_sections( 'vsel-support' );
+		} elseif ( $active_tab == 'wp_pages_options' ) {
+			settings_fields( 'vsel-wp-pages-options' );
+			do_settings_sections( 'vsel-wp-pages' );
 		} else {
 			settings_fields( 'vsel-feed-options' );
 			do_settings_sections( 'vsel-feed' );

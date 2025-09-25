@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.8
-Stable tag: 18.8
+Version: 18.9
+Stable tag: 18.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -246,6 +246,9 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 18.9 =
+* Minor changes in code
+
 = Version 18.8 =
 * Fix: custom label error if wrong placeholder is added
 
@@ -287,22 +290,11 @@ Please open a topic in the WordPress.org support forum for this plugin.
 = Version 18.0 =
 * Fix: template support file
 
-= Version 17.9 =
-* New: activate revisions for events
-* Changed CSS class of the event info container
-* Class "vsel-info-block" becomes "vsel-info"
-* Class "vsel-info" becomes "vsel-text"
-* Using "block" in a class name gives the false impression a block is used
-* Changed CSS class of the featured image
-* Class "vsel-image-figure" becomes "vsel-image"
-* Class "vsel-image" becomes "vsel-image-img"
-* Updated stylesheet
-
 For all versions please check file changelog.
 
 
 == Upgrade Notice ==
-= 18.8 =
+= 18.9 =
 * If you update from version 18.1 or below, check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
 
 
