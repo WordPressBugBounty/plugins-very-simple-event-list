@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// global variables
+// global variables - used by all event lists
 
 // get utc timezone
 $utc_timezone = vsel_utc_timezone();
@@ -70,12 +70,13 @@ $one_time = get_post_meta( get_the_ID(), 'event-time', true );
 $hide_end_time = get_post_meta( get_the_ID(), 'event-hide-end-time', true );
 $all_day_event = get_post_meta( get_the_ID(), 'event-all-day', true );
 $location = get_post_meta( get_the_ID(), 'event-location', true );
+$map = get_post_meta( get_the_ID(), 'event-map', true );
 $more_info_link = get_post_meta( get_the_ID(), 'event-link', true );
 $more_info_link_label = get_post_meta( get_the_ID(), 'event-link-label', true );
 $more_info_link_target = get_post_meta( get_the_ID(), 'event-link-target', true );
 $redirect_title_to_more_info = get_post_meta( get_the_ID(), 'event-link-title', true );
 $redirect_image_to_more_info = get_post_meta( get_the_ID(), 'event-link-image', true );
-$summary = get_post_meta( get_the_ID(), 'event-summary', true );
+$custom_summary = get_post_meta( get_the_ID(), 'event-summary', true );
 
 // get start date and end date for comparing dates
 $start_date = gmdate( 'Ymd', intval( $start_date_timestamp ) );

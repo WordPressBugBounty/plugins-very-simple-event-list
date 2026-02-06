@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vsel/vsel-block",
+  "version": "1.0",
+  "title": "VS Event List",
+  "category": "text",
+  "icon": "calendar",
+  "textdomain": "very-simple-event-list",
+  "attributes": {
+    "listType": {
+      "type": "string"
+    },
+    "shortcodeSettings": {
+      "type": "string"
+    }
+  },
+  "editorScript": "file:./index.js"
+}

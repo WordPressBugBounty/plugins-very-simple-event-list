@@ -31,57 +31,94 @@ if ( $list_id == 'page' ) {
 	}
 	// date
 	if ( $vsel_date_hide != 'yes' ) {
+		// if date error
 		if ( empty( $start_date ) || empty( $end_date ) || ( $start_date > $end_date ) ) {
 			$output .= '<div class="vsel-meta-date vsel-meta-error">';
 			$output .= esc_html__( 'Error: please reset date.', 'very-simple-event-list' );
 			$output .= '</div>';
+		// if end date > start date
 		} elseif ( $end_date > $start_date ) {
+			// date icon
 			if ( $vsel_date_type == 'icon' ) {
 				if ( ( $vsel_date_format == 'j F Y' ) || ( $vsel_date_format == 'd/m/Y' ) || ( $vsel_date_format == 'd-m-Y' ) ) {
-					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon"><div class="vsel-start-icon">';
-					$output .= $vsel_start_icon_1;
+					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon">';
+					$output .= '<div class="vsel-start-icon">';
+					$output .= $date_before;
+					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-end-icon">';
-					$output .= $vsel_end_icon_1;
-					$output .= '</div></div>';
+					$output .= $date_before;
+					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
+					$output .= '</div>';
+					$output .= '</div>';
 				} else {
-					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon"><div class="vsel-start-icon">';
-					$output .= $vsel_start_icon_2;
+					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon">';
+					$output .= '<div class="vsel-start-icon">';
+					$output .= $date_before;
+					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-end-icon">';
-					$output .= $vsel_end_icon_2;
-					$output .= '</div></div>';
+					$output .= $date_before;
+					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
+					$output .= '</div>';
+					$output .= '</div>';
 				}
+			// date label
 			} else {
 				if ( $vsel_date_combine == 'yes' ) {
 					$output .= '<div class="vsel-meta-date vsel-meta-combined-date">';
-					$output .= $vsel_start_default;
+					$output .= $date_before;
+					$output .= sprintf( esc_html( $vsel_start_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>' );
+					$output .= $date_after;
 					$output .= ' '.esc_html( $date_separator ).' ';
-					$output .= $vsel_end_default;
+					$output .= $date_before;
+					$output .= sprintf( esc_html( $vsel_end_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
+					$output .= $date_after;
 					$output .= '</div>';
 				} else {
 					$output .= '<div class="vsel-meta-date vsel-meta-start-date">';
-					$output .= $vsel_start_default;
+					$output .= $date_before;
+					$output .= sprintf( esc_html( $vsel_start_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>' );
+					$output .= $date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-meta-date vsel-meta-end-date">';
-					$output .= $vsel_end_default;
+					$output .= $date_before;
+					$output .= sprintf( esc_html( $vsel_end_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
+					$output .= $date_after;
 					$output .= '</div>';
 				}
 			}
+		// if start date = end date
 		} elseif ( $end_date == $start_date ) {
+			// date icon
 			if ( $vsel_date_type == 'icon' ) {
 				if ( ( $vsel_date_format == 'j F Y' ) || ( $vsel_date_format == 'd/m/Y' ) || ( $vsel_date_format == 'd-m-Y' ) ) {
-					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon"><div class="vsel-start-icon">';
-					$output .= $vsel_start_icon_1;
-					$output .= '</div></div>';
+					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon">';
+					$output .= '<div class="vsel-start-icon">';
+					$output .= $date_before;
+					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
+					$output .= '</div>';
+					$output .= '</div>';
 				} else {
-					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon"><div class="vsel-start-icon">';
-					$output .= $vsel_start_icon_2;
-					$output .= '</div></div>';
+					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon">';
+					$output .= '<div class="vsel-start-icon">';
+					$output .= $date_before;
+					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
+					$output .= $date_after;
+					$output .= '</div>';
+					$output .= '</div>';
 				}
+			// date label
 			} else {
 				$output .= '<div class="vsel-meta-date vsel-meta-single-date">';
-				$output .= $vsel_same_default;
+				$output .= $date_before;
+				$output .= sprintf( esc_html( $vsel_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
+				$output .= $date_after;
 				$output .= '</div>';
 			}
 		}
@@ -136,7 +173,15 @@ if ( $list_id == 'page' ) {
 	if ( $vsel_location_hide != 'yes' ) {
 		if ( ! empty( $location ) ) {
 			$output .= '<div class="vsel-meta-location">';
-			$output .= sprintf( esc_html( $vsel_location_label ), '<span>'.esc_html( $location ).'</span>' );
+			$output .= sprintf( esc_html( $vsel_location_label ), '<span>'.wp_kses_post( nl2br( $location ) ).'</span>' );
+			$output .= '</div>';
+		}
+	}
+	// map
+	if ( $vsel_map_hide != 'yes' ) {
+		if ( ! empty( $map ) ) {
+			$output .= '<div class="vsel-meta-map">';
+			$output .= wp_kses_post( $map );
 			$output .= '</div>';
 		}
 	}
@@ -156,16 +201,16 @@ if ( $list_id == 'page' ) {
 	}
 	// categories
 	if ( $vsel_cats_hide != 'yes' ) {
-		$cats_raw = wp_strip_all_tags( get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' ) );
-		$cats = get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' );
+		$cats_without_url = wp_strip_all_tags( get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' ) );
+		$cats_with_url = get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' );
 		if ( has_term( '', 'event_cat', get_the_ID() ) ) {
 			if ( $vsel_link_cat != 'yes' ) {
 				$output .= '<div class="vsel-meta-cats">';
-				$output .= $cats_raw;
+				$output .= $cats_without_url;
 				$output .= '</div>';
 			} else {
 				$output .= '<div class="vsel-meta-cats">';
-				$output .= $cats;
+				$output .= $cats_with_url;
 				$output .= '</div>';
 			}
 		}
@@ -177,7 +222,7 @@ if ( $list_id == 'page' ) {
 // end event details
 $output .= $vsel_meta_end;
 // start event info
-if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hide == 'yes' ) && ( $vsel_info_hide == 'yes' ) ) {
+if ( ( ( $list_id == 'page' ) || ( $list_id == 'template_support_all_content' ) || ( $list_id == 'template_support_excerpt' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hide == 'yes' ) && ( $vsel_info_hide == 'yes' ) ) {
 	$output .= '';
 } else {
 	$output .= $vsel_info_start;
@@ -200,14 +245,14 @@ if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hid
 						$image_caption = '';
 					}
 					if ( $vsel_atts['featured_image_link'] == 'false' ) {
-						$output .= '<figure class="vsel-image-figure '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
+						$output .= '<figure class="vsel-image-figure '.$vsel_img_class.'" style="'.$vsel_image_width_css.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
 					} else {
 						if ( ( $redirect_image_to_more_info == 'yes' ) && ! empty( $more_info_link ) ) {
-							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.esc_url( $more_info_link ).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_width_css.'"><a href="'.esc_url( $more_info_link ).'" rel="noopener noreferrer" '.$more_info_link_target.'>'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
 						} elseif ( $vsel_link_image == 'yes' ) {
-							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_width_css.'"><a href="'.get_permalink().'" rel="bookmark">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</a></figure>';
 						} else {
-							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_max_width.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
+							$output .= '<figure class="vsel-image '.$vsel_img_class.'" style="'.$vsel_image_width_css.'">'.get_the_post_thumbnail( get_the_ID(), $vsel_image_source, array( 'class' => 'vsel-image-img', 'alt' => $image_alt ) ).$image_caption.'</figure>';
 						}
 					}
 				}
@@ -215,6 +260,7 @@ if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hid
 		}
 	}
 	// event text
+	// if single event page
 	if ( $list_id == 'template_support_single' ) {
 		$output .= '<div class="vsel-text">';
 			$output .= $content;
@@ -222,10 +268,11 @@ if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hid
 	} else {
 		if ( $vsel_info_hide != 'yes' ) {
 			$output .= '<div class="vsel-text">';
+			// if block, shortcode or widget
 			if ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) {
 				if ( $vsel_atts['event_info'] == 'summary' ) {
-					if ( ! empty( $summary ) ) {
-						$output .= apply_filters( 'the_excerpt', $summary );
+					if ( ! empty( $custom_summary ) ) {
+						$output .= apply_filters( 'the_excerpt', $custom_summary );
 					} else {
 						$output .= apply_filters( 'the_excerpt', get_the_excerpt() );
 					}
@@ -233,8 +280,8 @@ if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hid
 					$output .= apply_filters( 'the_content', get_the_content() );
 				} else {
 					if ( $vsel_event_info == 'summary' ) {
-						if ( ! empty( $summary ) ) {
-							$output .= apply_filters( 'the_excerpt', $summary );
+						if ( ! empty( $custom_summary ) ) {
+							$output .= apply_filters( 'the_excerpt', $custom_summary );
 						} else {
 							$output .= apply_filters( 'the_excerpt', get_the_excerpt() );
 						}
@@ -247,10 +294,11 @@ if ( ( ( $list_id == 'page' ) || ( $list_id == 'widget' ) ) && ( $vsel_image_hid
 						$output .= '<a class="vsel-read-more" href="'.get_permalink().'" rel="bookmark">'.esc_html( $vsel_read_more_label ).'</a>';
 					}
 				}
-			} elseif ( $list_id == 'template_support_content' ) {
-				$output .= $vsel_event_content;
+			// if default wp page
+			} elseif ( $list_id == 'template_support_all_content' ) {
+				$output .= $event_content;
 			} elseif ( $list_id == 'template_support_excerpt' ) {
-				$output .= $vsel_event_summary;
+				$output .= $event_summary;
 			}
 			$output .= '</div>';
 		}

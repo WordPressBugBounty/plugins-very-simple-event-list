@@ -33,7 +33,7 @@ $output .= 'PRODID:-//'.get_bloginfo( 'name' ).'//NONSGML Events//EN'.$eol.'';
 		'meta_key' => 'event-date',
 		'orderby' => 'meta_value_num',
 		'order' => 'DESC',
-		'posts_per_page' => $number_of_events
+		'posts_per_page' => $number_of_events,
 	) );
 	if ( $vsel_ical_query->have_posts() ) :
 	while( $vsel_ical_query->have_posts() ) : $vsel_ical_query->the_post();
@@ -64,7 +64,7 @@ $output .= 'END:VEVENT'.$eol.'';
 	endwhile;
 	endif;
 $output .= 'END:VCALENDAR';
-	echo $output;
+	echo $output; // phpcs:ignore -- escaped early
 }
 
 // create rss feed
@@ -95,7 +95,7 @@ $output .= '<sy:updateFrequency>'.apply_filters( 'rss_update_frequency', '1' ).'
 			'key' => 'event-date',
 			'value' => $today,
 			'compare' => '>=',
-			'type' => 'NUMERIC'
+			'type' => 'NUMERIC',
 		)
 	);
 	$vsel_query_args = array(
@@ -104,7 +104,7 @@ $output .= '<sy:updateFrequency>'.apply_filters( 'rss_update_frequency', '1' ).'
 		'orderby' => 'meta_value_num',
 		'order' => 'ASC',
 		'posts_per_page' => $number_of_events,
-		'meta_query' => $vsel_meta_query
+		'meta_query' => $vsel_meta_query,
 	);
 	$vsel_rss_query = new WP_Query( $vsel_query_args );
 	if ( $vsel_rss_query->have_posts() ) :
@@ -135,5 +135,5 @@ $output .= '</item>'.$eol.'';
 	endif;
 $output .= '</channel>'.$eol.'';
 $output .= '</rss>';
-	echo $output;
+	echo $output; // phpcs:ignore -- escaped early
 }

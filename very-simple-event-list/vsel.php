@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 18.9
+ * Version: 19.8
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// enqueue css script
-function vsel_css_script() {
-	wp_enqueue_style( 'vsel-style', plugins_url( '/css/vsel-style.min.css',__FILE__ ) );
+// enqueue scripts
+function vsel_enqueue_scripts() {
+	wp_enqueue_style( 'vsel-styles', plugins_url( '/css/vsel-style.min.css',__FILE__ ), array(), false );
 }
-add_action( 'wp_enqueue_scripts', 'vsel_css_script' );
+add_action( 'wp_enqueue_scripts', 'vsel_enqueue_scripts' );
 
 // register widget
 function vsel_register_widget() {
@@ -65,13 +65,13 @@ function vsel_timestamp_tomorrow() {
 
 // set utc timezone
 function vsel_utc_timezone() {
-	$time_zone = new DateTimeZone( 'UTC' );
-	return $time_zone;
+	$timezone = new DateTimeZone( 'UTC' );
+	return $timezone;
 }
 
 // create event post type
 function vsel_custom_post_type() {
-	$vsel_labels = array(
+	$custom_post_type_labels = array(
 		'name' => __( 'Events', 'very-simple-event-list' ),
 		'singular_name' => __( 'Event', 'very-simple-event-list' ),
 		'all_items' => __( 'All events', 'very-simple-event-list' ),
@@ -82,7 +82,7 @@ function vsel_custom_post_type() {
 		'view_item' => __( 'View event', 'very-simple-event-list' ),
 		'search_items' => __( 'Search events', 'very-simple-event-list' ),
 		'not_found' => __( 'No events found', 'very-simple-event-list' ),
-		'not_found_in_trash' => __( 'No events found in trash', 'very-simple-event-list' )
+		'not_found_in_trash' => __( 'No events found in trash', 'very-simple-event-list' ),
 	);
 	$disable_public = get_option( 'vsel-setting-60' );
 	if ( $disable_public == 'yes' ) {
@@ -114,8 +114,8 @@ function vsel_custom_post_type() {
 	} else {
 		$revisions = '';
 	}
-	$vsel_args = array(
-		'labels' => $vsel_labels,
+	$custom_post_type_args = array(
+		'labels' => $custom_post_type_labels,
 		'menu_icon' => 'dashicons-calendar-alt',
 		'public' => $public_event,
 		'can_export' => true,
@@ -126,14 +126,14 @@ function vsel_custom_post_type() {
 		'capability_type' => 'post',
 		'taxonomies' => array( 'event_cat' ),
 		'rewrite' => array( 'slug' => esc_attr( $event_slug ) ),
- 		'supports' => array( 'title', 'thumbnail', 'page-attributes', 'custom-fields', 'editor', 'author', $revisions )
+ 		'supports' => array( 'title', 'thumbnail', 'page-attributes', 'custom-fields', 'editor', 'author', $revisions ),
 	);
-	register_post_type( 'event', $vsel_args );
+	register_post_type( 'event', $custom_post_type_args );
 }
 add_action( 'init', 'vsel_custom_post_type' );
 
 // create event categories
-function vsel_taxonomy() {
+function vsel_custom_taxonomy() {
 	$disable_menu = get_option( 'vsel-setting-50' );
 	if ( $disable_menu == 'yes' ) {
 		$show_in_menu = false;
@@ -152,22 +152,22 @@ function vsel_taxonomy() {
 	} else {
 		$cat_slug = 'event_cat';
 	}
-	$vsel_cat_args = array(
+	$custom_taxonomy_args = array(
 		'label' => __( 'Event categories', 'very-simple-event-list' ),
 		'hierarchical' => true,
 		'show_in_nav_menus' => $show_in_menu,
 		'show_admin_column' => $cats_column,
 		'show_in_rest' => true,
-		'rewrite' => array( 'slug' => esc_attr( $cat_slug ) )
+		'rewrite' => array( 'slug' => esc_attr( $cat_slug ) ),
 	);
-	register_taxonomy( 'event_cat', 'event', $vsel_cat_args );
+	register_taxonomy( 'event_cat', 'event', $custom_taxonomy_args );
 }
-add_action( 'init', 'vsel_taxonomy' );
+add_action( 'init', 'vsel_custom_taxonomy' );
 
 // flush rewrite rules on plugin activation
 function vsel_activation_hook() {
 	vsel_custom_post_type();
-	vsel_taxonomy();
+	vsel_custom_taxonomy();
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'vsel_activation_hook' );
@@ -189,25 +189,26 @@ function vsel_metabox_callback( $post ) {
 	// generate a nonce field
 	wp_nonce_field( 'vsel_nonce_action', 'vsel_nonce' );
 
-	// get setting for one date instead of start date and end date
-	$one_date = get_option( 'vsel-setting-58' );
+	// get setting for one date field instead of start date and end date
+	$one_date_field = get_option( 'vsel-setting-58' );
 
 	// get setting for one time field instead of start time and end time
-	$one_time = get_option( 'vsel-setting-87' );
+	$one_time_field = get_option( 'vsel-setting-87' );
 
 	// get previously saved meta values (if any)
 	$start_date_timestamp = get_post_meta( $post->ID, 'event-start-date', true );
 	$end_date_timestamp = get_post_meta( $post->ID, 'event-date', true );
-	$time = get_post_meta( $post->ID, 'event-time', true );
+	$one_time = get_post_meta( $post->ID, 'event-time', true );
 	$hide_end_time = get_post_meta( $post->ID, 'event-hide-end-time', true );
-	$all_day = get_post_meta( $post->ID, 'event-all-day', true );
+	$all_day_event = get_post_meta( $post->ID, 'event-all-day', true );
 	$location = get_post_meta( $post->ID, 'event-location', true );
+	$map = get_post_meta( $post->ID, 'event-map', true );
 	$link = get_post_meta( $post->ID, 'event-link', true );
 	$link_label = get_post_meta( $post->ID, 'event-link-label', true );
 	$link_target = get_post_meta( $post->ID, 'event-link-target', true );
 	$link_title = get_post_meta( $post->ID, 'event-link-title', true );
 	$link_image = get_post_meta( $post->ID, 'event-link-image', true );
-	$summary = get_post_meta( $post->ID, 'event-summary', true );
+	$custom_summary = get_post_meta( $post->ID, 'event-summary', true );
 
 	// get utc timezone
 	$utc_timezone = vsel_utc_timezone();
@@ -233,26 +234,28 @@ function vsel_metabox_callback( $post ) {
 
 	// error notice if start date is greater than end date
 	if ( $start_date > $end_date ) {
+		/* translators: %1$s: End date. %2$s: Start date. */
 		$notice_date = sprintf( __( 'Error: %1$s must be equal to or greater than %2$s.', 'very-simple-event-list' ), __( 'End date', 'very-simple-event-list' ), __( 'Start date', 'very-simple-event-list' ) );
 	}
 
 	// error notice if start time is greater than end time
 	if ( ( $start_date == $end_date ) && ( $start_time > $end_time ) ) {
+		/* translators: %1$s: End time. %2$s: Start time. */
 		$notice_time = sprintf( __( 'Error: %1$s must be equal to or greater than %2$s.', 'very-simple-event-list' ), __( 'End time', 'very-simple-event-list' ), __( 'Start time', 'very-simple-event-list' ) );
 	}
 
 	// metabox fields
-	if ( $one_date == 'yes' ) { ?>
+	if ( $one_date_field == 'yes' ) { ?>
 		<p><label for="event-end-date"><?php esc_html_e( 'Date', 'very-simple-event-list' ); ?></label><br>
 		<input type="date" id="event-end-date" name="event-end-date" style="width:200px;" required maxlength="10" placeholder="<?php esc_attr_e( 'Use datepicker', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( wp_date( 'Y-m-d', esc_attr( $end_date_timestamp ), $utc_timezone ) ); ?>" /></p>
 	<?php } else { ?>
 		<p><label for="event-start-date"><?php esc_html_e( 'Start date', 'very-simple-event-list' ); ?></label><br>
 		<input type="date" id="event-start-date" name="event-start-date" style="width:200px;" required maxlength="10" placeholder="<?php esc_attr_e( 'Use datepicker', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( wp_date( 'Y-m-d', esc_attr( $start_date_timestamp ), $utc_timezone ) ); ?>" /></p>
 		<p><label for="event-end-date"><?php esc_html_e( 'End date', 'very-simple-event-list' ); ?></label><br>
-		<input type="date" id="event-end-date" name="event-end-date" style="width:200px;" required maxlength="10" placeholder="<?php esc_attr_e( 'Use datepicker', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( wp_date( 'Y-m-d', esc_attr( $end_date_timestamp ), $utc_timezone ) ); ?>" /><br>
-		<?php echo ( isset( $notice_date ) ? '<span style="color:red;">'.esc_html( $notice_date ).'</span>' : '' ); ?></p>
+		<input type="date" id="event-end-date" name="event-end-date" style="width:200px;" required maxlength="10" placeholder="<?php esc_attr_e( 'Use datepicker', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( wp_date( 'Y-m-d', esc_attr( $end_date_timestamp ), $utc_timezone ) ); ?>" />
+		<?php echo ( isset( $notice_date ) ? '<br><span style="color:red;">'.esc_html( $notice_date ).'</span>' : '' ); ?></p>
 	<?php }
-	if ( $one_time != 'yes' ) { ?>
+	if ( $one_time_field != 'yes' ) { ?>
 		<fieldset><p><legend><?php esc_html_e( 'Start time', 'very-simple-event-list' ); ?></legend>
 			<select id="event-start-time-hour" name="event-start-time-hour" style="width:100px;">
 			<?php foreach ( $hour_values as $hour_value_start ) { ?>
@@ -276,17 +279,20 @@ function vsel_metabox_callback( $post ) {
 				<option value="<?php echo esc_attr( $minute_value_end ); ?>" <?php echo ( ( wp_date( 'i', esc_attr( $end_date_timestamp ), $utc_timezone ) ) == $minute_value_end ) ? 'selected' : ''; ?>><?php echo esc_html( $minute_value_end ); ?></option>
 			<?php } ?>
 			</select>
-			<input type="checkbox" id="event-hide-end-time" name="event-hide-end-time" value="yes" <?php checked( esc_attr( $hide_end_time ), 'yes' ); ?><label for="event-hide-end-time"><?php esc_html_e( 'Hide end time', 'very-simple-event-list' ); ?></label><br>
-			<?php echo ( isset( $notice_time ) ? '<span style="color:red;">'.esc_html( $notice_time ).'</span>' : '' ); ?>
+			<span><input type="checkbox" id="event-hide-end-time" name="event-hide-end-time" value="yes" <?php checked( esc_attr( $hide_end_time ), 'yes' ); ?><label for="event-hide-end-time"><?php esc_html_e( 'Hide end time', 'very-simple-event-list' ); ?></label></span>
+			<?php echo ( isset( $notice_time ) ? '<br><span style="color:red;">'.esc_html( $notice_time ).'</span>' : '' ); ?>
 		</p></fieldset>
-		<p><input type="checkbox" id="event-all-day" name="event-all-day" value="yes" <?php checked( esc_attr( $all_day ), 'yes' ); ?> />
-		<label for="event-all-day"><?php esc_html_e( 'All-day event', 'very-simple-event-list' ); ?></label></p>
+		<p><input type="checkbox" id="event-all-day" name="event-all-day" value="yes" <?php checked( esc_attr( $all_day_event ), 'yes' ); ?> />
+		<label for="event-all-day"><?php esc_html_e( 'All-day event', 'very-simple-event-list' ); ?></label><br>
+		<?php esc_html_e( 'Time will be hidden in frontend.', 'very-simple-event-list' ); ?></p>
 	<?php } else { ?>
 		<p><label for="event-time"><?php esc_html_e( 'Time', 'very-simple-event-list' ); ?></label>
-		<input type="text" class="widefat" id="event-time" name="event-time" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( '16:00 - 18:00', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( $time ); ?>" /></p>
+		<input type="text" class="widefat" id="event-time" name="event-time" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( '16:00 - 18:00', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( $one_time ); ?>" /></p>
 	<?php } ?>
 	<p><label for="event-location"><?php esc_html_e( 'Location', 'very-simple-event-list' ); ?></label>
-	<input type="text" class="widefat" id="event-location" name="event-location" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'Times Square', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( $location ); ?>" /></p>
+	<textarea class="large-text" id="event-location" name="event-location" rows="4" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'Times Square', 'very-simple-event-list' ); ?>"><?php echo esc_textarea( $location ); ?></textarea></p>
+	<p><label for="event-map"><?php esc_html_e( 'Map', 'very-simple-event-list' ); ?></label>
+	<textarea class="large-text" id="event-map" name="event-map" rows="4" placeholder="<?php esc_attr_e( 'Add your iframe embed code here', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $map ); ?></textarea></p>
 	<p><label for="event-link"><?php esc_html_e( 'More info link', 'very-simple-event-list' ); ?></label>
 	<input type="text" class="widefat" id="event-link" name="event-link" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'www.example.com/more-info', 'very-simple-event-list' ); ?>" value="<?php echo esc_url( $link ); ?>" /></p>
 	<p><label for="event-link-label"><?php esc_html_e( 'Link label', 'very-simple-event-list' ); ?></label>
@@ -300,24 +306,20 @@ function vsel_metabox_callback( $post ) {
 	<label for="event-link-image"><?php esc_html_e( 'Redirect featured image to the more info link', 'very-simple-event-list' ); ?></label><br>
 	<?php esc_html_e( 'The more info link will be hidden in frontend.', 'very-simple-event-list' ); ?></p>
 	<p><label for="event-summary"><?php esc_html_e( 'Custom summary', 'very-simple-event-list' ); ?></label>
-	<textarea class="large-text" id="event-summary" name="event-summary" rows="6" placeholder="<?php esc_attr_e( 'This will replace the default summary', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $summary); ?></textarea></p>
+	<textarea class="large-text" id="event-summary" name="event-summary" rows="6" placeholder="<?php esc_attr_e( 'This will replace the default summary', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $custom_summary); ?></textarea></p>
 	<?php
 }
 
 // save event
 function vsel_save_event_info( $post_id ) {
-	// get current timezone
-	$current_zone = date_default_timezone_get();
-	// set utc timezone for strtotime
-	date_default_timezone_set( 'UTC' );
-	// get setting for one date instead of start date and end date
-	$one_date = get_option( 'vsel-setting-58' );
+	// get setting for one date field instead of start date and end date
+	$one_date_field = get_option( 'vsel-setting-58' );
 	// check if nonce is set
 	if ( ! isset( $_POST['vsel_nonce'] ) ) {
 		return;
 	}
 	// verify that nonce is valid
-	if ( ! wp_verify_nonce( $_POST['vsel_nonce'], 'vsel_nonce_action' ) ) {
+	if ( ! wp_verify_nonce( sanitize_key( $_POST['vsel_nonce'] ), 'vsel_nonce_action' ) ) {
 		return;
 	}
 	// if this is an autosave, our form has not been submitted, so do nothing
@@ -330,43 +332,43 @@ function vsel_save_event_info( $post_id ) {
 	}
 	// set start time
 	if ( isset( $_POST['event-start-time-hour'] ) ) {
-		$start_hour = $_POST['event-start-time-hour'];
+		$start_hour = sanitize_key( $_POST['event-start-time-hour'] );
 	} else {
 		$start_hour = '00';
 	}
 	if ( isset( $_POST['event-start-time-minute'] ) ) {
-		$start_minute = $_POST['event-start-time-minute'];
+		$start_minute = sanitize_key( $_POST['event-start-time-minute'] );
 	} else {
 		$start_minute = '00';
 	}
 	// set end time
 	if ( isset( $_POST['event-end-time-hour'] ) ) {
-		$end_hour = $_POST['event-end-time-hour'];
+		$end_hour = sanitize_key( $_POST['event-end-time-hour'] );
 	} else {
 		$end_hour = '00';
 	}
 	if ( isset( $_POST['event-end-time-minute'] ) ) {
-		$end_minute = $_POST['event-end-time-minute'];
+		$end_minute = sanitize_key( $_POST['event-end-time-minute'] );
 	} else {
 		$end_minute = '00';
 	}
 	// checking values and save fields
-	if ( $one_date == 'yes' ) {
+	if ( $one_date_field == 'yes' ) {
 		if ( isset( $_POST['event-end-date'] ) ) {
-			$start_date = $_POST['event-end-date'];
-			$start_date_time = $start_date.$start_hour.$start_minute;
+			$start_date = sanitize_key( $_POST['event-end-date'] );
+			$start_date_time = $start_date.$start_hour.$start_minute.' UTC';
 			update_post_meta( $post_id, 'event-start-date', sanitize_text_field( strtotime( $start_date_time ) ) );
 		}
 	} else {
 		if ( isset( $_POST['event-start-date'] ) ) {
-			$start_date = $_POST['event-start-date'];
-			$start_date_time = $start_date.$start_hour.$start_minute;
+			$start_date = sanitize_key( $_POST['event-start-date'] );
+			$start_date_time = $start_date.$start_hour.$start_minute.' UTC';
 			update_post_meta( $post_id, 'event-start-date', sanitize_text_field( strtotime( $start_date_time ) ) );
 		}
 	}
 	if ( isset( $_POST['event-end-date'] ) ) {
-		$end_date = $_POST['event-end-date'];
-		$end_date_time = $end_date.$end_hour.$end_minute;
+		$end_date = sanitize_key( $_POST['event-end-date'] );
+		$end_date_time = $end_date.$end_hour.$end_minute.' UTC';
 		update_post_meta( $post_id, 'event-date', sanitize_text_field( strtotime( $end_date_time ) ) );
 	}
 	if ( isset( $_POST['event-time'] ) ) {
@@ -383,8 +385,11 @@ function vsel_save_event_info( $post_id ) {
 		update_post_meta( $post_id, 'event-all-day', 'no' );
 	}
 	if ( isset( $_POST['event-location'] ) ) {
-		update_post_meta( $post_id, 'event-location', sanitize_text_field( $_POST['event-location'] ) );
+		update_post_meta( $post_id, 'event-location', sanitize_textarea_field( $_POST['event-location'] ) );
 	}
+	if ( isset( $_POST['event-map'] ) ) {
+		update_post_meta( $post_id, 'event-map', wp_kses_post( $_POST['event-map'] ) );
+	}	
 	if ( isset( $_POST['event-link'] ) ) {
 		update_post_meta( $post_id, 'event-link', esc_url_raw( $_POST['event-link'] ) );
 	}
@@ -409,8 +414,6 @@ function vsel_save_event_info( $post_id ) {
 	if ( isset( $_POST['event-summary'] ) ) {
 		update_post_meta( $post_id, 'event-summary', wp_kses_post( $_POST['event-summary'] ) );
 	}
-	// set current timezone again
-	date_default_timezone_set( $current_zone );
 }
 add_action( 'save_post', 'vsel_save_event_info' );
 
@@ -450,9 +453,9 @@ function vsel_custom_columns_content( $column_name, $post_id ) {
 	$start_date_timestamp = get_post_meta( $post_id, 'event-start-date', true );
 	$end_date_timestamp = get_post_meta( $post_id, 'event-date', true );
 	// get time
-	$time = get_post_meta( $post_id, 'event-time', true );
+	$one_time = get_post_meta( $post_id, 'event-time', true );
 	// get setting for one time field instead of start time and end time
-	$one_time = get_option( 'vsel-setting-87' );	
+	$one_time_field = get_option( 'vsel-setting-87' );	
 
 	// start date column
 	if ( 'start_date_column' == $column_name ) {
@@ -472,15 +475,15 @@ function vsel_custom_columns_content( $column_name, $post_id ) {
 	}
 	// time column
 	if ( 'time_column' == $column_name ) {
-		if ( $one_time != 'yes' ) {
+		if ( $one_time_field != 'yes' ) {
 			if ( ! empty( $start_date_timestamp ) && ! empty( $end_date_timestamp ) ) {
 				echo esc_html( wp_date( get_option( 'time_format' ), esc_attr( $start_date_timestamp ), $utc_timezone ) ).' - '.esc_html( wp_date( get_option( 'time_format' ), esc_attr( $end_date_timestamp ), $utc_timezone ) );
 			} else {
 				echo '<span aria-hidden="true">&mdash;</span>';
 			}
 		} else {
-			if ( ! empty( $time ) ) {
-				echo esc_html( $time );
+			if ( ! empty( $one_time ) ) {
+				echo esc_html( $one_time );
 			} else {
 				echo '<span aria-hidden="true">&mdash;</span>';
 			}
@@ -520,7 +523,7 @@ function vsel_start_date_column_sortable( $vars ) {
 		if ( isset( $vars['orderby'] ) && 'event-start-date' == $vars['orderby'] ) {
 			$vars = array_merge( $vars, array(
 				'meta_key' => 'event-start-date',
-				'orderby' => 'meta_value_num'
+				'orderby' => 'meta_value_num',
 			) );
 		}
 	}
@@ -533,7 +536,7 @@ function vsel_end_date_column_sortable( $vars ) {
 		if ( isset( $vars['orderby'] ) && 'event-date' == $vars['orderby'] ) {
 			$vars = array_merge( $vars, array(
 				'meta_key' => 'event-date',
-				'orderby' => 'meta_value_num'
+				'orderby' => 'meta_value_num',
 			) );
 		}
 	}
@@ -552,8 +555,8 @@ function vsel_event_cats() {
 		foreach ( $terms as $term ) {
 			$cats[] = $term->slug;
 		}
-		$vsel_cats = implode( ' ', $cats );
-		return ' '.$vsel_cats;
+		$event_cats = implode( ' ', $cats );
+		return ' '.$event_cats;
 	} else {
 		return '';
 	}
@@ -631,27 +634,34 @@ function vsel_next_posts() {
 }
 add_filter( 'next_posts_link_attributes', 'vsel_next_posts', 10 );
 
+// allow iframe in event content
+function vsel_custom_wpkses_post_tags( $tags, $context ) {
+	if ( ( 'post' === $context ) && ( get_post_type() == 'event' ) ) {
+		$tags['iframe'] = array(
+			'src' => true,
+			'style' => true,
+			'height' => true,
+			'width' => true,
+			'frameborder' => true,
+			'allowfullscreen' => true,
+			'loading' => true
+		);
+	}
+	return $tags;
+}
+add_filter( 'wp_kses_allowed_html', 'vsel_custom_wpkses_post_tags', 10, 2 );
+
 // add settings link
 function vsel_action_links( $links ) {
-	$settingslink = array( '<a href="'. admin_url( 'options-general.php?page=vsel' ) .'">'. __( 'Settings', 'very-simple-event-list' ) .'</a>', );
+	$settingslink = array( '<a href="'. admin_url( 'options-general.php?page=vsel' ) .'">'. __( 'Settings', 'very-simple-event-list' ) .'</a>' );
 	return array_merge( $links, $settingslink );
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'vsel_action_links' );
 
-// disable event list in block editor
-function vsel_disable_event_list() {
-	if ( defined( 'REST_REQUEST' ) && REST_REQUEST && isset( $_GET['context'] ) && ( 'edit' === $_GET['context'] ) ) {
-		$disable = true;
-	} else {
-		$disable = false;
-	}
-	return $disable;
-}
-
 // include files
 include 'vsel-options.php';
-if ( function_exists( 'register_block_type' ) ) {
-	include 'vsel-block.php';
+if ( function_exists( 'register_block_type' ) && ( get_bloginfo( 'version' ) >= '6.3' ) ) {
+	include 'block/vsel-block.php';
 }
 include 'vsel-widget.php';
 include 'vsel-shortcodes.php';

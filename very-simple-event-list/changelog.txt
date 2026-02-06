@@ -1,5 +1,47 @@
 == Changelog VS Event List ==
 
+= Version 19.8 =
+* Added support for ClassicPress
+* Block only loaded in WP 6.3 and above
+* Reverted the "Requires at least" version to 6.0
+
+= Version 19.7 =
+* Minor changes in code
+
+= Version 19.6 =
+* New: display location map in your event details
+* Added field for the iframe embed code
+* Plugin has been tested with Google Maps and OpenStreetMap
+* New: location field accepts line breaks
+* Minor changes in code
+
+= Version 19.5 =
+* New: setting to link date label and date icon to single event page
+
+= Version 19.4 =
+* Fix: forgot text in editor about info and available attributes
+
+= Version 19.3 =
+* Full rewrite of the block
+* It now supports the Block API version 3
+* Bumped the "Requires at least" version to 6.3
+
+= Version 19.2 =
+* Fixed errors flagged by PCP
+* Added translation descriptions
+* Output escaping for widget
+* Minor changes in code
+
+= Version 19.1 =
+* Code improvements
+* Thanks to Craig from Roundup WP
+
+= Version 19.0 =
+* New: display event details on top (full width)
+* Fix: timezone related error (flagged by PCP)
+* Added RTL (Right-To-Left) language support for date icons
+* Minor changes in code
+
 = Version 18.9 =
 * Minor changes in code
 
@@ -99,7 +141,7 @@
 = Version 16.7 =
 * New: VS Event List block
 * Block editor users can now replace their shortcode block with the VS Event List block
-* Many thanks to Craig from Roundup WP
+* Thanks to Craig from Roundup WP
 * Minor changes in code
 
 = Version 16.6 =
@@ -485,7 +527,7 @@
 * New setting to change slug base for event and event category
 
 = Version 9.3 =
-* Many minor changes in code
+* Minor changes in code
 * These changes have no visible effect
 
 = Version 9.2 =
@@ -493,7 +535,7 @@
 * Added files vsel-variables and vsel-widget-variables
 * Relocated all event variables to these 2 files
 * Removed files vsel-meta and vsel-widget-meta
-* Many minor changes in code
+* Minor changes in code
 * Textual changes
 
 = Version 9.1 =

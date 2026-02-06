@@ -19,7 +19,7 @@ class vsel_widget extends WP_Widget {
 			'vsel_shortcode' => '',
 			'vsel_attributes' => '',
 			'vsel_all_events_link' => '',
-			'vsel_all_events_label' => ''
+			'vsel_all_events_label' => '',
 		) );
 		$vsel_title = ! empty( $instance['vsel_title'] ) ? $instance['vsel_title'] : __( 'VS Event List', 'very-simple-event-list' );
 		$vsel_text = $instance['vsel_text'];
@@ -42,7 +42,7 @@ class vsel_widget extends WP_Widget {
 			<option value="all" <?php echo ( $vsel_shortcode == 'all' ) ? 'selected' : ''; ?>><?php esc_html_e( 'All events', 'very-simple-event-list' ); ?></option>
 		</select></p>
 		<p><label for="<?php echo esc_attr( $this->get_field_id( 'vsel_attributes' ) ); ?>"><?php esc_html_e( 'Attributes', 'very-simple-event-list' ); ?>:</label>
-		<textarea class="widefat monospace" rows="3" cols="20" id="<?php echo esc_attr( $this->get_field_id( 'vsel_attributes' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'vsel_attributes' ) ); ?>" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: posts_per_page=&quot;2&quot;"><?php echo wp_kses_post( $vsel_attributes ); ?></textarea></p>
+		<textarea class="widefat monospace" rows="3" cols="20" id="<?php echo esc_attr( $this->get_field_id( 'vsel_attributes' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'vsel_attributes' ) ); ?>" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: posts_per_page=&quot;2&quot;"><?php echo esc_textarea( $vsel_attributes ); ?></textarea></p>
 		<p><label for="<?php echo esc_attr( $this->get_field_id( 'vsel_all_events_link' ) ); ?>"><?php esc_html_e( 'More events link', 'very-simple-event-list' ); ?>:</label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'vsel_all_events_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'vsel_all_events_link' ) ); ?>" type="text" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'www.example.com/more-events', 'very-simple-event-list' ); ?>" value="<?php echo esc_url( $vsel_all_events_link ); ?>"></p>
 		<p><label for="<?php echo esc_attr( $this->get_field_id( 'vsel_all_events_label' ) ); ?>"><?php esc_html_e( 'Link label', 'very-simple-event-list' ); ?>:</label>
@@ -69,12 +69,12 @@ class vsel_widget extends WP_Widget {
 		if ( empty( $instance['vsel_all_events_label'] ) ) {
 			$instance['vsel_all_events_label'] = __( 'All events', 'very-simple-event-list' );
 		}
-		echo $args['before_widget'];
+		echo wp_kses_post( $args['before_widget'] );
 		if ( ! empty( $instance['vsel_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', esc_html( $instance['vsel_title'] ) ). $args['after_title'];
+			echo wp_kses_post( $args['before_title'] ) . esc_html( apply_filters( 'widget_title', $instance['vsel_title'] ) ) . wp_kses_post( $args['after_title'] );
 		}
 		if ( ! empty( $instance['vsel_text'] ) ) {
-			echo '<div class="vsel-widget-text">'.wp_kses_post( wpautop( $instance['vsel_text'] ).'</div>' );
+			echo '<div class="vsel-widget-text">'.wp_kses_post( wpautop( $instance['vsel_text'] ) ).'</div>';
 		}
 		$widget_list = 'upcoming';
 		if ( ! empty( $instance['vsel_shortcode'] ) ) {
@@ -100,6 +100,6 @@ class vsel_widget extends WP_Widget {
 		if ( ! empty( $instance['vsel_all_events_link'] ) ) {
 			echo '<div class="vsel-widget-link">' . sprintf( '<a href="%1$s">%2$s</a>', esc_url( $instance['vsel_all_events_link'] ), esc_html( $instance['vsel_all_events_label'] ) ) . '</div>';
 		}
-		echo $args['after_widget'];
+		echo wp_kses_post( $args['after_widget'] );
 	}
 }

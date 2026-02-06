@@ -1,13 +1,13 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 18.9
-Stable tag: 18.9
+Version: 19.8
+Stable tag: 19.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
 Requires at least: 6.0
-Tested up to: 6.8
-Tags: simple, event, events, event list, event manager
+Tested up to: 6.9
+Tags: event, events, event list, event manager, classicpress
 
 
 With this lightweight plugin you can create an event list.
@@ -17,14 +17,25 @@ With this lightweight plugin you can create an event list.
 = About =
 With this lightweight plugin you can create an event list.
 
-To display your event list you can use a block, a shortcode or a widget.
+Main features of the plugin:
 
-You can customize your event list via the settings page or with attributes.
+* Free and lightweight
+* Support for Block Editor and Classic Editor
+* Display your event list with block, shortcode or widget
+* Display upcoming and past events
+* Share events via RSS or iCal feed
+* Organise events with categories
+* Customize your event list via the settings page or with attributes
+* Add extra content to events with the Advanced Custom Fields (ACF) plugin
+* Documentation at WP plugin page
+* Active support from developer at WP forum
 
 = How to use =
-After installation go to menu item "Events". You can add your events here.
+After installation go to menu item "Events" and create some events.
 
-Add the VS Event List block or the shortcode `[vsel]` to a page to display your event list.
+Go to the editor and add the VS Event List block or the shortcode `[vsel]` to a page. This will display your event list.
+
+Or go to Appearance > Widgets and use the VS Event List widget.
 
 When using the shortcode add the `list` attribute to display the events you want.
 
@@ -36,19 +47,15 @@ When using the shortcode add the `list` attribute to display the events you want
 
 Without this attribute the default event list is displayed (upcoming events).
 
-Or go to Appearance > Widgets and use the VS Event List widget.
-
-You can customize your event list via the settings page or with attributes.
+Customize your event list via the settings page or with attributes.
 
 = Settings page =
-You can customize your event list via the settings page. This page is located at Settings > VS Event List.
-
-Settings can be overridden when using the relevant attributes below.
-
-This can be useful when having multiple event lists on your website.
+The settings page is located at Settings > VS Event List.
 
 = Attributes =
-You can also customize your event list by adding attributes to the block, the shortcode or the widget. Attributes will override the settings page.
+Settings can be overridden by adding attributes to the block, shortcode, or widget.
+
+This can be useful when having multiple event lists on your website.
 
 * Add custom CSS class to event list: `class="your-class-name"`
 * Change the number of events per page: `posts_per_page="5"`
@@ -133,6 +140,9 @@ The plugin will use the website language, set in Settings > General.
 
 If translations are not available in the selected language, English will be used.
 
+= Does plugin support multilingual websites? =
+Yes, but do not set custom labels for Date, Time, Location, etc via the settings page. Use a multilingual plugin instead.
+
 = How do I set the date and time format? =
 By default, the plugin uses the date and time format from Settings > General.
 
@@ -145,7 +155,7 @@ The date icon only supports 2 date formats: "day-month-year" (30 Jan 2016) and "
 If your date format is not supported, it will be converted into 1 of the 2 formats above.
 
 = Which timezone does the plugin use? =
-Events are saved in the database and displayed throughout your website without a timezone offset.
+Events are saved in the database and displayed at your website without a timezone offset.
 
 = Why does the event list look different between themes? =
 The plugin uses minimal styling and therefore also depends on the styling of your theme.
@@ -183,6 +193,13 @@ Change background and text color of whole icon: `.vsel-start-icon, .vsel-end-ico
 
 Change background and text color of top part: `.vsel-day-top, .vsel-month-top {background:#f26535; color:#eee;}`
 
+= Why does the location map not display properly? =
+Plugin has been tested with Google Maps and OpenStreetMap.
+
+You should use the HTML iframe embed code. It starts and ends with an iframe tag.
+
+OpenStreetMap may add HTML that contains a link to a bigger map, after the closing iframe tag. You can leave or remove this HTML.
+
 = Why is there no pagination in the widget? =
 Pagination is not working properly in a widget.
 
@@ -197,10 +214,10 @@ Having "Event" as page (or post) title will not cause any problems, but having "
 You should change this slug into something else. This can be done by changing the permalink of this page (or post).
 
 = Why a 404 (nothing found) when I click the title link? =
-This is mostly caused by the permalink settings. Please resave the permalink via Settings > Permalinks.
+This is often caused by the permalink settings. Please resave the permalink via Settings > Permalinks.
 
 = Why a 404 (nothing found) when I click the event category link? =
-This is mostly caused by the permalink settings. Please resave the permalink via Settings > Permalinks.
+This is often caused by the permalink settings. Please resave the permalink via Settings > Permalinks.
 
 = Why no event details or event categories box in the editor? =
 When using the block editor, click the options icon and select "Preferences".
@@ -232,9 +249,6 @@ If you're using the default RSS widget you can force a refresh via Settings > Re
 
 But this may not work in case there's other caching as well.
 
-= Can I use the plugin on a ClassicPress website? =
-Yes you can! Obviously you cannot use the block, so use the shortcode instead.
-
 = Why is there no semantic versioning? =
 The version number won't give you info about the type of update (major, minor, patch). You should check the changelog to see whether or not the update is a major or minor one.
 
@@ -246,56 +260,52 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 19.8 =
+* Added support for ClassicPress
+* Block only loaded in WP 6.3 and above
+* Reverted the "Requires at least" version to 6.0
+
+= Version 19.7 =
+* Minor changes in code
+
+= Version 19.6 =
+* New: display location map in your event details
+* Added field for the iframe embed code
+* Plugin has been tested with Google Maps and OpenStreetMap
+* New: location field accepts line breaks
+* Minor changes in code
+
+= Version 19.5 =
+* New: setting to link date label and date icon to single event page
+
+= Version 19.4 =
+* Fix: forgot text in editor about info and available attributes
+
+= Version 19.3 =
+* Full rewrite of the block
+* It now supports the Block API version 3
+* Bumped the "Requires at least" version to 6.3
+
+= Version 19.2 =
+* Fixed errors flagged by PCP
+* Added translation descriptions
+* Output escaping for widget
+* Minor changes in code
+
+= Version 19.1 =
+* Code improvements
+* Thanks to Craig from Roundup WP
+
+= Version 19.0 =
+* New: display event details on top (full width)
+* Fix: timezone related error (flagged by PCP)
+* Added RTL (Right-To-Left) language support for date icons
+* Minor changes in code
+
 = Version 18.9 =
 * Minor changes in code
 
-= Version 18.8 =
-* Fix: custom label error if wrong placeholder is added
-
-= Version 18.7 =
-* Removed wrong header from main plugin file
-
-= Version 18.6 =
-* Minor changes in code
-
-= Version 18.5 =
-* Fix: order of events
-
-= Version 18.4 =
-* Fix: template
-
-= Version 18.3 =
-* Minor changes in code
-
-= Version 18.2 =
-* Code improvements
-* Check your event list after this update
-* It may have fall back to its default list (upcoming events)
-* Merged all shortcodes into 1
-* Add the "list" attribute to display the events you want
-* Upcoming events: list="upcoming"
-* Future events: list="future"
-* Current events: list="current"
-* Past events: list="past"
-* All events: list="all"
-* Without this attribute the default event list is displayed (upcoming events)
-* Removed the jQuery based date picker from the editor
-* The editor will now use the date picker (and date format) from your browser
-* Bumped the "requires PHP" version to 7.4
-* Bumped the "Requires at least" version to 6.0
-
-= Version 18.1 =
-* Block editor: non-clickable links in event list
-
-= Version 18.0 =
-* Fix: template support file
-
 For all versions please check file changelog.
-
-
-== Upgrade Notice ==
-= 18.9 =
-* If you update from version 18.1 or below, check your event list after this update. It may have fall back to its default list (upcoming events). For more info check changelog at plugin page.
 
 
 == Screenshots ==
@@ -303,10 +313,10 @@ For all versions please check file changelog.
 2. Event list
 3. Event list widget
 4. Single event
-5. Events page (dashboard)
-6. Single event (dashboard)
-7. Widget (dashboard)
-8. Settings page (dashboard)
+5. Page with block (dashboard)
+6. Widget (dashboard)
+7. Events page (dashboard)
+8. Single event (dashboard)
 9. Settings page (dashboard)
 10. Settings page (dashboard)
 11. Settings page (dashboard)
@@ -314,3 +324,5 @@ For all versions please check file changelog.
 13. Settings page (dashboard)
 14. Settings page (dashboard)
 15. Settings page (dashboard)
+16. Settings page (dashboard)
+17. Settings page (dashboard)

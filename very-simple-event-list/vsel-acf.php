@@ -86,7 +86,8 @@ if ( $fields ) {
 				} elseif ( ( $field['type'] == 'text' ) || ( $field['type'] == 'number' ) || ( $field['type'] == 'range' ) || ( $field['type'] == 'select' ) || ( $field['type'] == 'checkbox' ) || ( $field['type'] == 'radio' ) || ( $field['type'] == 'date_picker' ) || ( $field['type'] == 'time_picker' ) || ( $field['type'] == 'date_time_picker' ) ) {
 					$output .= '<span class="acf-field-name">'.sprintf( esc_html( $acf_label ), '</span><span class="acf-field-value">'.esc_html( $acf_value ).'</span>' );
 				} else {
-					$output .= '<span class="acf-field-name acf-field-error">'.esc_html__( 'Field type not supported.', 'very-simple-event-list' ).'</span>';
+					/* translators: %s: ACF field type. */
+					$output .= '<span class="acf-field-name acf-field-error">'.sprintf( esc_html__( 'Field type %s not supported.', 'very-simple-event-list' ), $field['type'] ).'</span>';
 				}
 			$output .= '</div>';
 		}

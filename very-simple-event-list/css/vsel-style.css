@@ -36,6 +36,7 @@
 .vsel-meta-time {}
 .vsel-meta-all-day {}
 .vsel-meta-location {}
+.vsel-meta-map iframe {max-width:100%; height:auto; min-height:200px;}
 .vsel-meta-link {}
 .vsel-meta-cats {}
 .vsel-meta-error {font-weight:bold;}
@@ -44,6 +45,7 @@
 /* Event details - date icon */
 .vsel-meta-date-icon {line-height:1.5;}
 .vsel-start-icon, .vsel-end-icon {display:inline-block; margin:0 10px 0 0; background:#f8f8f8; color:#333; text-align:center;}
+.vsel-start-icon a, .vsel-start-icon a:hover, .vsel-end-icon a, .vsel-end-icon a:hover {text-decoration:none !important; color:inherit !important;}
 .vsel-day, .vsel-month, .vsel-year {display:block; padding:2px 15px;}
 .vsel-year {font-size:0.8em;}
 .vsel-day-top, .vsel-month-top {background:#333; color:#fff;}
@@ -88,14 +90,18 @@
 .vsel-widget-text p:last-of-type {margin-bottom:0;}
 
 /* Widget - event details */
-.vsel-widget .vsel-meta {margin:0 0 20px;}
+.vsel-widget .vsel-meta {width:100%; clear:both; margin:0 0 20px; box-sizing:border-box;}
 .vsel-widget .vsel-content > div:last-of-type {margin-bottom:0;}
 
 /* Widget - event info container */
-.vsel-widget .vsel-info {clear:both;}
+.vsel-widget .vsel-info {width:100%; clear:both; box-sizing:border-box;}
 
 /* Widget - link to all events */
 .vsel-widget .vsel-widget-link {}
+
+/* RTL support */
+.rtl .vsel-start-icon, .rtl .vsel-end-icon {margin:0 0 0 10px;}
+.rtl .vsel-meta-combine .vsel-meta-date-icon {float:right;}
 
 /* Mobile */
 @media screen and (max-width:767px) {

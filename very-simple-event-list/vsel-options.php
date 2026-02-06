@@ -42,7 +42,7 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-70', esc_html__( 'Category separator', 'very-simple-event-list' ), 'vsel_field_callback_70', 'vsel-general', 'vsel-general-section' );
 	register_setting( 'vsel-general-options', 'vsel-setting-70', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
-	add_settings_field( 'vsel-field-55', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_55', 'vsel-general', 'vsel-general-section' );
+	add_settings_field( 'vsel-field-55', esc_html__( 'Event categories', 'very-simple-event-list' ), 'vsel_field_callback_55', 'vsel-general', 'vsel-general-section' );
 	register_setting( 'vsel-general-options', 'vsel-setting-55', array( 'sanitize_callback' => 'sanitize_key' ) );
 
 	add_settings_field( 'vsel-field-56', esc_html__( 'Time', 'very-simple-event-list' ), 'vsel_field_callback_56', 'vsel-general', 'vsel-general-section' );
@@ -72,6 +72,9 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-66', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_66', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-66', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
+	add_settings_field( 'vsel-field-106', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_106', 'vsel-page', 'vsel-page-section' );
+	register_setting( 'vsel-page-options', 'vsel-setting-106', array( 'sanitize_callback' => 'sanitize_key' ) );
+
 	add_settings_field( 'vsel-field-35', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_35', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-35', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
@@ -92,6 +95,9 @@ function vsel_admin_init() {
 
 	add_settings_field( 'vsel-field-15', esc_html__( 'Date', 'very-simple-event-list' ), 'vsel_field_callback_15', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-15', array( 'sanitize_callback' => 'sanitize_key' ) );
+
+	add_settings_field( 'vsel-field-108', esc_html__( 'Date', 'very-simple-event-list' ), 'vsel_field_callback_108', 'vsel-page', 'vsel-page-section' );
+	register_setting( 'vsel-page-options', 'vsel-setting-108', array( 'sanitize_callback' => 'sanitize_key' ) );	
 
 	add_settings_field( 'vsel-field-36', esc_html__( 'Featured image', 'very-simple-event-list' ), 'vsel_field_callback_36', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-36', array( 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -133,6 +139,9 @@ function vsel_admin_init() {
 
 	add_settings_field( 'vsel-field-12', esc_html__( 'Location', 'very-simple-event-list' ), 'vsel_field_callback_12', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-12', array( 'sanitize_callback' => 'sanitize_key' ) );
+
+	add_settings_field( 'vsel-field-110', esc_html__( 'Map', 'very-simple-event-list' ), 'vsel_field_callback_110', 'vsel-page', 'vsel-page-section' );
+	register_setting( 'vsel-page-options', 'vsel-setting-110', array( 'sanitize_callback' => 'sanitize_key' ) );
 
 	add_settings_field( 'vsel-field-33', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_33', 'vsel-page', 'vsel-page-section' );
 	register_setting( 'vsel-page-options', 'vsel-setting-33', array( 'sanitize_callback' => 'sanitize_key' ) );
@@ -188,6 +197,9 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-21', esc_html__( 'Date', 'very-simple-event-list' ), 'vsel_field_callback_21', 'vsel-widget', 'vsel-widget-section' );
 	register_setting( 'vsel-widget-options', 'vsel-setting-21', array( 'sanitize_callback' => 'sanitize_key' ) );
 
+	add_settings_field( 'vsel-field-109', esc_html__( 'Date', 'very-simple-event-list' ), 'vsel_field_callback_109', 'vsel-widget', 'vsel-widget-section' );
+	register_setting( 'vsel-widget-options', 'vsel-setting-109', array( 'sanitize_callback' => 'sanitize_key' ) );
+
 	add_settings_field( 'vsel-field-37', esc_html__( 'Featured image', 'very-simple-event-list' ), 'vsel_field_callback_37', 'vsel-widget', 'vsel-widget-section' );
 	register_setting( 'vsel-widget-options', 'vsel-setting-37', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
@@ -225,6 +237,9 @@ function vsel_admin_init() {
 
 	add_settings_field( 'vsel-field-4', esc_html__( 'Location', 'very-simple-event-list' ), 'vsel_field_callback_4', 'vsel-widget', 'vsel-widget-section' );
 	register_setting( 'vsel-widget-options', 'vsel-setting-4', array( 'sanitize_callback' => 'sanitize_key' ) );
+
+	add_settings_field( 'vsel-field-111', esc_html__( 'Map', 'very-simple-event-list' ), 'vsel_field_callback_111', 'vsel-widget', 'vsel-widget-section' );
+	register_setting( 'vsel-widget-options', 'vsel-setting-111', array( 'sanitize_callback' => 'sanitize_key' ) );
 
 	add_settings_field( 'vsel-field-34', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_34', 'vsel-widget', 'vsel-widget-section' );
 	register_setting( 'vsel-widget-options', 'vsel-setting-34', array( 'sanitize_callback' => 'sanitize_key' ) );
@@ -265,6 +280,9 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-71', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_71', 'vsel-single', 'vsel-single-section' );
 	register_setting( 'vsel-single-options', 'vsel-setting-71', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
+	add_settings_field( 'vsel-field-107', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_107', 'vsel-single', 'vsel-single-section' );
+	register_setting( 'vsel-single-options', 'vsel-setting-107', array( 'sanitize_callback' => 'sanitize_key' ) );
+
 	add_settings_field( 'vsel-field-72', esc_html__( 'Event details', 'very-simple-event-list' ), 'vsel_field_callback_72', 'vsel-single', 'vsel-single-section' );
 	register_setting( 'vsel-single-options', 'vsel-setting-72', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
@@ -294,6 +312,9 @@ function vsel_admin_init() {
 	add_settings_field( 'vsel-field-77', esc_html__( 'Location', 'very-simple-event-list' ), 'vsel_field_callback_77', 'vsel-single', 'vsel-single-section' );
 	register_setting( 'vsel-single-options', 'vsel-setting-77', array( 'sanitize_callback' => 'sanitize_key' ) );
 
+	add_settings_field( 'vsel-field-112', esc_html__( 'Map', 'very-simple-event-list' ), 'vsel_field_callback_112', 'vsel-single', 'vsel-single-section' );
+	register_setting( 'vsel-single-options', 'vsel-setting-112', array( 'sanitize_callback' => 'sanitize_key' ) );
+
 	add_settings_field( 'vsel-field-78', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_78', 'vsel-single', 'vsel-single-section' );
 	register_setting( 'vsel-single-options', 'vsel-setting-78', array( 'sanitize_callback' => 'sanitize_key' ) );
 
@@ -319,25 +340,25 @@ function vsel_admin_init() {
 	register_setting( 'vsel-single-options', 'vsel-setting-85', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
 	// default wp pages section
-	add_settings_section( 'vsel-wp-pages-section', esc_html__( 'Default WP pages', 'very-simple-event-list' ), 'vsel_support_section_callback', 'vsel-wp-pages' );
+	add_settings_section( 'vsel-pages-section', esc_html__( 'Default WP pages', 'very-simple-event-list' ), 'vsel_support_section_callback', 'vsel-pages' );
 
-	add_settings_field( 'vsel-field-60', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_60', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-60', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-60', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_60', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-60', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-39', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_39', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-39', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-39', esc_html__( 'Single event', 'very-simple-event-list' ), 'vsel_field_callback_39', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-39', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-48', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_48', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-48', array( 'sanitize_callback' => 'sanitize_key' ) );	
+	add_settings_field( 'vsel-field-48', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_48', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-48', array( 'sanitize_callback' => 'sanitize_key' ) );	
 
-	add_settings_field( 'vsel-field-43', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_43', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-43', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-43', esc_html__( 'Post type archive', 'very-simple-event-list' ), 'vsel_field_callback_43', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-43', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-40', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_40', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-40', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-40', esc_html__( 'Event category', 'very-simple-event-list' ), 'vsel_field_callback_40', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-40', array( 'sanitize_callback' => 'sanitize_key' ) );
 
-	add_settings_field( 'vsel-field-41', esc_html__( 'Search results', 'very-simple-event-list' ), 'vsel_field_callback_41', 'vsel-wp-pages', 'vsel-wp-pages-section' );
-	register_setting( 'vsel-wp-pages-options', 'vsel-setting-41', array( 'sanitize_callback' => 'sanitize_key' ) );
+	add_settings_field( 'vsel-field-41', esc_html__( 'Search results', 'very-simple-event-list' ), 'vsel_field_callback_41', 'vsel-pages', 'vsel-pages-section' );
+	register_setting( 'vsel-pages-options', 'vsel-setting-41', array( 'sanitize_callback' => 'sanitize_key' ) );
 
 	// feed section
 	add_settings_section( 'vsel-feed-section', esc_html__( 'Feed', 'very-simple-event-list' ), '', 'vsel-feed' );
@@ -362,13 +383,13 @@ function vsel_page_section_callback() {
 
 function vsel_widget_section_callback() {
 	?>
-	<p><?php esc_html_e( 'Event details are full width when using the widget.', 'very-simple-event-list' ); ?></p>
+	<p><?php esc_html_e( 'Event details are displayed on top (full width).', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
 function vsel_single_section_callback() {
 	?>
-	<p><?php esc_html_e( 'Title, event info and featured image are handled by your theme.', 'very-simple-event-list' ); ?></p>
+	<p><?php esc_html_e( 'Title and featured image are handled by your theme.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
@@ -496,7 +517,7 @@ function vsel_field_callback_46() {
 	$value = get_option( 'vsel-setting-46' );
 	?>
 	<input type="text" size="40" maxlength="25" name="vsel-setting-46" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><strong><?php printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
+	<p><strong><?php /* translators: %s: Permalink. */ printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
 	<?php
 }
 
@@ -505,7 +526,7 @@ function vsel_field_callback_47() {
 	$value = get_option( 'vsel-setting-47' );
 	?>
 	<input type="text" size="40" maxlength="25" name="vsel-setting-47" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p><strong><?php printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
+	<p><strong><?php /* translators: %s: Permalink. */ printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
 	<?php
 }
 
@@ -530,9 +551,19 @@ function vsel_field_callback_66() {
 	$value = get_option( 'vsel-setting-66' );
 	$placeholder = '36';
 	?>
-	<label><input type="number" size="10" min="20" max="60" name="vsel-setting-66" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" /> <?php printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '36' ); ?></label>
+	<label><input type="number" size="10" min="20" max="80" name="vsel-setting-66" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '36' ); ?></label>
 	<p><?php esc_html_e( 'This is the width and set as a percentage.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'Event details are full width when event info and featured image are hidden.', 'very-simple-event-list' ); ?></p>
+	<?php
+}
+
+function vsel_field_callback_106() {
+	$value = get_option( 'vsel-setting-106' );
+	?>
+	<input type="hidden" name="vsel-setting-106" value="no">
+	<label><input type="checkbox" name="vsel-setting-106" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Display on top (full width).', 'very-simple-event-list' ); ?></label>
+	<p><?php esc_html_e( 'This will override the width from above.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
@@ -543,9 +574,7 @@ function vsel_field_callback_35() {
 		<option value="left" <?php echo ( $value == 'left' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align left', 'very-simple-event-list' ); ?></option>
 		<option value="right" <?php echo ( $value == 'right' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align right', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align left', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align left', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Event details are full width when event info and featured image are hidden.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -559,9 +588,7 @@ function vsel_field_callback_95() {
 		<option value="h4" <?php echo ( $value == 'h4' ) ? 'selected' : ''; ?>><?php echo 'H4'; ?></option>
 		<option value="div" <?php echo ( $value == 'div' ) ? 'selected' : ''; ?>><?php echo 'Div'; ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), 'H3' );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), 'H3' ); ?>
 	<p><?php esc_html_e( 'This tag is being used for the title.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
 	<?php
@@ -592,9 +619,7 @@ function vsel_field_callback_62() {
 		<option value="label" <?php echo ( $value == 'label' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Label', 'very-simple-event-list' ); ?></option>
 		<option value="icon" <?php echo ( $value == 'icon' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Icon', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Display date label or icon.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -618,6 +643,14 @@ function vsel_field_callback_15() {
 	<?php
 }
 
+function vsel_field_callback_108() {
+	$value = get_option( 'vsel-setting-108' );
+	?>
+	<input type="hidden" name="vsel-setting-108" value="no">
+	<label><input type="checkbox" name="vsel-setting-108" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Link to the event page.', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
 function vsel_field_callback_36() {
 	$value = get_option( 'vsel-setting-36' );
  	?>
@@ -625,9 +658,7 @@ function vsel_field_callback_36() {
 		<option value="right" <?php echo ( $value == 'right' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align right', 'very-simple-event-list' ); ?></option>
 		<option value="left" <?php echo ( $value == 'left' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align left', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align right', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align right', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -642,9 +673,7 @@ function vsel_field_callback_30() {
 		<option value="medium" <?php echo ( $value == 'medium' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Medium', 'very-simple-event-list' ); ?></option>
 		<option value="small" <?php echo ( $value == 'small' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Small', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Post thumbnail', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Post thumbnail', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'This size is being used as source for the featured image.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'The size of the post thumbnail may vary by theme.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
@@ -655,7 +684,8 @@ function vsel_field_callback_53() {
 	$value = get_option( 'vsel-setting-53' );
 	$placeholder = '40';
 	?>
-	<label><input type="number" size="10" min="20" max="100" name="vsel-setting-53" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" /> <?php printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '40' ); ?></label>
+	<label><input type="number" size="10" min="20" max="100" name="vsel-setting-53" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '40' ); ?></label>
 	<p><?php esc_html_e( 'This is the width and set as a percentage.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
 	<?php
@@ -677,9 +707,7 @@ function vsel_field_callback_13() {
 		<option value="all" <?php echo ( $value == 'all' ) ? 'selected' : ''; ?>><?php esc_html_e( 'All', 'very-simple-event-list' ); ?></option>
 		<option value="summary" <?php echo ( $value == 'summary' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Summary', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'All', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'All', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -701,9 +729,7 @@ function vsel_field_callback_51() {
 		<option value="info" <?php echo ( $value == 'info' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Event info', 'very-simple-event-list' ); ?></option>
 		<option value="hide" <?php echo ( $value == 'hide' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -721,12 +747,10 @@ function vsel_field_callback_98() {
 	$value = get_option( 'vsel-setting-98' );
 	?>
 	<select id="vsel-setting-98" name="vsel-setting-98">
-		<option value="simple" <?php echo ( $value == 'simple' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Simple', 'very-simple-event-list' ); ?></option>
+		<option value="label" <?php echo ( $value == 'label' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Label', 'very-simple-event-list' ); ?></option>
 		<option value="numeric" <?php echo ( $value == 'numeric' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Numeric', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Simple', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'This does not affect events on default WP pages.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -761,6 +785,14 @@ function vsel_field_callback_12() {
 	?>
 	<input type="hidden" name="vsel-setting-12" value="no">
 	<label><input type="checkbox" name="vsel-setting-12" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
+function vsel_field_callback_110() {
+	$value = get_option( 'vsel-setting-110' );
+	?>
+	<input type="hidden" name="vsel-setting-110" value="no">
+	<label><input type="checkbox" name="vsel-setting-110" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></label>
 	<?php
 }
 
@@ -807,6 +839,7 @@ function vsel_field_callback_42() {
 }
 
 function vsel_field_callback_16() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-16' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -816,11 +849,12 @@ function vsel_field_callback_16() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-16" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_17() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-17' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -830,11 +864,12 @@ function vsel_field_callback_17() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-17" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_18() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-18' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -844,11 +879,12 @@ function vsel_field_callback_18() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-18" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_19() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-19' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -858,7 +894,7 @@ function vsel_field_callback_19() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-19" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -871,6 +907,7 @@ function vsel_field_callback_89() {
 }
 
 function vsel_field_callback_20() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-20' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -880,7 +917,7 @@ function vsel_field_callback_20() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-20" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -902,9 +939,7 @@ function vsel_field_callback_96() {
 		<option value="h4" <?php echo ( $value == 'h4' ) ? 'selected' : ''; ?>><?php echo 'H4'; ?></option>
 		<option value="div" <?php echo ( $value == 'div' ) ? 'selected' : ''; ?>><?php echo 'Div'; ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), 'H3' );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), 'H3' ); ?>
 	<p><?php esc_html_e( 'This tag is being used for the title.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -924,9 +959,7 @@ function vsel_field_callback_63() {
 		<option value="label" <?php echo ( $value == 'label' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Label', 'very-simple-event-list' ); ?></option>
 		<option value="icon" <?php echo ( $value == 'icon' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Icon', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Display date label or icon.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -950,6 +983,14 @@ function vsel_field_callback_21() {
 	<?php
 }
 
+function vsel_field_callback_109() {
+	$value = get_option( 'vsel-setting-109' );
+	?>
+	<input type="hidden" name="vsel-setting-109" value="no">
+	<label><input type="checkbox" name="vsel-setting-109" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Link to the event page.', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
 function vsel_field_callback_37() {
 	$value = get_option( 'vsel-setting-37' );
  	?>
@@ -958,6 +999,7 @@ function vsel_field_callback_37() {
 		<option value="left" <?php echo ( $value == 'left' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align left', 'very-simple-event-list' ); ?></option>
 	</select>
 	<?php
+	/* translators: %s: default value for this variable. */
 	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align right', 'very-simple-event-list' ) );
 }
 
@@ -971,9 +1013,7 @@ function vsel_field_callback_32() {
 		<option value="medium" <?php echo ( $value == 'medium' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Medium', 'very-simple-event-list' ); ?></option>
 		<option value="small" <?php echo ( $value == 'small' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Small', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Post thumbnail', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Post thumbnail', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'This size is being used as source for the featured image.', 'very-simple-event-list' ); ?></p>
 	<p><?php esc_html_e( 'The size of the post thumbnail may vary by theme.', 'very-simple-event-list' ); ?></p>
 	<?php
@@ -983,7 +1023,8 @@ function vsel_field_callback_54() {
 	$value = get_option( 'vsel-setting-54' );
 	$placeholder = '40';
 	?>
-	<label><input type="number" size="10" min="20" max="100" name="vsel-setting-54" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" /> <?php printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '40' ); ?></label>
+	<label><input type="number" size="10" min="20" max="100" name="vsel-setting-54" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '40' ); ?></label>
 	<p><?php esc_html_e( 'This is the width and set as a percentage.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -1004,6 +1045,7 @@ function vsel_field_callback_1() {
 		<option value="summary" <?php echo ( $value == 'summary' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Summary', 'very-simple-event-list' ); ?></option>
 	</select>
 	<?php
+	/* translators: %s: default value for this variable. */
 	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'All', 'very-simple-event-list' ) );
 }
 
@@ -1023,9 +1065,7 @@ function vsel_field_callback_52() {
 		<option value="info" <?php echo ( $value == 'info' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Event info', 'very-simple-event-list' ); ?></option>
 		<option value="hide" <?php echo ( $value == 'hide' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -1071,6 +1111,14 @@ function vsel_field_callback_4() {
 	<?php
 }
 
+function vsel_field_callback_111() {
+	$value = get_option( 'vsel-setting-111' );
+	?>
+	<input type="hidden" name="vsel-setting-111" value="no">
+	<label><input type="checkbox" name="vsel-setting-111" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
 function vsel_field_callback_34() {
 	$value = get_option( 'vsel-setting-34' );
 	?>
@@ -1104,6 +1152,7 @@ function vsel_field_callback_7() {
 }
 
 function vsel_field_callback_22() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-22' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1113,11 +1162,12 @@ function vsel_field_callback_22() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-22" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_23() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-23' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1127,11 +1177,12 @@ function vsel_field_callback_23() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-23" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_24() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-24' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1141,11 +1192,12 @@ function vsel_field_callback_24() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-24" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_25() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-25' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1155,7 +1207,7 @@ function vsel_field_callback_25() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-25" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1168,6 +1220,7 @@ function vsel_field_callback_90() {
 }
 
 function vsel_field_callback_26() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-26' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1177,7 +1230,7 @@ function vsel_field_callback_26() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-26" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1194,8 +1247,18 @@ function vsel_field_callback_71() {
 	$value = get_option( 'vsel-setting-71' );
 	$placeholder = '36';
 	?>
-	<label><input type="number" size="10" min="20" max="60" name="vsel-setting-71" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" /> <?php printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '36' ); ?></label>
+	<label><input type="number" size="10" min="20" max="80" name="vsel-setting-71" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '36' ); ?></label>
 	<p><?php esc_html_e( 'This is the width and set as a percentage.', 'very-simple-event-list' ); ?></p>
+	<?php
+}
+
+function vsel_field_callback_107() {
+	$value = get_option( 'vsel-setting-107' );
+	?>
+	<input type="hidden" name="vsel-setting-107" value="no">
+	<label><input type="checkbox" name="vsel-setting-107" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Display on top (full width).', 'very-simple-event-list' ); ?></label>
+	<p><?php esc_html_e( 'This will override the width from above.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
 
@@ -1207,6 +1270,7 @@ function vsel_field_callback_72() {
 		<option value="right" <?php echo ( $value == 'right' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Align right', 'very-simple-event-list' ); ?></option>
 	</select>
 	<?php
+	/* translators: %s: default value for this variable. */
 	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Align left', 'very-simple-event-list' ) );
 }
 
@@ -1217,9 +1281,7 @@ function vsel_field_callback_74() {
 		<option value="label" <?php echo ( $value == 'label' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Label', 'very-simple-event-list' ); ?></option>
 		<option value="icon" <?php echo ( $value == 'icon' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Icon', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Label', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Display date label or icon.', 'very-simple-event-list' ); ?></p>
 	<?php
 }	
@@ -1251,9 +1313,7 @@ function vsel_field_callback_80() {
 		<option value="info" <?php echo ( $value == 'info' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Event info', 'very-simple-event-list' ); ?></option>
 		<option value="hide" <?php echo ( $value == 'hide' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></option>
 	</select>
-	<?php
-	printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) );
-	?>
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), esc_html__( 'Event details', 'very-simple-event-list' ) ); ?>
 	<p><?php esc_html_e( 'Where to display the custom fields.', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -1291,6 +1351,14 @@ function vsel_field_callback_77() {
 	<?php
 }
 
+function vsel_field_callback_112() {
+	$value = get_option( 'vsel-setting-112' );
+	?>
+	<input type="hidden" name="vsel-setting-112" value="no">
+	<label><input type="checkbox" name="vsel-setting-112" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Hide', 'very-simple-event-list' ); ?></label>
+	<?php
+}
+
 function vsel_field_callback_78() {
 	$value = get_option( 'vsel-setting-78' );
 	?>
@@ -1308,6 +1376,7 @@ function vsel_field_callback_79() {
 }
 
 function vsel_field_callback_81() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-81' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1317,11 +1386,12 @@ function vsel_field_callback_81() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-81" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_82() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Start date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-82' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1331,11 +1401,12 @@ function vsel_field_callback_82() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-82" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Start date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_83() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'End date: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-83' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1345,11 +1416,12 @@ function vsel_field_callback_83() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-83" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'End date', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
 function vsel_field_callback_84() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Time: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-84' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1359,7 +1431,7 @@ function vsel_field_callback_84() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-84" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Time', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
@@ -1372,6 +1444,7 @@ function vsel_field_callback_91() {
 }
 
 function vsel_field_callback_85() {
+	/* translators: %s: the variable. */
 	$placeholder = __( 'Location: %s', 'very-simple-event-list' );
 	$value = get_option( 'vsel-setting-85' );
 	if ( ! empty( $value ) && ( ( strpos( $value, '%s' ) === false ) || ( substr_count( $value, '%' ) > 1 ) ) ) {
@@ -1381,16 +1454,16 @@ function vsel_field_callback_85() {
 	}
 	?>
 	<input type="text" size="40" name="vsel-setting-85" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
+	<p style="color:<?php echo esc_attr ( $color ); ?>;"><?php /* translators: %1$s: placeholder. %2$s: variable name. */ printf( esc_html__( 'Use %1$s to display the %2$s variable.', 'very-simple-event-list' ), '%s', esc_html__( 'Location', 'very-simple-event-list' ) ); ?></p>
 	<?php
 }
 
-// default support section - field callbacks
+// default wp pages section - field callbacks
 function vsel_field_callback_60() {
 	$value = get_option( 'vsel-setting-60' );
 	?>
 	<input type="hidden" name="vsel-setting-60" value="no">
-	<label><input type="checkbox" name="vsel-setting-60" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s page.', 'very-simple-event-list' ), esc_html__( 'Single event', 'very-simple-event-list' ) ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-60" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: page name. */ printf( esc_html__( 'Disable support for the %s page.', 'very-simple-event-list' ), esc_html__( 'Single event', 'very-simple-event-list' ) ); ?></label>
 	<?php
 }
 
@@ -1398,7 +1471,7 @@ function vsel_field_callback_39() {
 	$value = get_option( 'vsel-setting-39' );
 	?>
 	<input type="hidden" name="vsel-setting-39" value="no">
-	<label><input type="checkbox" name="vsel-setting-39" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Single event', 'very-simple-event-list' ) ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-39" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: template name. */ printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Single event', 'very-simple-event-list' ) ); ?></label>
 	<?php
 }
 
@@ -1406,8 +1479,8 @@ function vsel_field_callback_48() {
 	$value = get_option( 'vsel-setting-48' );
 	?>
 	<input type="hidden" name="vsel-setting-48" value="no">
-	<label><input type="checkbox" name="vsel-setting-48" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s page.', 'very-simple-event-list' ), esc_html__( 'Post type archive', 'very-simple-event-list' ) ); ?></label>
-	<p><strong><?php printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
+	<label><input type="checkbox" name="vsel-setting-48" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: page name. */ printf( esc_html__( 'Disable support for the %s page.', 'very-simple-event-list' ), esc_html__( 'Post type archive', 'very-simple-event-list' ) ); ?></label>
+	<p><strong><?php /* translators: %s: Permalink. */ printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
 	<?php
 }
 
@@ -1415,7 +1488,7 @@ function vsel_field_callback_43() {
 	$value = get_option( 'vsel-setting-43' );
 	?>
 	<input type="hidden" name="vsel-setting-43" value="no">
-	<label><input type="checkbox" name="vsel-setting-43" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Post type archive', 'very-simple-event-list' ) ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-43" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: template name. */ printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Post type archive', 'very-simple-event-list' ) ); ?></label>
 	<?php
 }
 
@@ -1423,7 +1496,7 @@ function vsel_field_callback_40() {
 	$value = get_option( 'vsel-setting-40' );
 	?>
 	<input type="hidden" name="vsel-setting-40" value="no">
-	<label><input type="checkbox" name="vsel-setting-40" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Event category', 'very-simple-event-list' ) ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-40" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: template name. */ printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Event category', 'very-simple-event-list' ) ); ?></label>
 	<?php
 }
 
@@ -1431,7 +1504,7 @@ function vsel_field_callback_41() {
 	$value = get_option( 'vsel-setting-41' );
 	?>
 	<input type="hidden" name="vsel-setting-41" value="no">
-	<label><input type="checkbox" name="vsel-setting-41" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Search results', 'very-simple-event-list' ) ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-41" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php /* translators: %s: template name. */ printf( esc_html__( 'Disable support for the %s template.', 'very-simple-event-list' ), esc_html__( 'Search results', 'very-simple-event-list' ) ); ?></label>
 	<?php
 }
 
@@ -1442,12 +1515,12 @@ function vsel_field_callback_99() {
 	<input type="hidden" name="vsel-setting-99" value="no">
 	<label><input type="checkbox" name="vsel-setting-99" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Activate feed.', 'very-simple-event-list' ); ?></label>
 	<p><?php esc_html_e( 'This feed contains upcoming events.', 'very-simple-event-list' ); ?> <?php esc_html_e( 'For settings', 'very-simple-event-list' ); ?> <?php echo '<a href="'.esc_url( admin_url( 'options-reading.php' ) ).'">'.esc_html__( 'click here', 'very-simple-event-list' ).'</a>'; ?>.</p>
-	<p><strong><?php printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
+	<p><strong><?php /* translators: %s: Permalink. */ printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
 	<?php
 	$rss_feed_setting = get_option( 'vsel-setting-99' );
 	if ( $rss_feed_setting == 'yes' ) {
 	?>
-	<p><?php printf( esc_html__( 'Subscribe with URL %s.', 'very-simple-event-list' ), '<code>'.esc_url( get_bloginfo( 'url' ).'/?feed=vsel-rss-feed' ).'</code>' ); ?></p>
+	<p><?php /* translators: %s: feed URL. */ printf( esc_html__( 'Subscribe with URL %s.', 'very-simple-event-list' ), '<code>'.esc_url( get_bloginfo( 'url' ).'/?feed=vsel-rss-feed' ).'</code>' ); ?></p>
 	<?php
 	}
 }
@@ -1458,12 +1531,12 @@ function vsel_field_callback_49() {
 	<input type="hidden" name="vsel-setting-49" value="no">
 	<label><input type="checkbox" name="vsel-setting-49" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Activate feed.', 'very-simple-event-list' ); ?></label>
 	<p><?php esc_html_e( 'This feed contains upcoming and past events.', 'very-simple-event-list' ); ?></p>
-	<p><strong><?php printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
+	<p><strong><?php /* translators: %s: Permalink. */ printf( esc_html__( 'Resave the %s after changing this.', 'very-simple-event-list' ), '<a href="'.esc_url( admin_url( 'options-permalink.php' ) ).'">'.esc_html( __( 'Permalink', 'very-simple-event-list' ) ).'</a>' ); ?></strong></p>
 	<?php
 	$ical_feed_setting = get_option( 'vsel-setting-49' );
 	if ( $ical_feed_setting == 'yes' ) {
 	?>
-	<p><?php printf( esc_html__( 'Subscribe with URL %s.', 'very-simple-event-list' ), '<code>'.esc_url( get_bloginfo( 'url' ).'/?feed=vsel-ical-feed' ).'</code>' ); ?></p>
+	<p><?php /* translators: %s: feed URL. */ printf( esc_html__( 'Subscribe with URL %s.', 'very-simple-event-list' ), '<code>'.esc_url( get_bloginfo( 'url' ).'/?feed=vsel-ical-feed' ).'</code>' ); ?></p>
 	<?php
 	}
 }
@@ -1472,7 +1545,8 @@ function vsel_field_callback_93() {
 	$value = get_option( 'vsel-setting-93' );
 	$placeholder = '10';
 	?>
-	<label><input type="number" size="10" min="1" max="100" name="vsel-setting-93" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" /> <?php printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '10' ); ?></label>
+	<label><input type="number" size="10" min="1" max="100" name="vsel-setting-93" placeholder="<?php echo esc_attr( $placeholder ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+	<?php /* translators: %s: default value for this variable. */ printf( esc_html__( 'Default value is %s.', 'very-simple-event-list' ), '10' ); ?></label>
 	<p><?php esc_html_e( 'Number of events in iCal feed (from future to past).', 'very-simple-event-list' ); ?></p>
 	<?php
 }
@@ -1488,7 +1562,7 @@ function vsel_options_page() {
 		<a href="?page=vsel&tab=page_options" class="nav-tab <?php echo $active_tab == 'page_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Page', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=widget_options" class="nav-tab <?php echo $active_tab == 'widget_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Widget', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=single_options" class="nav-tab <?php echo $active_tab == 'single_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Single event', 'very-simple-event-list' ); ?></a>
-		<a href="?page=vsel&tab=wp_pages_options" class="nav-tab <?php echo $active_tab == 'wp_pages_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Default WP pages', 'very-simple-event-list' ); ?></a>
+		<a href="?page=vsel&tab=pages_options" class="nav-tab <?php echo $active_tab == 'pages_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Default WP pages', 'very-simple-event-list' ); ?></a>
 		<a href="?page=vsel&tab=feed_options" class="nav-tab <?php echo $active_tab == 'feed_options' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Feed', 'very-simple-event-list' ); ?></a>
 	</h2>
 	<form action="options.php" method="POST">
@@ -1504,9 +1578,9 @@ function vsel_options_page() {
 		} elseif ( $active_tab == 'single_options' ) {
 			settings_fields( 'vsel-single-options' );
 			do_settings_sections( 'vsel-single' );
-		} elseif ( $active_tab == 'wp_pages_options' ) {
-			settings_fields( 'vsel-wp-pages-options' );
-			do_settings_sections( 'vsel-wp-pages' );
+		} elseif ( $active_tab == 'pages_options' ) {
+			settings_fields( 'vsel-pages-options' );
+			do_settings_sections( 'vsel-pages' );
 		} else {
 			settings_fields( 'vsel-feed-options' );
 			do_settings_sections( 'vsel-feed' );
