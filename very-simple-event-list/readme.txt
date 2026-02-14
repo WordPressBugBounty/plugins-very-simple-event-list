@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 19.8
-Stable tag: 19.8
+Version: 19.9
+Stable tag: 19.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -260,9 +260,12 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 19.9 =
+* Minor changes in code
+
 = Version 19.8 =
 * Added support for ClassicPress
-* Block only loaded in WP 6.3 and above
+* The block will only load in WP 6.3 and higher
 * Reverted the "Requires at least" version to 6.0
 
 = Version 19.7 =
@@ -300,9 +303,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 * New: display event details on top (full width)
 * Fix: timezone related error (flagged by PCP)
 * Added RTL (Right-To-Left) language support for date icons
-* Minor changes in code
-
-= Version 18.9 =
 * Minor changes in code
 
 For all versions please check file changelog.

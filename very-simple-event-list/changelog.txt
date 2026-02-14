@@ -1,8 +1,11 @@
 == Changelog VS Event List ==
 
+= Version 19.9 =
+* Minor changes in code
+
 = Version 19.8 =
 * Added support for ClassicPress
-* Block only loaded in WP 6.3 and above
+* The block will only load in WP 6.3 and higher
 * Reverted the "Requires at least" version to 6.0
 
 = Version 19.7 =

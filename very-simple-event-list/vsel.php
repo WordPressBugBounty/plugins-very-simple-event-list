@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 19.8
+ * Version: 19.9
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -660,7 +660,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'vsel_action_l
 
 // include files
 include 'vsel-options.php';
-if ( function_exists( 'register_block_type' ) && ( get_bloginfo( 'version' ) >= '6.3' ) ) {
+if ( ! function_exists( 'classicpress_version' ) && function_exists( 'register_block_type' ) && ( get_bloginfo( 'version' ) >= '6.3' ) ) {
 	include 'block/vsel-block.php';
 }
 include 'vsel-widget.php';
