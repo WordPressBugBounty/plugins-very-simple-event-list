@@ -179,13 +179,13 @@ if ( $list_id == 'page' ) {
 	}
 	// map
 	if ( $vsel_map_hide != 'yes' ) {
-		if ( ! empty( $map ) ) {
+		if ( ! empty( $map ) && ( ( strpos( $map, '<iframe' ) !== false ) && ( strpos( $map, '</iframe>' ) !== false ) ) ) {
 			$output .= '<div class="vsel-meta-map">';
 			$output .= wp_kses_post( $map );
 			$output .= '</div>';
 		}
 	}
-	// include acf fields
+	// include acf fields (no = deprecated value)
 	if ( class_exists( 'acf' ) && ( empty( $vsel_acf_fields ) || ( $vsel_acf_fields == 'no' ) || ( $vsel_acf_fields == 'details' ) ) ) {
 		include 'vsel-acf.php';
 	}
@@ -201,18 +201,23 @@ if ( $list_id == 'page' ) {
 	}
 	// categories
 	if ( $vsel_cats_hide != 'yes' ) {
-		$cats_without_url = wp_strip_all_tags( get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' ) );
-		$cats_with_url = get_the_term_list( get_the_ID(), 'event_cat', '<span>', ' '.esc_html( $cat_separator ).' ', '</span>' );
-		if ( has_term( '', 'event_cat', get_the_ID() ) ) {
-			if ( $vsel_link_cat != 'yes' ) {
-				$output .= '<div class="vsel-meta-cats">';
-				$output .= $cats_without_url;
-				$output .= '</div>';
-			} else {
-				$output .= '<div class="vsel-meta-cats">';
-				$output .= $cats_with_url;
-				$output .= '</div>';
+		$event_terms = get_the_terms( get_the_ID(), 'event_cat' );
+		if ( $event_terms && ! is_wp_error( $event_terms ) ) {
+			$cats = array();
+			$cats_linked = array();
+			foreach ( $event_terms as $event_term ) {
+				$cats[] = $event_term->name;
+				$cats_linked[] = '<a href="'.get_term_link( $event_term ).'">'.$event_term->name.'</a>';
 			}
+			$cats_without_url = implode( ' '.$cat_separator.' ', $cats );
+			$cats_with_url = implode( ' '.$cat_separator.' ', $cats_linked );
+			$output .= '<div class="vsel-meta-cats">';
+			if ( $vsel_link_cat == 'yes' ) {
+				$output .= '<span>'.wp_kses_post( $cats_with_url ).'</span>';
+			} else {
+				$output .= '<span>'.wp_kses_post( $cats_without_url ).'</span>';
+			}
+			$output .= '</div>';
 		}
 	}
 	// if date icon is displayed next to other event details

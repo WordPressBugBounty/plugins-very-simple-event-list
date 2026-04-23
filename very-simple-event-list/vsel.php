@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 19.9
+ * Version: 20.0
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -244,6 +244,11 @@ function vsel_metabox_callback( $post ) {
 		$notice_time = sprintf( __( 'Error: %1$s must be equal to or greater than %2$s.', 'very-simple-event-list' ), __( 'End time', 'very-simple-event-list' ), __( 'Start time', 'very-simple-event-list' ) );
 	}
 
+	// error notice if iframe embed code is invalid
+	if ( ! empty( $map ) && ( ( strpos( $map, '<iframe' ) === false ) || ( strpos( $map, '</iframe>' ) === false ) ) ) {
+		$notice_map = __( 'Error: invalid iframe embed code.', 'very-simple-event-list' );
+	}
+
 	// metabox fields
 	if ( $one_date_field == 'yes' ) { ?>
 		<p><label for="event-end-date"><?php esc_html_e( 'Date', 'very-simple-event-list' ); ?></label><br>
@@ -292,7 +297,8 @@ function vsel_metabox_callback( $post ) {
 	<p><label for="event-location"><?php esc_html_e( 'Location', 'very-simple-event-list' ); ?></label>
 	<textarea class="large-text" id="event-location" name="event-location" rows="4" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'Times Square', 'very-simple-event-list' ); ?>"><?php echo esc_textarea( $location ); ?></textarea></p>
 	<p><label for="event-map"><?php esc_html_e( 'Map', 'very-simple-event-list' ); ?></label>
-	<textarea class="large-text" id="event-map" name="event-map" rows="4" placeholder="<?php esc_attr_e( 'Add your iframe embed code here', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $map ); ?></textarea></p>
+	<textarea class="large-text" id="event-map" name="event-map" rows="4" placeholder="<?php esc_attr_e( 'Add your iframe embed code here', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $map ); ?></textarea>
+	<?php echo ( isset( $notice_map ) ? '<br><span style="color:red;">'.esc_html( $notice_map ).'</span>' : '' ); ?></p>
 	<p><label for="event-link"><?php esc_html_e( 'More info link', 'very-simple-event-list' ); ?></label>
 	<input type="text" class="widefat" id="event-link" name="event-link" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'www.example.com/more-info', 'very-simple-event-list' ); ?>" value="<?php echo esc_url( $link ); ?>" /></p>
 	<p><label for="event-link-label"><?php esc_html_e( 'Link label', 'very-simple-event-list' ); ?></label>
@@ -644,7 +650,7 @@ function vsel_custom_wpkses_post_tags( $tags, $context ) {
 			'width' => true,
 			'frameborder' => true,
 			'allowfullscreen' => true,
-			'loading' => true
+			'loading' => true,
 		);
 	}
 	return $tags;

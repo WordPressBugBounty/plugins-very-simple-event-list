@@ -1,5 +1,9 @@
 == Changelog VS Event List ==
 
+= Version 20.0 =
+* Fix: event category display
+* Fix: warning in case of invalid iframe embed code in map input
+
 = Version 19.9 =
 * Minor changes in code
 
@@ -49,7 +53,7 @@
 * Minor changes in code
 
 = Version 18.8 =
-* Fix: custom label error if wrong placeholder is added
+* Fix:  warning in case of wrong placeholder in custom label input
 
 = Version 18.7 =
 * Removed wrong header from main plugin file
@@ -244,7 +248,7 @@
 * New: event status is added to single event body class
 
 = Version 14.7 =
-* Fix: date and time error label in editor
+* Fix: date and time warning in editor
 * New: event categories are added to single event body class
 
 = Version 14.6 =
@@ -551,7 +555,7 @@
 * This only applies to events on pages with a shortcode based or widget based event list
 * Event status can be: vsel-upcoming, vsel-current, vsel-past
 * This can be useful if you want to apply styling for certain events or certain event categories
-* Added extra check for date fields (error message in case of missing start or end date)
+* Added extra check for date fields (warning in case of missing start or end date)
 * Have set show_in_nav_menus to true, events are now available for selection in navigation menus
 * Feature above is added to support page builder plugins
 
@@ -793,7 +797,7 @@
 = Version 5.1 =
 * Updated file vsel-widget: no shortcode needed to display your upcoming or past events
 * Widget now only accepts attributes
-* Updated files vsel-upcoming, vsel-past and vsel-single: error message in case of wrong date
+* Updated files vsel-upcoming, vsel-past and vsel-single: warning in case of wrong date
 
 = Version 5.0 =
 * Updated files vsel and vsel-widget

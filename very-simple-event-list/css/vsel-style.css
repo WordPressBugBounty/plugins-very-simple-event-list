@@ -36,7 +36,7 @@
 .vsel-meta-time {}
 .vsel-meta-all-day {}
 .vsel-meta-location {}
-.vsel-meta-map iframe {max-width:100%; height:auto; min-height:200px;}
+.vsel-meta-map iframe {max-width:100%; height:auto; min-height:200px; margin:0; padding:0;}
 .vsel-meta-link {}
 .vsel-meta-cats {}
 .vsel-meta-error {font-weight:bold;}

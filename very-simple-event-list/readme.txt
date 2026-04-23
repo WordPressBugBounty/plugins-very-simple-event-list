@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 19.9
-Stable tag: 19.9
+Version: 20.0
+Stable tag: 20.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -260,6 +260,10 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 20.0 =
+* Fix: event category display
+* Fix: warning in case of invalid iframe embed code in map input
+
 = Version 19.9 =
 * Minor changes in code
 
@@ -298,12 +302,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 = Version 19.1 =
 * Code improvements
 * Thanks to Craig from Roundup WP
-
-= Version 19.0 =
-* New: display event details on top (full width)
-* Fix: timezone related error (flagged by PCP)
-* Added RTL (Right-To-Left) language support for date icons
-* Minor changes in code
 
 For all versions please check file changelog.
 
