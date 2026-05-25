@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 20.0
-Stable tag: 20.0
+Version: 20.1
+Stable tag: 20.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Tags: event, events, event list, event manager, classicpress
 
 
@@ -260,6 +260,9 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 20.1 =
+* Minor changes in code
+
 = Version 20.0 =
 * Fix: event category display
 * Fix: warning in case of invalid iframe embed code in map input
@@ -298,10 +301,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 * Added translation descriptions
 * Output escaping for widget
 * Minor changes in code
-
-= Version 19.1 =
-* Code improvements
-* Thanks to Craig from Roundup WP
 
 For all versions please check file changelog.
 

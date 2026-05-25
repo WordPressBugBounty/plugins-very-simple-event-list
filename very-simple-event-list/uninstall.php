@@ -4,8 +4,8 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
-$keep = get_option( 'vsel-setting-100' );
-if ( $keep != 'yes' ) {
+$vsel_keep = get_option( 'vsel-setting-100' );
+if ( $vsel_keep != 'yes' ) {
 	// set global
 	global $wpdb;
 

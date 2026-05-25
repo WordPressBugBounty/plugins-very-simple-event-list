@@ -1,5 +1,8 @@
 == Changelog VS Event List ==
 
+= Version 20.1 =
+* Minor changes in code
+
 = Version 20.0 =
 * Fix: event category display
 * Fix: warning in case of invalid iframe embed code in map input

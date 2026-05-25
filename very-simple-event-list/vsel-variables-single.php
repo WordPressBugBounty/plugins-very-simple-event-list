@@ -71,8 +71,8 @@ if ( empty( $vsel_location_label ) || ( strpos( $vsel_location_label, '%s' ) ===
 }
 
 // set but not relevant for single event page
-$date_before = '';
-$date_after = '';
+$vsel_date_before = '';
+$vsel_date_after = '';
 
 // set width for event details and event info
 $vsel_meta_width_css = 'width:36%;';

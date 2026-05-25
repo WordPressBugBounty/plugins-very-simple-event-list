@@ -9,22 +9,14 @@ function vsel_shortcode_page( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// include shortcode attributes
-	$vsel_atts = shortcode_atts( vsel_atts_array(), $vsel_atts );
+	$vsel_atts = shortcode_atts( vsel_shortcode_atts_array(), $vsel_atts );
+	// main container classes
+	$vsel_container_classes = vsel_container_classes( $vsel_atts );
 	// main container
-	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-'.esc_attr( vsel_container_classes( $vsel_atts ) ).'">';
-		// misc vars
-		global $paged;
-		if ( get_query_var( 'paged' ) ) {
-			$paged = get_query_var( 'paged' );
-		} elseif ( get_query_var( 'page' ) ) {
-			$paged = get_query_var( 'page' );
-		} else {
-			$paged = 1;
-		}
-		$today = vsel_timestamp_today();
-		$tomorrow = vsel_timestamp_tomorrow();
+	$output .= '<div id="vsel" class="vsel-shortcode vsel-shortcode-'.esc_attr( $vsel_container_classes ).'">';
 		// include query args
-		$vsel_query_args = vsel_query_args( $vsel_atts, $today, $tomorrow, $paged );
+		$list_id = 'page';
+		$vsel_query_args = vsel_query_args( $vsel_atts, $list_id );
 		// start query
 		$vsel_page_query = new WP_Query( $vsel_query_args );
 		if ( $vsel_page_query->have_posts() ) :
@@ -32,9 +24,11 @@ function vsel_shortcode_page( $vsel_atts ) {
 				// include event variables
 				include 'vsel-variables-global.php';
 				include 'vsel-variables-page.php';
-				$list_id = 'page';
+				// event container classes
+				$vsel_event_cats = vsel_event_cats();
+				$vsel_event_status = vsel_event_status();
 				// start event container
-				$output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.esc_attr( vsel_event_cats() ).esc_attr( vsel_event_status() ).'">';
+				$output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.esc_attr( $vsel_event_cats.$vsel_event_status ).'">';
 					// include event template
 					include 'vsel-template.php';
 				// end event container
@@ -81,15 +75,14 @@ function vsel_shortcode_widget( $vsel_atts ) {
 	// initialize output
 	$output = '';
 	// include shortcode attributes
-	$vsel_atts = shortcode_atts( vsel_atts_array(), $vsel_atts );
+	$vsel_atts = shortcode_atts( vsel_shortcode_atts_array(), $vsel_atts );
+	// main container classes
+	$vsel_container_classes = vsel_container_classes( $vsel_atts );
 	// main container
-	$output .= '<div id="vsel" class="vsel-widget vsel-widget-'.esc_attr( vsel_container_classes( $vsel_atts ) ).'">';
-		// misc vars
-		$paged = 0;
-		$today = vsel_timestamp_today();
-		$tomorrow = vsel_timestamp_tomorrow();
+	$output .= '<div id="vsel" class="vsel-widget vsel-widget-'.esc_attr( $vsel_container_classes ).'">';
 		// include query args
-		$vsel_query_args = vsel_query_args( $vsel_atts, $today, $tomorrow, $paged );
+		$list_id = 'widget';
+		$vsel_query_args = vsel_query_args( $vsel_atts, $list_id );
 		// start query
 		$vsel_widget_query = new WP_Query( $vsel_query_args );
 		if ( $vsel_widget_query->have_posts() ) :
@@ -97,9 +90,11 @@ function vsel_shortcode_widget( $vsel_atts ) {
 				// include event variables
 				include 'vsel-variables-global.php';
 				include 'vsel-variables-widget.php';
-				$list_id = 'widget';
+				// event container classes
+				$vsel_event_cats = vsel_event_cats();
+				$vsel_event_status = vsel_event_status();
 				// start event container
-				$output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.esc_attr( vsel_event_cats() ).esc_attr( vsel_event_status() ).'">';
+				$output .= '<div id="event-'.get_the_ID().'" class="vsel-content'.esc_attr( $vsel_event_cats.$vsel_event_status ).'">';
 					// include event template
 					include 'vsel-template.php';
 				// end event container
@@ -149,7 +144,7 @@ function vsel_all_events_shortcode() {
 add_shortcode( 'vsel-all-events', 'vsel_all_events_shortcode' );
 
 // shortcode attributes
-function vsel_atts_array() {
+function vsel_shortcode_atts_array() {
 	return array(
 		'list' => '',
 		'class' => '',
@@ -193,46 +188,48 @@ function vsel_container_classes( $vsel_atts ) {
 }
 
 // query args
-function vsel_query_args( $vsel_atts, $today, $tomorrow, $paged ) {
-	// base query args (common to all)
-	$vsel_query_args = array(
-		'post_type' => 'event',
-		'event_cat' => $vsel_atts['event_cat'],
-		'post_status' => 'publish',
-		'ignore_sticky_posts' => true,
-		'meta_key' => 'event-start-date',
-		'orderby' => 'meta_value_num menu_order',
-		'posts_per_page' => $vsel_atts['posts_per_page'],
-		'offset' => $vsel_atts['offset'],
-		'paged' => $paged,
-	);
-
-	// meta query based on list type
-	switch ( $vsel_atts['list'] ) {
-		case 'future': // future events
-			if ( $vsel_atts['order'] == 'DESC' ) {
-				$vsel_query_args['order'] = 'DESC';
-			} else {
-				$vsel_query_args['order'] = 'ASC';
-			}
-			$vsel_query_args['meta_query'] = array(
-				'relation' => 'AND',
-				array(
-					'key' => 'event-start-date',
-					'value' => $tomorrow,
-					'compare' => '>=',
-					'type' => 'NUMERIC',
-				)
-			);
-			break;
-		case 'current': // current events
-			if ( $vsel_atts['order'] == 'DESC' ) {
-				$vsel_query_args['order'] = 'DESC';
-			} else {
-				$vsel_query_args['order'] = 'ASC';
-			}
-			$vsel_query_args['meta_query'] = array(
-				'relation' => 'AND',
+function vsel_query_args( $vsel_atts, $list_id ) {
+	// pagination
+	global $paged;
+	if ( get_query_var( 'paged' ) ) {
+		$paged = get_query_var( 'paged' );
+	} elseif ( get_query_var( 'page' ) ) {
+		$paged = get_query_var( 'page' );
+	} else {
+		$paged = 1;
+	}
+	// no pagination in widget
+	if ( $list_id == 'widget' ) {
+		$paged = 0;
+	}
+	// timestamps
+	$today = vsel_timestamp_today();
+	$tomorrow = vsel_timestamp_tomorrow();
+	// query args for future events list
+	if ( $vsel_atts['list'] == 'future' ) {
+		if ( $vsel_atts['order'] == 'DESC' ) {
+			$order = 'DESC';
+		} else {
+			$order = 'ASC';
+		}
+		$vsel_meta_query = array(
+			'relation' => 'AND',
+			array(
+				'key' => 'event-start-date',
+				'value' => $tomorrow,
+				'compare' => '>=',
+				'type' => 'NUMERIC',
+			)
+		);
+	// query args for current events list
+	} elseif ( $vsel_atts['list'] == 'current' ) {
+		if ( $vsel_atts['order'] == 'DESC' ) {
+			$order = 'DESC';
+		} else {
+			$order = 'ASC';
+		}
+		$vsel_meta_query = array(
+			'relation' => 'AND',
 				array(
 					'key' => 'event-start-date',
 					'value' => $tomorrow,
@@ -244,48 +241,62 @@ function vsel_query_args( $vsel_atts, $today, $tomorrow, $paged ) {
 					'value' => $today,
 					'compare' => '>=',
 					'type' => 'NUMERIC',
-				)
-			);
-			break;
-		case 'past': // past events
-			if ( $vsel_atts['order'] == 'ASC' ) {
-				$vsel_query_args['order'] = 'ASC';
-			} else {
-				$vsel_query_args['order'] = 'DESC';
-			}
-			$vsel_query_args['meta_query'] = array(
-				'relation' => 'AND',
-				array(
-					'key' => 'event-date',
-					'value' => $today,
-					'compare' => '<',
-					'type' => 'NUMERIC',
-				)
-			);
-			break;
-		case 'all': // all events (no meta query needed)
-			if ( $vsel_atts['order'] == 'ASC' ) {
-				$vsel_query_args['order'] = 'ASC';
-			} else {
-				$vsel_query_args['order'] = 'DESC';
-			}
-			break;
-		default: // upcoming events
-			if ( $vsel_atts['order'] == 'DESC' ) {
-				$vsel_query_args['order'] = 'DESC';
-			} else {
-				$vsel_query_args['order'] = 'ASC';
-			}
-			$vsel_query_args['meta_query'] = array(
-				'relation' => 'AND',
-				array(
-					'key' => 'event-date',
-					'value' => $today,
-					'compare' => '>=',
-					'type' => 'NUMERIC',
-				)
-			);
-			break;
+			)
+		);
+	// query args for past events list
+	} elseif ( $vsel_atts['list'] == 'past' ) {
+		if ( $vsel_atts['order'] == 'ASC' ) {
+			$order = 'ASC';
+		} else {
+			$order = 'DESC';
+		}
+		$vsel_meta_query = array(
+			'relation' => 'AND',
+			array(
+				'key' => 'event-date',
+				'value' => $today,
+				'compare' => '<',
+				'type' => 'NUMERIC',
+			)
+		);
+	// query args for all events list
+	} elseif ( $vsel_atts['list'] == 'all' ) {
+		if ( $vsel_atts['order'] == 'ASC' ) {
+			$order = 'ASC';
+		} else {
+			$order = 'DESC';
+		}
+		$vsel_meta_query = 0;
+	// query args for upcoming events list
+	} else {
+		if ( $vsel_atts['order'] == 'DESC' ) {
+			$order = 'DESC';
+		} else {
+			$order = 'ASC';
+		}
+		$vsel_meta_query = array(
+			'relation' => 'AND',
+			array(
+				'key' => 'event-date',
+				'value' => $today,
+				'compare' => '>=',
+				'type' => 'NUMERIC',
+			)
+		);
 	}
+	// base query args (common to all)
+	$vsel_query_args = array(
+		'post_type' => 'event',
+		'event_cat' => $vsel_atts['event_cat'],
+		'post_status' => 'publish',
+		'ignore_sticky_posts' => true,
+		'meta_key' => 'event-start-date',
+		'orderby' => 'meta_value_num menu_order',
+		'order' => $order,
+		'posts_per_page' => $vsel_atts['posts_per_page'],
+		'offset' => $vsel_atts['offset'],
+		'paged' => $paged,
+		'meta_query' => $vsel_meta_query,
+	);
 	return $vsel_query_args;
 }

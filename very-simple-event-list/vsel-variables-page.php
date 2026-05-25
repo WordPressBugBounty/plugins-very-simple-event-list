@@ -143,11 +143,11 @@ if ( $vsel_title_hide == 'yes' ) {
 
 // link date label and date icon to title
 if ( $vsel_link_date == 'yes' ) {
-	$date_before = '<a href="'.get_permalink().'" rel="bookmark">';
-	$date_after = '</a>';
+	$vsel_date_before = '<a href="'.get_permalink().'" rel="bookmark">';
+	$vsel_date_after = '</a>';
 } else {
-	$date_before = '';
-	$date_after = '';
+	$vsel_date_before = '';
+	$vsel_date_after = '';
 }
 
 // set size for featured image

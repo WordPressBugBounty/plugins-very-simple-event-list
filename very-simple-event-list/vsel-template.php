@@ -43,27 +43,27 @@ if ( $list_id == 'page' ) {
 				if ( ( $vsel_date_format == 'j F Y' ) || ( $vsel_date_format == 'd/m/Y' ) || ( $vsel_date_format == 'd-m-Y' ) ) {
 					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon">';
 					$output .= '<div class="vsel-start-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-end-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '</div>';
 				} else {
 					$output .= '<div class="vsel-meta-date-icon vsel-meta-combined-date-icon">';
 					$output .= '<div class="vsel-start-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-end-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '</div>';
 				}
@@ -71,24 +71,24 @@ if ( $list_id == 'page' ) {
 			} else {
 				if ( $vsel_date_combine == 'yes' ) {
 					$output .= '<div class="vsel-meta-date vsel-meta-combined-date">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= sprintf( esc_html( $vsel_start_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>' );
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= ' '.esc_html( $date_separator ).' ';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= sprintf( esc_html( $vsel_end_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 				} else {
 					$output .= '<div class="vsel-meta-date vsel-meta-start-date">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= sprintf( esc_html( $vsel_start_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>' );
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '<div class="vsel-meta-date vsel-meta-end-date">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= sprintf( esc_html( $vsel_end_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 				}
 			}
@@ -99,26 +99,26 @@ if ( $list_id == 'page' ) {
 				if ( ( $vsel_date_format == 'j F Y' ) || ( $vsel_date_format == 'd/m/Y' ) || ( $vsel_date_format == 'd-m-Y' ) ) {
 					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon">';
 					$output .= '<div class="vsel-start-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-day vsel-day-top">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-month">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '</div>';
 				} else {
 					$output .= '<div class="vsel-meta-date-icon vsel-meta-single-date-icon">';
 					$output .= '<div class="vsel-start-icon">';
-					$output .= $date_before;
+					$output .= $vsel_date_before;
 					$output .= '<span class="vsel-month vsel-month-top">'.wp_date( 'M', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-day">'.wp_date( 'j', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span><span class="vsel-year">'.wp_date( 'Y', esc_attr( $start_date_timestamp ), $utc_timezone ).'</span>';
-					$output .= $date_after;
+					$output .= $vsel_date_after;
 					$output .= '</div>';
 					$output .= '</div>';
 				}
 			// date label
 			} else {
 				$output .= '<div class="vsel-meta-date vsel-meta-single-date">';
-				$output .= $date_before;
+				$output .= $vsel_date_before;
 				$output .= sprintf( esc_html( $vsel_date_label ), '<span>'.wp_date( esc_attr( $vsel_date_format ), esc_attr( $end_date_timestamp ), $utc_timezone ).'</span>' );
-				$output .= $date_after;
+				$output .= $vsel_date_after;
 				$output .= '</div>';
 			}
 		}
@@ -179,7 +179,7 @@ if ( $list_id == 'page' ) {
 	}
 	// map
 	if ( $vsel_map_hide != 'yes' ) {
-		if ( ! empty( $map ) && ( ( strpos( $map, '<iframe' ) !== false ) && ( strpos( $map, '</iframe>' ) !== false ) ) ) {
+		if ( ! empty( $map ) && ( strpos( $map, '<iframe' ) !== false ) && ( strpos( $map, '</iframe>' ) !== false ) ) {
 			$output .= '<div class="vsel-meta-map">';
 			$output .= wp_kses_post( $map );
 			$output .= '</div>';
