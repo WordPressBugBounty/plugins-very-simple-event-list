@@ -147,6 +147,8 @@ add_shortcode( 'vsel-all-events', 'vsel_all_events_shortcode' );
 function vsel_shortcode_atts_array() {
 	return array(
 		'list' => '',
+		'year' => '',
+		'month' => '',
 		'class' => '',
 		'date_format' => '',
 		'event_cat' => '',
@@ -205,6 +207,21 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 	// timestamps
 	$today = vsel_timestamp_today();
 	$tomorrow = vsel_timestamp_tomorrow();
+	// year and month values
+	$year_1 = '1970';
+	$year_2 = '9999';
+	$month_1 = '01';
+	$month_2 = '12';
+	if ( ! empty( $vsel_atts['year'] ) && is_numeric( $vsel_atts['year'] ) ) {
+		$year_1 = $vsel_atts['year'];
+		$year_2 = $vsel_atts['year'];
+	}
+	if ( ! empty( $vsel_atts['year'] ) && is_numeric( $vsel_atts['year'] ) ) {
+		if ( ! empty( $vsel_atts['month'] ) && is_numeric( $vsel_atts['month'] ) ) {
+			$month_1 = $vsel_atts['month'];
+			$month_2 = $vsel_atts['month'];
+		}
+	}
 	// query args for future events list
 	if ( $vsel_atts['list'] == 'future' ) {
 		if ( $vsel_atts['order'] == 'DESC' ) {
@@ -219,6 +236,12 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 				'value' => $tomorrow,
 				'compare' => '>=',
 				'type' => 'NUMERIC',
+			),
+			array(
+				'key' => 'event-date',
+				'value' => array( strtotime( $year_1.'-'.$month_1.'-01' ), strtotime( $year_2.'-'.$month_2.'-31' ) ),
+				'compare' => 'BETWEEN',
+				'type' => 'NUMERIC',
 			)
 		);
 	// query args for current events list
@@ -230,17 +253,23 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 		}
 		$vsel_meta_query = array(
 			'relation' => 'AND',
-				array(
-					'key' => 'event-start-date',
-					'value' => $tomorrow,
-					'compare' => '<',
-					'type' => 'NUMERIC',
-				),
-				array(
-					'key' => 'event-date',
-					'value' => $today,
-					'compare' => '>=',
-					'type' => 'NUMERIC',
+			array(
+				'key' => 'event-start-date',
+				'value' => $tomorrow,
+				'compare' => '<',
+				'type' => 'NUMERIC',
+			),
+			array(
+				'key' => 'event-date',
+				'value' => $today,
+				'compare' => '>=',
+				'type' => 'NUMERIC',
+			),
+			array(
+				'key' => 'event-date',
+				'value' => array( strtotime( $year_1.'-'.$month_1.'-01' ), strtotime( $year_2.'-'.$month_2.'-31' ) ),
+				'compare' => 'BETWEEN',
+				'type' => 'NUMERIC',
 			)
 		);
 	// query args for past events list
@@ -257,6 +286,12 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 				'value' => $today,
 				'compare' => '<',
 				'type' => 'NUMERIC',
+			),
+			array(
+				'key' => 'event-date',
+				'value' => array( strtotime( $year_1.'-'.$month_1.'-01' ), strtotime( $year_2.'-'.$month_2.'-31' ) ),
+				'compare' => 'BETWEEN',
+				'type' => 'NUMERIC',
 			)
 		);
 	// query args for all events list
@@ -266,7 +301,15 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 		} else {
 			$order = 'DESC';
 		}
-		$vsel_meta_query = 0;
+		$vsel_meta_query = array(
+			'relation' => 'AND',
+			array(
+				'key' => 'event-date',
+				'value' => array( strtotime( $year_1.'-'.$month_1.'-01' ), strtotime( $year_2.'-'.$month_2.'-31' ) ),
+				'compare' => 'BETWEEN',
+				'type' => 'NUMERIC',
+			)
+		);
 	// query args for upcoming events list
 	} else {
 		if ( $vsel_atts['order'] == 'DESC' ) {
@@ -280,6 +323,12 @@ function vsel_query_args( $vsel_atts, $list_id ) {
 				'key' => 'event-date',
 				'value' => $today,
 				'compare' => '>=',
+				'type' => 'NUMERIC',
+			),
+			array(
+				'key' => 'event-date',
+				'value' => array( strtotime( $year_1.'-'.$month_1.'-01' ), strtotime( $year_2.'-'.$month_2.'-31' ) ),
+				'compare' => 'BETWEEN',
 				'type' => 'NUMERIC',
 			)
 		);

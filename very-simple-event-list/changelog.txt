@@ -1,5 +1,10 @@
 == Changelog VS Event List ==
 
+= Version 20.2 =
+* New: attribute that lets you display events per year and/or month
+* Display events of the year 2026: year="2026"
+* Display events of August 2026: year="2026" month="08"
+
 = Version 20.1 =
 * Minor changes in code
 
