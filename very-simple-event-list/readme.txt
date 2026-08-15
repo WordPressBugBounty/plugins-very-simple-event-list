@@ -1,12 +1,12 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 20.2
-Stable tag: 20.2
+Version: 20.3
+Stable tag: 20.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Tags: event, events, event list, event manager, classicpress
 
 
@@ -62,8 +62,8 @@ This can be useful when having multiple event lists on your website.
 * Display all events (without pagination): `posts_per_page="-1"`
 * Skip one or multiple events: `offset="1"`
 * Change date format: `date_format="j F Y"`
-* Display events of the year 2026: `year="2026"`
-* Display events of August 2026: `year="2026" month="08"`
+* Display events of a specific year: `year="2026"`
+* Display events of a specific month: `year="2026" month="08"`
 * Display events from a certain category: `event_cat="your-category-slug"`
 * Display events from multiple categories: `event_cat="first-category-slug, second-category-slug"`
 * Reverse the order of events in the upcoming, future and current events list: `order="DESC"`
@@ -262,10 +262,13 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 20.3 =
+* Minor changes in code
+
 = Version 20.2 =
 * New: attribute that lets you display events per year and/or month
-* Display events of the year 2026: year="2026"
-* Display events of August 2026: year="2026" month="08"
+* Display events of a specific year: year="2026"
+* Display events of a specific month: year="2026" month="08"
 
 = Version 20.1 =
 * Minor changes in code
@@ -297,11 +300,6 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 = Version 19.4 =
 * Fix: forgot text in editor about info and available attributes
-
-= Version 19.3 =
-* Full rewrite of the block
-* It now supports the Block API version 3
-* Bumped the "Requires at least" version to 6.3
 
 For all versions please check file changelog.
 

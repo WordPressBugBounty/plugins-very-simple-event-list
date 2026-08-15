@@ -407,7 +407,7 @@ function vsel_field_callback_100() {
 	$value = get_option( 'vsel-setting-100' );
 	?>
 	<input type="hidden" name="vsel-setting-100" value="no">
-	<label><input type="checkbox" name="vsel-setting-100" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Do not delete events and settings when uninstalling plugin.', 'very-simple-event-list' ); ?></label>
+	<label><input type="checkbox" name="vsel-setting-100" <?php checked( esc_attr( $value ), 'yes' ); ?> value="yes"> <?php esc_html_e( 'Do not delete events and plugin settings from the database.', 'very-simple-event-list' ); ?></label>
 	<?php
 }
 
