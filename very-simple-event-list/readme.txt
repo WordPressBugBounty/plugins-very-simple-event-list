@@ -1,7 +1,7 @@
 === VS Event List ===
 Contributors: Guido07111975
-Version: 20.3
-Stable tag: 20.3
+Version: 20.4
+Stable tag: 20.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -262,11 +262,16 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 
 == Changelog ==
+= Version 20.4 =
+* New: display location link in your event details
+* This could be used to display a link to (for example) Google Maps or OpenStreetMap
+* Added field in the editor for link and link label
+
 = Version 20.3 =
 * Minor changes in code
 
 = Version 20.2 =
-* New: attribute that lets you display events per year and/or month
+* New: attribute that lets you display events per year or month
 * Display events of a specific year: year="2026"
 * Display events of a specific month: year="2026" month="08"
 
@@ -290,16 +295,13 @@ Please open a topic in the WordPress.org support forum for this plugin.
 
 = Version 19.6 =
 * New: display location map in your event details
-* Added field for the iframe embed code
+* Added field in the editor for the iframe embed code
 * Plugin has been tested with Google Maps and OpenStreetMap
 * New: location field accepts line breaks
 * Minor changes in code
 
 = Version 19.5 =
 * New: setting to link date label and date icon to single event page
-
-= Version 19.4 =
-* Fix: forgot text in editor about info and available attributes
 
 For all versions please check file changelog.
 

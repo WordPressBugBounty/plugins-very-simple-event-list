@@ -177,6 +177,14 @@ if ( $list_id == 'page' ) {
 			$output .= '</div>';
 		}
 	}
+	// location link
+	if ( $vsel_location_hide != 'yes' ) {
+		if ( ! empty( $location_link ) ) {
+			$output .= '<div class="vsel-meta-location-link">';
+			$output .= '<a href="'.esc_url( $location_link ).'" rel="noopener noreferrer" '.$location_link_target.' title="'.esc_url( $location_link ).'">'.esc_html( $location_link_label ).'</a>';
+			$output .= '</div>';
+		}
+	}
 	// map
 	if ( $vsel_map_hide != 'yes' ) {
 		if ( ! empty( $map ) && ( strpos( $map, '<iframe' ) !== false ) && ( strpos( $map, '</iframe>' ) !== false ) ) {

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: VS Event List
  * Description: With this lightweight plugin you can create an event list.
- * Version: 20.3
+ * Version: 20.4
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GPLv3
@@ -202,6 +202,9 @@ function vsel_metabox_callback( $post ) {
 	$hide_end_time = get_post_meta( $post->ID, 'event-hide-end-time', true );
 	$all_day_event = get_post_meta( $post->ID, 'event-all-day', true );
 	$location = get_post_meta( $post->ID, 'event-location', true );
+	$location_link = get_post_meta( $post->ID, 'event-location-link', true );
+	$location_link_label = get_post_meta( $post->ID, 'event-location-link-label', true );
+	$location_link_target = get_post_meta( $post->ID, 'event-location-link-target', true );
 	$map = get_post_meta( $post->ID, 'event-map', true );
 	$link = get_post_meta( $post->ID, 'event-link', true );
 	$link_label = get_post_meta( $post->ID, 'event-link-label', true );
@@ -296,6 +299,12 @@ function vsel_metabox_callback( $post ) {
 	<?php } ?>
 	<p><label for="event-location"><?php esc_html_e( 'Location', 'very-simple-event-list' ); ?></label>
 	<textarea class="large-text" id="event-location" name="event-location" rows="4" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'Times Square', 'very-simple-event-list' ); ?>"><?php echo esc_textarea( $location ); ?></textarea></p>
+	<p><label for="event-location-link"><?php esc_html_e( 'Location link', 'very-simple-event-list' ); ?></label>
+	<input type="text" class="widefat" id="event-location-link" name="event-location-link" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php echo esc_url( 'https://maps.app.goo.gl/KFiYDLrVn2TmzX1A7' ); ?>" value="<?php echo esc_url( $location_link ); ?>" /></p>
+	<p><label for="event-location-link-label"><?php esc_html_e( 'Link label', 'very-simple-event-list' ); ?></label>
+	<input type="text" class="widefat" id="event-location-link-label" name="event-location-link-label" placeholder="<?php esc_attr_e( 'Example', 'very-simple-event-list' ); ?>: <?php esc_attr_e( 'Times Square', 'very-simple-event-list' ); ?>" value="<?php echo esc_attr( $location_link_label ); ?>" /></p>
+	<p><input type="checkbox" id="event-location-link-target" name="event-location-link-target" value="yes" <?php checked( esc_attr( $location_link_target ), 'yes' ); ?> />
+	<label for="event-location-link-target"><?php esc_html_e( 'Open link in new window', 'very-simple-event-list' ); ?></label></p>
 	<p><label for="event-map"><?php esc_html_e( 'Map', 'very-simple-event-list' ); ?></label>
 	<textarea class="large-text" id="event-map" name="event-map" rows="4" placeholder="<?php esc_attr_e( 'Add your iframe embed code here', 'very-simple-event-list' ); ?>"><?php echo wp_kses_post( $map ); ?></textarea>
 	<?php echo ( isset( $notice_map ) ? '<br><span style="color:red;">'.esc_html( $notice_map ).'</span>' : '' ); ?></p>
@@ -392,6 +401,17 @@ function vsel_save_event_info( $post_id ) {
 	}
 	if ( isset( $_POST['event-location'] ) ) {
 		update_post_meta( $post_id, 'event-location', sanitize_textarea_field( $_POST['event-location'] ) );
+	}
+	if ( isset( $_POST['event-location-link'] ) ) {
+		update_post_meta( $post_id, 'event-location-link', esc_url_raw( $_POST['event-location-link'] ) );
+	}
+	if ( isset( $_POST['event-location-link-label'] ) ) {
+		update_post_meta( $post_id, 'event-location-link-label', sanitize_text_field( $_POST['event-location-link-label'] ) );
+	}
+	if ( isset( $_POST['event-location-link-target'] ) ) {
+		update_post_meta( $post_id, 'event-location-link-target', 'yes' );
+	} else {
+		update_post_meta( $post_id, 'event-location-link-target', 'no' );
 	}
 	if ( isset( $_POST['event-map'] ) ) {
 		update_post_meta( $post_id, 'event-map', wp_kses_post( $_POST['event-map'] ) );

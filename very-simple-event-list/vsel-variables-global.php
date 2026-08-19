@@ -70,6 +70,9 @@ $one_time = get_post_meta( get_the_ID(), 'event-time', true );
 $hide_end_time = get_post_meta( get_the_ID(), 'event-hide-end-time', true );
 $all_day_event = get_post_meta( get_the_ID(), 'event-all-day', true );
 $location = get_post_meta( get_the_ID(), 'event-location', true );
+$location_link = get_post_meta( get_the_ID(), 'event-location-link', true );
+$location_link_label = get_post_meta( get_the_ID(), 'event-location-link-label', true );
+$location_link_target = get_post_meta( get_the_ID(), 'event-location-link-target', true );
 $map = get_post_meta( get_the_ID(), 'event-map', true );
 $more_info_link = get_post_meta( get_the_ID(), 'event-link', true );
 $more_info_link_label = get_post_meta( get_the_ID(), 'event-link-label', true );
@@ -86,8 +89,20 @@ $end_date = gmdate( 'Ymd', intval( $end_date_timestamp ) );
 $start_time = gmdate( 'Hi', intval( $start_date_timestamp ) );
 $end_time = gmdate( 'Hi', intval( $end_date_timestamp ) );
 
+// set location link label
+if ( empty( $location_link_label ) ) {
+	$location_link_label = __( 'Location link', 'very-simple-event-list' );
+}
+
+// set location link target
+if ( $location_link_target == 'yes' ) {
+	$location_link_target = 'rel="noopener noreferrer" target="_blank"';
+} else {
+	$location_link_target = 'rel="noreferrer" target="_self"';
+}
+
 // set more info link label
-if ( empty( $more_info_link_label) ) {
+if ( empty( $more_info_link_label ) ) {
 	$more_info_link_label = __( 'More info', 'very-simple-event-list' );
 }
 

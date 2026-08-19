@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VS Event List\n"
-"POT-Creation-Date: 2026-08-15 17:13+0200\n"
+"POT-Creation-Date: 2026-08-19 16:21+0200\n"
 "PO-Revision-Date: 2015-09-10 13:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -52,7 +52,7 @@ msgstr ""
 #: vsel-options.php:256 vsel-options.php:289 vsel-options.php:292
 #: vsel-options.php:295 vsel-options.php:306 vsel-options.php:324
 #: vsel-options.php:852 vsel-options.php:1165 vsel-options.php:1389
-#: vsel.php:254
+#: vsel.php:257
 msgid "Date"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 #: vsel-options.php:137 vsel-options.php:170 vsel-options.php:235
 #: vsel-options.php:265 vsel-options.php:309 vsel-options.php:333
 #: vsel-options.php:897 vsel-options.php:1210 vsel-options.php:1434
-#: vsel.php:294 vsel.php:443
+#: vsel.php:297 vsel.php:463
 msgid "Time"
 msgstr ""
 
@@ -83,11 +83,11 @@ msgstr ""
 #: vsel-options.php:51 vsel-options.php:140 vsel-options.php:176
 #: vsel-options.php:238 vsel-options.php:271 vsel-options.php:312
 #: vsel-options.php:339 vsel-options.php:920 vsel-options.php:1233
-#: vsel-options.php:1457 vsel.php:297 vsel.php:446
+#: vsel-options.php:1457 vsel.php:300 vsel.php:466
 msgid "Location"
 msgstr ""
 
-#: vsel-options.php:54 vsel.php:449
+#: vsel-options.php:54 vsel.php:469
 msgid "Order"
 msgstr ""
 
@@ -159,31 +159,31 @@ msgid "Pagination"
 msgstr ""
 
 #: vsel-options.php:143 vsel-options.php:241 vsel-options.php:315
-#: vsel.php:299
+#: vsel.php:308
 msgid "Map"
 msgstr ""
 
 #: vsel-options.php:149 vsel-options.php:247 vsel-options.php:321
-#: vsel.php:302
+#: vsel.php:311
 msgid "More info link"
 msgstr ""
 
 #: vsel-options.php:164 vsel-options.php:259 vsel-options.php:327
 #: vsel-options.php:867 vsel-options.php:1180 vsel-options.php:1404
-#: vsel.php:238 vsel.php:257 vsel.php:440
+#: vsel.php:241 vsel.php:260 vsel.php:460
 msgid "Start date"
 msgstr ""
 
 #: vsel-options.php:167 vsel-options.php:262 vsel-options.php:330
 #: vsel-options.php:882 vsel-options.php:1195 vsel-options.php:1419
-#: vsel.php:238 vsel.php:259 vsel.php:441
+#: vsel.php:241 vsel.php:262 vsel.php:461
 msgid "End date"
 msgstr ""
 
 #: vsel-options.php:173 vsel-options.php:268 vsel-options.php:336
 #: vsel-options.php:902 vsel-options.php:1215 vsel-options.php:1439
 #: vsel-variables-page.php:102 vsel-variables-single.php:66
-#: vsel-variables-widget.php:92 vsel.php:291
+#: vsel-variables-widget.php:92 vsel.php:294
 msgid "All-day event"
 msgstr ""
 
@@ -596,7 +596,11 @@ msgstr ""
 msgid "Error: please reset time."
 msgstr ""
 
-#: vsel-variables-global.php:91 vsel.php:305
+#: vsel-variables-global.php:94 vsel.php:302
+msgid "Location link"
+msgstr ""
+
+#: vsel-variables-global.php:106 vsel.php:314
 msgid "More info"
 msgstr ""
 
@@ -636,8 +640,8 @@ msgstr ""
 msgid "Attributes"
 msgstr ""
 
-#: vsel-widget.php:45 vsel-widget.php:47 vsel-widget.php:49 vsel.php:295
-#: vsel.php:298 vsel.php:303 vsel.php:305
+#: vsel-widget.php:45 vsel-widget.php:47 vsel-widget.php:49 vsel.php:298
+#: vsel.php:301 vsel.php:303 vsel.php:305 vsel.php:312 vsel.php:314
 msgid "Example"
 msgstr ""
 
@@ -649,7 +653,7 @@ msgstr ""
 msgid "www.example.com/more-events"
 msgstr ""
 
-#: vsel-widget.php:48 vsel.php:304
+#: vsel-widget.php:48 vsel.php:304 vsel.php:313
 msgid "Link label"
 msgstr ""
 
@@ -693,76 +697,76 @@ msgstr ""
 msgid "No events found in trash"
 msgstr ""
 
-#: vsel.php:238 vsel.php:244
+#: vsel.php:241 vsel.php:247
 #, php-format
 msgid "Error: %1$s must be equal to or greater than %2$s."
 msgstr ""
 
-#: vsel.php:244 vsel.php:276
+#: vsel.php:247 vsel.php:279
 msgid "End time"
 msgstr ""
 
-#: vsel.php:244 vsel.php:264
+#: vsel.php:247 vsel.php:267
 msgid "Start time"
 msgstr ""
 
-#: vsel.php:249
+#: vsel.php:252
 msgid "Error: invalid iframe embed code."
 msgstr ""
 
-#: vsel.php:255 vsel.php:258 vsel.php:260
+#: vsel.php:258 vsel.php:261 vsel.php:263
 msgid "Use datepicker"
 msgstr ""
 
-#: vsel.php:287
+#: vsel.php:290
 msgid "Hide end time"
 msgstr ""
 
-#: vsel.php:292
+#: vsel.php:295
 msgid "Time will be hidden in frontend."
 msgstr ""
 
-#: vsel.php:295
+#: vsel.php:298
 msgid "16:00 - 18:00"
 msgstr ""
 
-#: vsel.php:298
+#: vsel.php:301 vsel.php:305
 msgid "Times Square"
 msgstr ""
 
-#: vsel.php:300
-msgid "Add your iframe embed code here"
-msgstr ""
-
-#: vsel.php:303
-msgid "www.example.com/more-info"
-msgstr ""
-
-#: vsel.php:307
+#: vsel.php:307 vsel.php:316
 msgid "Open link in new window"
 msgstr ""
 
 #: vsel.php:309
-msgid "Redirect event title to the more info link"
-msgstr ""
-
-#: vsel.php:310 vsel.php:313
-msgid "The more info link will be hidden in frontend."
+msgid "Add your iframe embed code here"
 msgstr ""
 
 #: vsel.php:312
+msgid "www.example.com/more-info"
+msgstr ""
+
+#: vsel.php:318
+msgid "Redirect event title to the more info link"
+msgstr ""
+
+#: vsel.php:319 vsel.php:322
+msgid "The more info link will be hidden in frontend."
+msgstr ""
+
+#: vsel.php:321
 msgid "Redirect featured image to the more info link"
 msgstr ""
 
-#: vsel.php:314
+#: vsel.php:323
 msgid "Custom summary"
 msgstr ""
 
-#: vsel.php:315
+#: vsel.php:324
 msgid "This will replace the default summary"
 msgstr ""
 
-#: vsel.php:662
+#: vsel.php:682
 msgid "Settings"
 msgstr ""
 

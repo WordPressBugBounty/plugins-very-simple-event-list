@@ -1,10 +1,15 @@
 == Changelog VS Event List ==
 
+= Version 20.4 =
+* New: display location link in your event details
+* This could be used to display a link to (for example) Google Maps or OpenStreetMap
+* Added field in the editor for link and link label
+
 = Version 20.3 =
 * Minor changes in code
 
 = Version 20.2 =
-* New: attribute that lets you display events per year and/or month
+* New: attribute that lets you display events per year or month
 * Display events of a specific year: year="2026"
 * Display events of a specific month: year="2026" month="08"
 
@@ -28,7 +33,7 @@
 
 = Version 19.6 =
 * New: display location map in your event details
-* Added field for the iframe embed code
+* Added field in the editor for the iframe embed code
 * Plugin has been tested with Google Maps and OpenStreetMap
 * New: location field accepts line breaks
 * Minor changes in code
