@@ -91,7 +91,7 @@ $end_time = gmdate( 'Hi', intval( $end_date_timestamp ) );
 
 // set location link label
 if ( empty( $location_link_label ) ) {
-	$location_link_label = __( 'Location link', 'very-simple-event-list' );
+	$location_link_label = __( 'Location', 'very-simple-event-list' );
 }
 
 // set location link target

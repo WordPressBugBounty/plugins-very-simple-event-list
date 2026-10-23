@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VS Event List\n"
-"POT-Creation-Date: 2026-08-19 16:21+0200\n"
+"POT-Creation-Date: 2026-08-19 20:13+0200\n"
 "PO-Revision-Date: 2015-09-10 13:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -83,7 +83,8 @@ msgstr ""
 #: vsel-options.php:51 vsel-options.php:140 vsel-options.php:176
 #: vsel-options.php:238 vsel-options.php:271 vsel-options.php:312
 #: vsel-options.php:339 vsel-options.php:920 vsel-options.php:1233
-#: vsel-options.php:1457 vsel.php:300 vsel.php:466
+#: vsel-options.php:1457 vsel-variables-global.php:94 vsel.php:300
+#: vsel.php:466
 msgid "Location"
 msgstr ""
 
@@ -596,10 +597,6 @@ msgstr ""
 msgid "Error: please reset time."
 msgstr ""
 
-#: vsel-variables-global.php:94 vsel.php:302
-msgid "Location link"
-msgstr ""
-
 #: vsel-variables-global.php:106 vsel.php:314
 msgid "More info"
 msgstr ""
@@ -732,6 +729,10 @@ msgstr ""
 
 #: vsel.php:301 vsel.php:305
 msgid "Times Square"
+msgstr ""
+
+#: vsel.php:302
+msgid "Location link"
 msgstr ""
 
 #: vsel.php:307 vsel.php:316

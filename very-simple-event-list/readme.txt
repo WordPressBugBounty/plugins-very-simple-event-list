@@ -264,8 +264,8 @@ Please open a topic in the WordPress.org support forum for this plugin.
 == Changelog ==
 = Version 20.4 =
 * New: display location link in your event details
-* This could be used to display a link to (for example) Google Maps or OpenStreetMap
-* Added field in the editor for link and link label
+* This could be a link to Google Maps or OpenStreetMap
+* Added field in the editor for the location link and link label
 
 = Version 20.3 =
 * Minor changes in code
